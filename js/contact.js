@@ -57,5 +57,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     form.style.display = "none";
     if (success) success.classList.add("show");
+
+    var typeLabels = {
+      landing: "Лендинг",
+      multi: "Многостраничный сайт",
+      shop: "Интернет-магазин",
+      other: "Другое"
+    };
+    if (!looksLikeBot) {
+      var message =
+        "Здравствуйте, Andrey! Хочу заказать сайт.\n\n" +
+        "Имя: " + name + "\n" +
+        "Контакт: " + contact + "\n" +
+        "Тип сайта: " + (typeLabels[typeSelect ? typeSelect.value : ""] || "Не указан") + "\n";
+      var comment = commentField ? commentField.value.trim() : "";
+      if (comment) message += "Комментарий: " + comment;
+
+      var tg = document.getElementById("success-tg-link");
+      if (tg) {
+        tg.href = "https://t.me/Andrey_AlexandrovichAA?text=" + encodeURIComponent(message);
+      }
+      window.open(tg ? tg.href : "https://t.me/Andrey_AlexandrovichAA", "_blank");
+    }
   });
 });
