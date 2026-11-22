@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian — магазин часов | Швейцарская классика</title>
+<style>
+:root{--bg:#0e0f11;--card:#17191c;--border:rgba(255,255,255,.09);--text:#f2f2f0;--dim:#9aa0a6;--silver:linear-gradient(135deg,#ffffff,#c9c9c9,#8f8f8f)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{width:min(1080px,92%);margin:0 auto}
+header{position:sticky;top:0;background:rgba(14,15,17,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}.nav .btn{margin-left:22px}
+.brand{font-family:Georgia,serif;font-weight:700;font-size:22px;letter-spacing:2px}
+.brand b{color:#cfa96b}
+.nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:22px;font-size:15px}
+.nav a.menu-link:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;box-sizing:border-box;max-width:100%;padding:12px 26px;background:#e8e9eb;color:#111;text-decoration:none;font-weight:700;border:0;border-radius:6px;cursor:pointer;font-size:15px;transition:.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,255,255,.18)}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,.35);color:var(--text)}
+.btn-outline:hover{background:rgba(255,255,255,.08);box-shadow:none;transform:none}
+.cart-btn{position:relative;padding:10px 18px}
+#cart-count{position:absolute;top:-8px;right:-8px;min-width:20px;height:20px;border-radius:10px;background:#cfa96b;color:#111;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;padding:0 5px}
+.hero{padding:90px 0 70px;position:relative;overflow:hidden;background:radial-gradient(520px 300px at 85% 15%,rgba(207,169,107,.12),transparent 70%),radial-gradient(420px 260px at 5% 90%,rgba(255,255,255,.05),transparent 70%)}
+.tagline{color:#cfa96b;text-transform:uppercase;letter-spacing:4px;font-size:13px;margin-bottom:18px}
+h1{font-family:Georgia,serif;font-size:clamp(34px,6vw,58px);line-height:1.12;margin-bottom:18px}
+h1 em{font-style:normal;color:#cfa96b}
+.sub{color:var(--dim);max-width:540px;font-size:17px;margin-bottom:32px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-img{margin-top:56px;border-radius:14px;overflow:hidden;border:1px solid var(--border);max-height:420px}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.stats{display:flex;gap:40px;flex-wrap:wrap;padding:34px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-top:-1px}
+.stat b{font-family:Georgia,serif;font-size:28px;color:#cfa96b;display:block}
+.stat span{color:var(--dim);font-size:14px}
+section{padding:80px 0}
+h2{font-family:Georgia,serif;font-size:clamp(26px,4vw,38px);margin-bottom:10px}
+.sec-sub{color:var(--dim);margin-bottom:40px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.product{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;transition:.25s;display:flex;flex-direction:column}
+.product:hover{transform:translateY(-5px);border-color:rgba(207,169,107,.5)}
+.product img{width:100%;height:210px;object-fit:cover;border-radius:8px;margin-bottom:16px}
+.product h3{margin-bottom:6px;font-size:17px}
+.product p{color:var(--dim);font-size:14px;flex:1}
+.prow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
+.price{color:#cfa96b;font-family:Georgia,serif;font-weight:700;font-size:20px}
+.add{padding:9px 18px;font-size:14px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{border-left:2px solid #cfa96b;padding-left:16px}
+.step b{color:#cfa96b;font-size:15px}
+.step p{color:var(--dim);font-size:14px}
+.adv{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.acard{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:26px}
+.acard .ic{font-size:26px;margin-bottom:10px}
+.acard h3{font-size:17px;margin-bottom:6px}
+.acard p{color:var(--dim);font-size:14px}
+.cta{background:linear-gradient(135deg,rgba(207,169,107,.15),rgba(207,169,107,.04));border:1px solid rgba(207,169,107,.35);border-radius:16px;padding:56px 30px;text-align:center}
+footer{border-top:1px solid var(--border);padding:36px 0;color:var(--dim);font-size:14px}
+.fwrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{color:#cfa96b;text-decoration:none}
+.drawer{position:fixed;top:0;right:0;width:min(420px,94vw);height:100%;background:#141518;border-left:1px solid var(--border);z-index:100;transform:translateX(105%);transition:.3s;display:flex;flex-direction:column;padding:22px}
+.drawer.open{transform:none}
+.drawer h3{font-family:Georgia,serif;font-size:22px;margin-bottom:18px}
+.dclose{position:absolute;top:16px;right:16px;background:none;border:0;color:var(--dim);font-size:24px;cursor:pointer}
+.citem{display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--border);padding:12px 0}
+.citem img{width:56px;height:56px;object-fit:cover;border-radius:6px}
+.citem .ci-name{font-size:14px;font-weight:600}
+.citem .ci-price{color:#cfa96b;font-size:14px;font-weight:700}
+.qty{display:flex;align-items:center;gap:10px;margin-left:auto}
+.qty button{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;font-size:15px}
+.ctotal{margin:18px 0;font-size:18px}
+.ctotal b{color:#cfa96b;font-family:Georgia,serif;font-size:22px}
+.order-form{display:flex;flex-direction:column;gap:10px}
+.order-form input{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--text);font-size:15px}
+.order-form input:focus{outline:1px solid #cfa96b}
+#order-done{display:none;background:rgba(207,169,107,.12);border:1px solid rgba(207,169,107,.4);border-radius:10px;padding:16px;font-size:14px;line-height:1.5}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:.3s;z-index:90}
+.overlay.show{opacity:1;pointer-events:auto}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.vis{opacity:1;transform:none}
+@media(max-width:860px){.grid,.adv{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid,.adv,.steps{grid-template-columns:1fr}.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px;margin-left:20px}section{padding:56px 0}}
+</style>
+</head>
+<body>
+<header><div class="container nav">
+  <div class="brand">Meri<b>dian</b></div>
+  <nav><a class="menu-link" href="#catalog">Каталог</a><a class="menu-link" href="#adv">Почему мы</a><a class="menu-link" href="#delivery">Доставка</a><button class="btn btn-outline cart-btn" id="open-cart">Корзина <span id="cart-count">0</span></button></nav>
+</div></header>
+
+<div class="hero"><div class="container reveal vis">
+  <div class="tagline">Магазин часов · Минск</div>
+  <h1>Часы, которые<br>тише <em>громче</em> слов</h1>
+  <p class="sub">Механика и кварц с гарантией 2 года. Подбираем модель под запястье и стиль, меняем браслет в размер бесплатно.</p>
+  <div class="hero-actions"><a class="btn" href="#catalog">Смотреть каталог</a><a class="btn btn-outline" href="https://t.me/Andrey_AlexandrovichAA">Консультация в Telegram</a></div>
+  <div class="hero-img"><img src="https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=1200&q=70&fit=crop" alt="Часы"></div>
+  <div class="stats">
+    <div class="stat"><b>9 лет</b><span>на рынке Беларуси</span></div>
+    <div class="stat"><b>40+</b><span>моделей в наличии</span></div>
+    <div class="stat"><b>2 года</b><span>гарантии на механику</span></div>
+  </div>
+</div></div>
+
+<section id="catalog"><div class="container">
+  <h2>Каталог</h2>
+  <p class="sec-sub">Цены финальные — без «звёздочек» и доплат</p>
+  <div class="grid" id="catalog-grid"></div>
+</div></section>
+
+<section id="adv" style="background:#131417;border-top:1px solid var(--border);border-bottom:1px solid var(--border)"><div class="container">
+  <h2>Почему возвращаются</h2>
+  <p class="sec-sub">Три причины, из-за которых нас советуют друзьям</p>
+  <div class="adv">
+    <div class="acard"><div class="ic">🛡️</div><h3>Гарантия 2 года</h3><p>Механика и кварц. Сервис и замена элементов питания — без очередей.</p></div>
+    <div class="acard"><div class="ic">📏</div><h3>Подгонка бесплатно</h3><p>Уберём звенья браслета под руку при покупке — уходит 5 минут.</p></div>
+    <div class="acard"><div class="ic">🔁</div><h3>Обмен 14 дней</h3><p>Не подошло по руке или стилю — поменяем на другую модель.</p></div>
+  </div>
+</div></section>
+
+<section id="delivery"><div class="container">
+  <h2>Как проходит заказ</h2>
+  <p class="sec-sub">От корзины до коробки — четыре шага</p>
+  <div class="steps">
+    <div class="step"><b>01 · Корзина</b><p>Добавь модели и оставь имя с контактом.</p></div>
+    <div class="step"><b>02 · Подтверждение</b><p>Сверим наличие и пришлём точную сумму.</p></div>
+    <div class="step"><b>03 · Оплата</b><p>Карта, ЕРИП или криптовалюта — как удобно.</p></div>
+    <div class="step"><b>04 · Получение</b><p>Минск — курьером за день, РБ — 1–2 дня.</p></div>
+  </div>
+</div></section>
+
+<section><div class="container">
+  <div class="cta reveal">
+    <h2>Подберём модель за 5 минут</h2>
+    <p class="sec-sub" style="max-width:460px;margin:8px auto 28px">Напиши бюджет и повод — предложим три варианта с фото живых часов.</p>
+    <a class="btn" href="https://t.me/Andrey_AlexandrovichAA">Написать в Telegram</a>
+  </div>
+</div></section>
+
+<footer><div class="container fwrap"><span>© Meridian, 2025</span><span><a href="/">Сделано в AA Web Studio</a></span></div></footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer">
+  <button class="dclose" id="close-cart" aria-label="Закрыть">×</button>
+  <h3>Корзина</h3>
+  <div id="cart-items" style="flex:1;overflow-y:auto"></div>
+  <div class="ctotal">Итого: <b id="cart-total">0 BYN</b></div>
+  <form class="order-form" id="order-form">
+    <input id="o-name" placeholder="Имя" required>
+    <input id="o-contact" placeholder="Телефон или Telegram" required>
+    <button class="btn" type="submit">Оформить заказ</button>
+  </form>
+  <div id="order-done"></div>
+</aside>
+
+<script>
+var PRODUCTS=[
+ {id:"m1",name:"Meridian Classic 39",desc:"Сапфировое стекло, сталь, автоматика со запасом хода 40 часов.",price:890,img:"https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&q=70&fit=crop"},
+ {id:"m2",name:"Meridian Automatic Gold",desc:"Тёплое золотистое покрытие PVD, кожа, классический циферблат.",price:1240,img:"https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=600&q=70&fit=crop"},
+ {id:"m3",name:"Meridian Steel Chrono",desc:"Хронограф с тремя счётчиками, защёлка-бабочка, 10 АТМ.",price:1120,img:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&q=70&fit=crop"},
+ {id:"m4",name:"Meridian Minimal 36",desc:"Ультратонкий корпус 7 мм, циферблат без меток, минеральное стекло.",price:740,img:"https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=600&q=70&fit=crop"},
+ {id:"m5",name:"Meridian Heritage",desc:"Ретро-дизайн 60-х, кожаный ремешок ручной выделки.",price:980,img:"https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=600&q=70&fit=crop"},
+ {id:"m6",name:"Meridian Nightfall",desc:"Матовый чёрный корпус, люминиция стрелок, каучуковый ремешок.",price:1290,img:"https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=600&q=70&fit=crop"}
+];
+var cart={};try{cart=JSON.parse(localStorage.getItem("meridian_cart")||"{}")}catch(e){cart={}}
+function saveCart(){localStorage.setItem("meridian_cart",JSON.stringify(cart))}
+function money(n){return n.toLocaleString("ru-RU")+" BYN"}
+function renderCatalog(){var g=document.getElementById("catalog-grid");g.innerHTML=PRODUCTS.map(function(p){return '<div class="product reveal"><img src="'+p.img+'" alt="'+p.name+'"><h3>'+p.name+'</h3><p>'+p.desc+'</p><div class="prow"><span class="price">'+money(p.price)+'</span><button class="btn add" data-add="'+p.id+'">В корзину</button></div></div>'}).join("");observeAll()}
+function prod(id){for(var i=0;i<PRODUCTS.length;i++)if(PRODUCTS[i].id===id)return PRODUCTS[i];return null}
+function renderCart(){var box=document.getElementById("cart-items"),count=0,total=0,html="";
+ for(var id in cart){var p=prod(id);if(!p)continue;var q=cart[id];count+=q;total+=p.price*q;
+  html+='<div class="citem"><img src="'+p.img+'" alt=""><div><div class="ci-name">'+p.name+'</div><div class="ci-price">'+money(p.price*q)+'</div></div><div class="qty"><button data-dec="'+id+'">−</button><span>'+q+'</span><button data-inc="'+id+'">+</button></div></div>'}
+ box.innerHTML=html||'<p style="color:#9aa0a6;font-size:14px;padding:10px 0">Корзина пуста — добавь часы из каталога.</p>';
+ document.getElementById("cart-count").textContent=count;
+ document.getElementById("cart-total").textContent=money(total)}
+function openCart(){document.getElementById("drawer").classList.add("open");document.getElementById("overlay").classList.add("show")}
+function closeCart(){document.getElementById("drawer").classList.remove("open");document.getElementById("overlay").classList.remove("show")}
+document.addEventListener("click",function(e){
+ var t=e.target.closest("[data-add],[data-inc],[data-dec]");if(!t)return;
+ if(t.hasAttribute("data-add")){var id=t.getAttribute("data-add");cart[id]=(cart[id]||0)+1}
+ else if(t.hasAttribute("data-inc")){var id2=t.getAttribute("data-inc");cart[id2]=(cart[id2]||0)+1}
+ else if(t.hasAttribute("data-dec")){var id3=t.getAttribute("data-dec");cart[id3]--;if(cart[id3]<=0)delete cart[id3]}
+ saveCart();renderCart()});
+document.getElementById("open-cart").addEventListener("click",openCart);
+document.getElementById("close-cart").addEventListener("click",closeCart);
+document.getElementById("overlay").addEventListener("click",closeCart);
+document.getElementById("order-form").addEventListener("submit",function(e){
+ e.preventDefault();var name=document.getElementById("o-name").value.trim(),contact=document.getElementById("o-contact").value.trim();
+ var lines=[],total=0;for(var id in cart){var p=prod(id);lines.push(p.name+" × "+cart[id]+" = "+money(p.price*cart[id]));total+=p.price*cart[id]}
+ if(!lines.length)return;
+ var text="Заказ Meridian%0A"+encodeURIComponent(name+", "+contact)+"%0A"+encodeURIComponent(lines.join("\n"))+"%0AИтого: "+encodeURIComponent(money(total));
+ document.getElementById("order-done").style.display="block";
+ document.getElementById("order-done").innerHTML='Заявка собрана! Отправь её оператору — <a href="https://t.me/Andrey_AlexandrovichAA?text='+text+'" target="_blank" style="color:#cfa96b">написать в Telegram</a>';
+ cart={};saveCart();renderCart()});
+var io=("IntersectionObserver" in window)?new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("vis");io.unobserve(en.target)}})},{threshold:.12}):null;
+function observeAll(){document.querySelectorAll(".reveal:not(.vis)").forEach(function(el){io?io.observe(el):el.classList.add("vis")})}
+renderCatalog();renderCart();observeAll();
+</script>
+</body>
+</html>

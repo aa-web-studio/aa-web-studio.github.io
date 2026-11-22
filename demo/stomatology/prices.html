@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Цены — DentaLux</title>
+<style>
+:root{--bg:#f7f9f8;--text:#1b201e;--dim:#6b7570;--green:#1e7a5a;--border:#e3e8e5}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{width:min(980px,92%);margin:0 auto}
+header{border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}.nav .btn{margin-left:22px}
+.brand{font-weight:800;font-size:20px}
+.brand b{color:var(--green)}
+.nav a.back{color:var(--dim);text-decoration:none;font-size:15px}
+.nav a.back:hover{color:var(--text)}
+section{padding:64px 0}
+h1{font-family:Georgia,serif;font-size:clamp(28px,4.5vw,42px);margin-bottom:10px}
+h1 em{font-style:normal;color:var(--green)}
+.sec-sub{color:var(--dim);margin-bottom:36px}
+h2{font-family:Georgia,serif;font-size:24px;margin:36px 0 14px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+th,td{padding:16px 20px;text-align:left;border-bottom:1px solid var(--border);font-size:15px}
+th{background:#eaf2ee;font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--dim)}
+td:last-child{font-weight:700;color:var(--green);white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#f4f9f6}
+.note{color:var(--dim);font-size:14px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;box-sizing:border-box;max-width:100%;padding:12px 26px;background:var(--green);color:#fff;text-decoration:none;font-weight:700;border-radius:8px;margin-top:24px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(30,122,90,.3)}
+.cta{background:linear-gradient(135deg,rgba(30,122,90,.12),rgba(30,122,90,.03));border:1px solid rgba(30,122,90,.35);border-radius:16px;padding:44px 30px;text-align:center;margin-top:48px}
+footer{border-top:1px solid var(--border);padding:32px 0;color:var(--dim);font-size:14px}
+.fwrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{color:var(--green);text-decoration:none}
+</style>
+</head>
+<body>
+<header><div class="container nav">
+  <div class="brand">Denta<b>Lux</b></div>
+  <nav><a class="back" href="index.html">← На главную</a><a class="btn" href="https://t.me/Andrey_AlexandrovichAA">Записаться</a></nav>
+</div></header>
+
+<section><div class="container">
+  <h1>Прайс-<em>лист</em></h1>
+  <p class="sec-sub">Точная стоимость зависит от снимка и плана лечения — финальная смета фиксируется на первой консультации и не меняется.</p>
+
+  <h2>Консультации и диагностика</h2>
+  <table>
+    <tr><th>Услуга</th><th>Стоимость</th></tr>
+    <tr><td>Первичный осмотр и план лечения</td><td>30 BYN</td></tr>
+    <tr><td>Снимок прицельный / панорамный</td><td>12 / 45 BYN</td></tr>
+    <tr><td>Дентальный скан (вместо слепков)</td><td>60 BYN</td></tr>
+  </table>
+
+  <h2>Лечение</h2>
+  <table>
+    <tr><th>Услуга</th><th>Стоимость</th></tr>
+    <tr><td>Лечение кариеса (под ключ)</td><td>от 120 BYN</td></tr>
+    <tr><td>Лечение каналов под микроскопом (1 канал)</td><td>от 240 BYN</td></tr>
+    <tr><td>Реставрация переднего зуба</td><td>от 180 BYN</td></tr>
+    <tr><td>Лечение во сне (седация)</td><td>от 300 BYN</td></tr>
+  </table>
+
+  <h2>Имплантация и протезирование</h2>
+  <table>
+    <tr><th>Услуга</th><th>Стоимость</th></tr>
+    <tr><td>Имплант «под ключ» с коронкой</td><td>от 950 BYN</td></tr>
+    <tr><td>Коронка на диоксиде циркония</td><td>от 480 BYN</td></tr>
+    <tr><td>Съёмный протез</td><td>от 620 BYN</td></tr>
+  </table>
+
+  <h2>Гигиена</h2>
+  <table>
+    <tr><th>Услуга</th><th>Стоимость</th></tr>
+    <tr><td>Чистка ультразвук + Air Flow + фтор</td><td>от 70 BYN</td></tr>
+    <tr><td>Отбеливание (1 визит)</td><td>от 350 BYN</td></tr>
+  </table>
+
+  <p class="note">Рассрочка через ЕРИП и оплату частями — обсудим на консультации.</p>
+
+  <div class="cta">
+    <h2 style="margin:0 0 6px">Записаться на приём</h2>
+    <p class="note" style="max-width:460px;margin:0 auto 4px">Напиши в Telegram — ответим в течение 15 минут и подберём удобное окно.</p>
+    <a class="btn" href="https://t.me/Andrey_AlexandrovichAA">Написать в Telegram</a>
+  </div>
+</div></section>
+
+<footer><div class="container fwrap"><span>© DentaLux, 2025</span><span><a href="/">Сделано в AA Web Studio</a></span></div></footer>
+</body>
+</html>
