@@ -15,7 +15,7 @@ header{position:sticky;top:0;background:rgba(250,248,245,.92);backdrop-filter:bl
 .brand span{color:var(--accent)}
 .nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:22px;font-size:15px}
 .nav a.menu-link:hover{color:var(--text)}
-.btn{display:inline-block;padding:12px 26px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;border-radius:8px;transition:.25s}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;box-sizing:border-box;max-width:100%;padding:12px 26px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;border-radius:8px;transition:.25s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(31,111,92,.3)}
 .btn-ghost{background:transparent;border:1px solid var(--accent);color:var(--accent)}
 .btn-ghost:hover{background:var(--accent);color:#fff}
@@ -50,7 +50,7 @@ h2{font-size:clamp(26px,4vw,38px);margin-bottom:10px}
 footer{border-top:1px solid var(--border);padding:32px 0;color:var(--dim);font-size:14px}
 footer a{color:var(--accent);text-decoration:none}
 @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}.wide{grid-template-columns:1fr}}
-@media(max-width:560px){.grid{grid-template-columns:1fr}.nav a.menu-link{display:none}section{padding:56px 0}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px}section{padding:56px 0}}
 </style>
 </head>
 <body>
@@ -96,7 +96,7 @@ footer a{color:var(--accent);text-decoration:none}
   <div class="cta">
     <h2>Пришлём смету за 1 день</h2>
     <p class="sec-sub" style="max-width:460px;margin:8px auto 28px">Отправьте планировку или просто фото квартиры — посчитаем стоимость по трём форматам ремонта.</p>
-    <a class="btn" href="https://t.me/">Написать в WhatsApp</a>
+    <a class="btn" href="https://t.me/">Написать в Telegram</a>
   </div>
 </div></section>
 

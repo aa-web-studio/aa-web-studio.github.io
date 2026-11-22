@@ -15,7 +15,7 @@ header{position:sticky;top:0;background:rgba(12,15,20,.9);backdrop-filter:blur(1
 .brand b{color:var(--lime)}
 .nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:22px;font-size:15px}
 .nav a.menu-link:hover{color:var(--text)}
-.btn{display:inline-block;padding:13px 28px;background:var(--lime);color:#10230a;text-decoration:none;font-weight:800;border-radius:10px;transition:.25s}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;box-sizing:border-box;max-width:100%;padding:13px 28px;background:var(--lime);color:#10230a;text-decoration:none;font-weight:800;border-radius:10px;transition:.25s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,245,96,.3)}
 .btn-ghost{background:transparent;border:1px solid var(--lime);color:var(--lime)}
 .btn-ghost:hover{background:var(--lime);color:#10230a}
@@ -53,7 +53,7 @@ h2 em{font-style:normal;color:var(--lime)}
 footer{border-top:1px solid var(--border);padding:32px 0;color:var(--dim);font-size:14px}
 footer a{color:var(--lime);text-decoration:none}
 @media(max-width:860px){.grid-hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.grid,.steps{grid-template-columns:1fr}.nav a.menu-link{display:none}section{padding:56px 0}}
+@media(max-width:560px){.grid,.steps{grid-template-columns:1fr}.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px}section{padding:56px 0}}
 </style>
 </head>
 <body>

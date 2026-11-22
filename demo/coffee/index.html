@@ -15,7 +15,7 @@ header{position:sticky;top:0;background:rgba(18,16,13,.92);backdrop-filter:blur(
 .brand b{color:var(--amber)}
 .nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:22px;font-size:15px}
 .nav a.menu-link:hover{color:var(--text)}
-.btn{display:inline-block;padding:12px 26px;background:var(--amber);color:#141210;text-decoration:none;font-weight:700;border-radius:999px;transition:.25s}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;box-sizing:border-box;max-width:100%;padding:12px 26px;background:var(--amber);color:#141210;text-decoration:none;font-weight:700;border-radius:999px;transition:.25s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(232,165,75,.35)}
 .btn-ghost{background:transparent;border:1px solid var(--amber);color:var(--amber)}
 .btn-ghost:hover{background:var(--amber);color:#141210}
@@ -45,7 +45,7 @@ section.info{background:#181510;border-top:1px solid var(--border);border-bottom
 footer{padding:36px 0;color:var(--dim);font-size:14px}
 footer a{color:var(--amber);text-decoration:none}
 @media(max-width:860px){.grid,.cols{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.grid,.cols{grid-template-columns:1fr}.nav a.menu-link{display:none}}
+@media(max-width:560px){.grid,.cols{grid-template-columns:1fr}.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px}}
 </style>
 </head>
 <body>
