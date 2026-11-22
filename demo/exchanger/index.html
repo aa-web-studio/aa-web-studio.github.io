@@ -3,72 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CoinSwap — быстрый обмен криптовалют</title>
-<meta name="description" content="CoinSwap — обмен BTC, ETH, TON, TRX и USDT по выгодному курсу. Фиксация курса на 15 минут, заявка за 2 минуты.">
+<title>CoinSwap — обмен валют и криптовалют по живому курсу</title>
+<meta name="description" content="CoinSwap — обмен USD, EUR, RUB, BYN и криптовалют по реальному рыночному курсу. Курсы обновляются автоматически, заявка за 2 минуты.">
 <style>
-:root{--bg:#0b0f17;--card:#121826;--border:rgba(255,255,255,.09);--text:#eef2f7;--dim:#93a0b4;--acc:#3ea8ff;--acc2:#29d3a3}
+:root{--bg:#f5f7fa;--card:#ffffff;--border:#e4e9f0;--text:#101828;--dim:#667085;--acc:#1670d8;--acc2:#0ea27e;--shadow:0 10px 30px rgba(16,24,40,.07)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
 .container{width:min(1080px,92%);margin:0 auto}
-header{position:sticky;top:0;background:rgba(11,15,23,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:10}
+header{position:sticky;top:0;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:10}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}.nav .btn{margin-left:22px}
 .brand{font-weight:800;font-size:22px}
 .brand b{color:var(--acc)}
 .nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:22px;font-size:15px}
 .nav a.menu-link:hover{color:var(--text)}
-.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;box-sizing:border-box;max-width:100%;padding:12px 26px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#04121c;text-decoration:none;font-weight:800;border-radius:999px;border:none;cursor:pointer;font-size:15px;transition:.25s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(62,168,255,.35)}
-.btn-ghost{background:transparent;border:1px solid var(--acc);color:var(--acc)}
-.btn-ghost:hover{background:var(--acc);color:#04121c}
-.hero{padding:80px 0 56px;text-align:center;background:radial-gradient(640px 320px at 50% 0%,rgba(62,168,255,.14),transparent 70%)}
-.tagline{color:var(--acc);text-transform:uppercase;letter-spacing:4px;font-size:13px;margin-bottom:16px;font-weight:700}
-h1{font-size:clamp(30px,5.2vw,54px);line-height:1.12;margin-bottom:14px;letter-spacing:-.5px}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;box-sizing:border-box;max-width:100%;padding:12px 26px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;text-decoration:none;font-weight:800;border-radius:999px;border:none;cursor:pointer;font-size:15px;transition:.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(22,112,216,.3)}
+.btn-ghost{background:#fff;border:1px solid var(--acc);color:var(--acc)}
+.btn-ghost:hover{background:var(--acc);color:#fff}
+.hero{padding:72px 0 52px;text-align:center;background:radial-gradient(700px 340px at 50% 0%,rgba(22,112,216,.09),transparent 70%)}
+.tagline{color:var(--acc2);text-transform:uppercase;letter-spacing:4px;font-size:13px;margin-bottom:16px;font-weight:700}
+h1{font-size:clamp(30px,5.2vw,52px);line-height:1.12;margin-bottom:14px;letter-spacing:-.5px}
 h1 b{background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{color:var(--dim);max-width:560px;margin:0 auto 34px;font-size:17px}
-.calc{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px;max-width:480px;margin:0 auto;text-align:left;box-shadow:0 24px 60px rgba(0,0,0,.45)}
-.calc-row{background:#0d1320;border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:12px}
-.calc-row label{display:block;font-size:12px;color:var(--dim);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.sub{color:var(--dim);max-width:580px;margin:0 auto 12px;font-size:17px}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--dim);background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 14px;margin-bottom:30px}
+.live .dot{width:8px;height:8px;border-radius:50%;background:var(--acc2);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.calc{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;max-width:480px;margin:0 auto;text-align:left;box-shadow:var(--shadow)}
+.calc-row{background:#f8fafc;border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.calc-row label{display:block;font-size:12px;color:var(--dim);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;font-weight:600}
 .amount-line{display:flex;align-items:center;gap:10px}
 .amount-line input,.amount-line .out{flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--text);font-size:22px;font-weight:700;width:100%}
-.amount-line .out{color:var(--acc2)}
-.sel{background:#1a2233;border:1px solid var(--border);color:var(--text);font-weight:700;border-radius:10px;padding:9px 12px;font-size:15px;cursor:pointer;flex-shrink:0}
+.amount-line .out{color:var(--acc2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sel{background:#fff;border:1px solid var(--border);color:var(--text);font-weight:700;border-radius:10px;padding:9px 10px;font-size:14px;cursor:pointer;flex-shrink:0;max-width:150px}
 .swap-line{display:flex;justify-content:center;margin:-4px 0}
-.swap{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:#1a2233;color:var(--acc);font-size:18px;cursor:pointer;transition:.2s;flex-shrink:0}
-.swap:hover{background:var(--acc);color:#04121c;transform:rotate(180deg)}
+.swap{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:#fff;color:var(--acc);font-size:18px;cursor:pointer;transition:.2s;flex-shrink:0;box-shadow:var(--shadow)}
+.swap:hover{background:var(--acc);color:#fff;transform:rotate(180deg)}
 .rate-line{color:var(--dim);font-size:13px;text-align:center;margin:4px 0 16px}
 .rate-line b{color:var(--text)}
 .calc .btn{width:100%}
 .stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:34px}
-.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 22px;min-width:150px}
-.stat b{display:block;font-size:20px;color:var(--acc2)}
+.stat{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 22px;min-width:150px}
+.stat b{display:block;font-size:20px;color:var(--acc)}
 .stat span{color:var(--dim);font-size:13px}
 section{padding:64px 0}
 .sec-title{text-align:center;font-size:clamp(24px,3.4vw,34px);margin-bottom:10px}
 .sec-sub{text-align:center;color:var(--dim);margin-bottom:36px}
-.step{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px}
-.step .num{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#04121c;background:linear-gradient(135deg,var(--acc),var(--acc2));margin-bottom:14px}
+.step{background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px;box-shadow:var(--shadow)}
+.step .num{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--acc),var(--acc2));margin-bottom:14px}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .step b{display:block;margin-bottom:6px;font-size:17px}
 .step p{color:var(--dim);font-size:14px}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-th,td{padding:14px 18px;text-align:left;font-size:15px}
-th{color:var(--dim);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border)}
-tr+tr td{border-top:1px solid rgba(255,255,255,.05)}
-.coin{display:flex;align-items:center;gap:10px;font-weight:700}
-.coin i{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-weight:800;font-size:12px;color:#04121c}
 .rw{display:flex;justify-content:space-between;gap:26px;align-items:flex-start}
+table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+th,td{padding:13px 18px;text-align:left;font-size:15px}
+th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1px;background:#f8fafc;border-bottom:1px solid var(--border)}
+tr+tr td{border-top:1px solid #eef2f6}
+.coin{display:flex;align-items:center;gap:10px;font-weight:700}
+.coin i{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-weight:800;font-size:11px;color:#fff;flex-shrink:0}
+.up{color:var(--acc2);font-weight:700}
 .rw table{width:58%}
-.reserves{width:38%;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px}
+.reserves{width:38%;background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px;box-shadow:var(--shadow)}
 .reserves h3{margin-bottom:14px;font-size:18px}
-.res{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:15px}
+.res{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #eef2f6;font-size:15px}
 .res:last-child{border:none}
 .res span{color:var(--dim)}
 .res b{color:var(--acc2)}
-details{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:12px;cursor:pointer}
+details{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:12px;cursor:pointer;box-shadow:var(--shadow)}
 details b{font-size:16px}
 details p{color:var(--dim);margin-top:8px;font-size:14px}
-.cta{background:radial-gradient(600px 300px at 50% 100%,rgba(41,211,163,.12),transparent 70%);text-align:center}
-footer{padding:36px 0;color:var(--dim);font-size:14px;border-top:1px solid var(--border)}
+.cta{background:radial-gradient(600px 300px at 50% 100%,rgba(14,162,126,.1),transparent 70%);text-align:center}
+.addm{display:inline-flex;align-items:baseline;gap:10px;color:var(--dim);font-size:14px;margin-top:10px}
+footer{padding:36px 0;color:var(--dim);font-size:14px;border-top:1px solid var(--border);background:#fff}
 footer a{color:var(--acc);text-decoration:none}
 @media(max-width:860px){.steps{grid-template-columns:1fr}.rw{flex-direction:column}.rw table{width:100%}.reserves{width:100%}}
 @media(max-width:560px){.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px;margin-left:20px}.calc{padding:20px}.amount-line input,.amount-line .out{font-size:18px}}
@@ -81,9 +86,10 @@ footer a{color:var(--acc);text-decoration:none}
 </div></header>
 
 <div class="hero"><div class="container">
-  <div class="tagline">Фиксация курса на 15 минут</div>
-  <h1>Обмен криптовалют<br><b>за пару минут</b></h1>
-  <p class="sub">BTC, ETH, TON, TRX и USDT по честному курсу. Заявка обрабатывается оператором и подтверждается в Telegram.</p>
+  <div class="tagline">Реальный курс, обновляется автоматически</div>
+  <h1>Обмен валют и крипты<br><b>по живому курсу</b></h1>
+  <p class="sub">Доллар, евро, рубль, BYN, злотый — и криптовалюты. Курсы подтягиваются с рынка автоматически, без «примерно» и «вчера было».</p>
+  <div class="live"><span class="dot"></span><span id="liveLabel">Загружаем курс…</span></div>
 
   <div class="calc" id="calc">
     <div class="calc-row">
@@ -101,7 +107,7 @@ footer a{color:var(--acc);text-decoration:none}
         <select class="sel" id="toCoin"></select>
       </div>
     </div>
-    <div class="rate-line" id="rateLine"></div>
+    <div class="rate-line" id="rateLine">Загрузка курса…</div>
     <button class="btn" id="goBtn">Обменять</button>
   </div>
 
@@ -113,97 +119,132 @@ footer a{color:var(--acc);text-decoration:none}
 </div></div>
 
 <section id="rates"><div class="container">
-  <h2 class="sec-title">Актуальные курсы</h2>
-  <p class="sec-sub">Курс обновляется вручную оператором — вы всегда видите точное значение перед обменом.</p>
+  <h2 class="sec-title">Курсы прямо сейчас</h2>
+  <p class="sec-sub">Данные приходят с открытых рынков: курсы фиата (ECB/ЦБ через open.er-api.com) и крипты (CoinGecko). Обновление — каждые 10 минут, страница сама подтягивает свежие значения.</p>
   <div class="rw">
     <table>
       <thead><tr><th>Отдаёте</th><th>Получаете</th><th>Курс</th></tr></thead>
-      <tbody id="rateTable"></tbody>
+      <tbody id="rateTable"><tr><td colspan="3" style="color:var(--dim)">Загрузка…</td></tr></tbody>
     </table>
     <div class="reserves">
       <h3>Резервы</h3>
+      <div class="res"><span>USD</span><b>12 400</b></div>
+      <div class="res"><span>EUR</span><b>8 900</b></div>
+      <div class="res"><span>BYN</span><b>31 500</b></div>
+      <div class="res"><span>USDT</span><b>21 300</b></div>
       <div class="res"><span>BTC</span><b>0.421</b></div>
       <div class="res"><span>ETH</span><b>6.80</b></div>
-      <div class="res"><span>TON</span><b>12 400</b></div>
-      <div class="res"><span>TRX</span><b>48 000</b></div>
-      <div class="res"><span>USDT</span><b>21 300</b></div>
     </div>
   </div>
 </div></section>
 
-<section id="how" style="background:#0e1420;border-top:1px solid var(--border);border-bottom:1px solid var(--border)"><div class="container">
+<section id="how" style="background:#eef2f7;border-top:1px solid var(--border);border-bottom:1px solid var(--border)"><div class="container">
   <h2 class="sec-title">Как проходит обмен</h2>
-  <p class="sec-sub">Три шага — и крипта у вас на кошельке</p>
+  <p class="sec-sub">Три шага — и валюта у вас</p>
   <div class="steps">
     <div class="step"><div class="num">1</div><b>Рассчитайте обмен</b><p>Выберите пару и сумму в калькуляторе. Курс и итоговая сумма фиксируются на 15 минут.</p></div>
     <div class="step"><div class="num">2</div><b>Отправьте заявку</b><p>Нажмите «Обменять» — откроется чат с оператором с уже готовой заявкой. Подтвердите реквизиты.</p></div>
-    <div class="step"><div class="num">3</div><b>Получите крипту</b><p>После подтверждения перевод уходит на ваш кошелёк. Статус заявки можно отследить в чате.</p></div>
+    <div class="step"><div class="num">3</div><b>Получите деньги</b><p>После подтверждения перевод уходит на ваши реквизиты. Статус заявки виден в чате.</p></div>
   </div>
 </div></section>
 
 <section id="faq"><div class="container">
   <h2 class="sec-title">Частые вопросы</h2>
   <p class="sec-sub">Коротко о главном</p>
-  <details open><b>Курс фиксируется?</b><p>Да. По заявке курс фиксируется на 15 минут — сколько показал калькулятор, столько вы и получите.</p></details>
-  <details><b>Как быстро приходит перевод?</b><p>Стандартно — до 15 минут после подтверждения заявки оператором. Крупные суммы могут занять чуть дольше.</p></details>
-  <details><b>Какие есть лимиты?</b><p>Минимальная сумма обмена — эквивалент 10 USDT. Максимум обсудите с оператором в чате.</p></details>
+  <details open><b>Курс реальный?</b><p>Да, калькулятор берёт рыночный курс (данные банков и криптобирж) и обновляет его каждые 10 минут. По заявке курс фиксируется на 15 минут.</p></details>
+  <details><b>Как быстро приходит перевод?</b><p>Стандартно — до 15 минут после подтверждения заявки оператором.</p></details>
+  <details><b>Какие есть лимиты?</b><p>Минимальная сумма — эквивалент 10 USDT. Максимум обсудите с оператором в чате.</p></details>
   <details><b>Как связаться с поддержкой?</b><p>Круглосуточно, в Telegram. Отвечаем быстро — это наш главный приоритет.</p></details>
 </div></section>
 
 <section class="cta"><div class="container">
   <h2 class="sec-title">Готовы обменять?</h2>
-  <p class="sec-sub">Рассчитайте сумму и отправьте заявку — оператор ответит в течение пары минут.</p>
+  <p class="sec-sub">Рассчитайте сумму по живому курсу и отправьте заявку — оператор ответит в течение пары минут.</p>
   <a class="btn" href="#calc">Рассчитать обмен</a>
+  <div class="addm">Курсы фиата: open.er-api.com · Крипта: CoinGecko</div>
 </div></section>
 
 <footer><div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px"><span>© CoinSwap, 2025</span><span><a href="/">Сделано в AA Web Studio</a></span></div></footer>
 
 <script>
-var PRICE={BTC:97400,ETH:3650,TON:5.2,TRX:0.24,USDT:1};
-var NAME={BTC:"Bitcoin",ETH:"Ethereum",TON:"Toncoin",TRX:"Tron",USDT:"USDT"};
-var ICON={BTC:"₿",ETH:"Ξ",TON:"💎",TRX:"⚡",USDT:"₮"};
-var BG={BTC:"#f7931a",ETH:"#8a92b2",TON:"#28a0e9",TRX:"#e8483f",USDT:"#26a17b"};
+var FIAT=["USD","EUR","RUB","BYN","PLN","CNY","UAH","KZT"];
+var CRYPTO=["USDT","BTC","ETH","TON","TRX"];
+var ALL=FIAT.concat(CRYPTO);
+var NAME={USD:"Доллар США",EUR:"Евро",RUB:"Рубль РФ",BYN:"Бел. рубль",PLN:"Злотый",CNY:"Юань",UAH:"Гривна",KZT:"Тенге",USDT:"Tether",BTC:"Bitcoin",ETH:"Ethereum",TON:"Toncoin",TRX:"Tron"};
+var ICON={USD:"$",EUR:"€",RUB:"₽",BYN:"Br",PLN:"zł",CNY:"¥",UAH:"₴",KZT:"₸",USDT:"₮",BTC:"₿",ETH:"Ξ",TON:"💎",TRX:"⚡"};
+var BG={USD:"#2b8a3e",EUR:"#1c4f9c",RUB:"#c23b3b",BYN:"#0aa06e",PLN:"#b0476b",CNY:"#c2410c",UAH:"#2f6fd8",KZT:"#36b3a0",USDT:"#26a17b",BTC:"#f7931a",ETH:"#627eea",TON:"#28a0e9",TRX:"#e8483f"};
+var FALLBACK={USD:1,EUR:0.91,RUB:82,BYN:2.99,PLN:4.06,CNY:6.69,UAH:45,KZT:450,USDT:1,BTC:60975,ETH:1720,TON:0.98,TRX:0.31};
+var rates=null,fetchedAt=null;
 var fromSel=document.getElementById('fromCoin'),toSel=document.getElementById('toCoin');
 var fromAmt=document.getElementById('fromAmt'),toAmt=document.getElementById('toAmt');
-var rateLine=document.getElementById('rateLine');
-function fill(sel,def){
-  Object.keys(PRICE).forEach(function(c){
-    var o=document.createElement('option');o.value=c;o.textContent=c+" · "+NAME[c];sel.appendChild(o);
-  });
-  sel.value=def;
-  sel.addEventListener('change',calc);
+var rateLine=document.getElementById('rateLine'),liveLabel=document.getElementById('liveLabel');
+
+function fmt(v,cur){
+  if(!(v>0))return"—";
+  if(cur==="BTC"||cur==="ETH")return v<1?v.toFixed(6):v.toFixed(4);
+  if(v>=1000)return v.toLocaleString("ru-RU",{maximumFractionDigits:0});
+  if(v>=10)return v.toFixed(2);
+  if(v>=1)return v.toFixed(2);
+  return v.toFixed(4);
 }
-function num(){
-  var v=parseFloat(String(fromAmt.value).replace(',','.').replace(/\s/g,''));
-  return isNaN(v)?0:v;
+function loadRates(){
+  var done=0,need=2,f=Object.assign({},FALLBACK),broke=0;
+  function fin(){done++;if(done<need)return;rates=f;rates._stale=broke>=need;fetchedAt=new Date();render();}
+  var r1=new XMLHttpRequest();
+  r1.timeout=15000;
+  r1.onload=function(){try{var d=JSON.parse(r1.responseText);if(d&&d.rates)FIAT.forEach(function(c){if(d.rates[c])f[c]=d.rates[c];});}catch(e){broke++;}fin();};
+  r1.onerror=function(){broke++;fin();};
+  r1.open("GET","https://open.er-api.com/v6/latest/USD",true);r1.send();
+  var r2=new XMLHttpRequest();
+  r2.timeout=15000;
+  r2.onload=function(){try{var d=JSON.parse(r2.responseText);f.USDT=d.tether.usd;f.BTC=d.bitcoin.usd;f.ETH=d.ethereum.usd;f.TON=d["the-open-network"].usd;f.TRX=d.tron.usd;}catch(e){broke++;}fin();};
+  r2.onerror=function(){broke++;fin();};
+  r2.open("GET","https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether,the-open-network,tron&vs_currencies=usd",true);r2.send();
+  setTimeout(function(){if(!fetchedAt)fin.call(null);},16000);
 }
+function rateOf(f,t){return rates[f]/rates[t];}
+function num(){var v=parseFloat(String(fromAmt.value).replace(",",".").replace(/\s/g,""));return isNaN(v)?0:v;}
+function dec(t){return(t==="BTC"||t==="ETH")?6:2;}
 function calc(){
-  var f=fromSel.value,t=toSel.value,rate=PRICE[f]/PRICE[t],a=num(),r=a*rate;
-  var dec=(t==='BTC'||t==='ETH')?6:2;
-  toAmt.textContent=r>0?r.toFixed(dec)+" "+t:"—";
-  rateLine.innerHTML="1 "+f+" ≈ <b>"+rate.toFixed((t==='BTC'||t==='ETH')?7:3)+"</b> "+t;
+  if(!rates)return;
+  var f=fromSel.value,t=toSel.value,r=rateOf(f,t),res=num()*r;
+  toAmt.textContent=num()>0?fmt(res,t)+" "+t:"—";
+  rateLine.innerHTML="1 "+f+" ("+NAME[f]+") ≈ <b>"+fmt(rateOf(f,t),t)+"</b> "+t+" ("+NAME[t]+")";
 }
-fromAmt.addEventListener('input',calc);
-document.getElementById('swapBtn').addEventListener('click',function(){
+function fill(sel,def){
+  sel.innerHTML="";
+  var g1=document.createElement("optgroup");g1.label="Валюты";
+  FIAT.forEach(function(c){var o=document.createElement("option");o.value=c;o.textContent=c+" — "+NAME[c];g1.appendChild(o);});
+  var g2=document.createElement("optgroup");g2.label="Крипта";
+  CRYPTO.forEach(function(c){var o=document.createElement("option");o.value=c;o.textContent=c+" — "+NAME[c];g2.appendChild(o);});
+  sel.appendChild(g1);sel.appendChild(g2);
+  sel.value=def;sel.addEventListener("change",calc);
+}
+function render(){
+  liveLabel.textContent=rates._stale?"Курс: резервные данные (рынок недоступен)":"Курс живой · обновлён "+fetchedAt.toLocaleTimeString("ru-RU",{hour:"2-digit",minute:"2-digit"});
+  var pairs=[["USD","BYN"],["EUR","BYN"],["USD","RUB"],["EUR","USD"],["USDT","USD"],["USDT","BYN"],["BTC","USD"],["ETH","USD"]];
+  var html="";
+  pairs.forEach(function(p){
+    var f=p[0],t=p[1],r=rateOf(f,t),d=t==="BTC"||t==="ETH"?4:(r>=100?2:r>=1?3:4);
+    html+="<tr><td><span class='coin'><i style='background:"+BG[f]+"'>"+(ICON[f].trim()||f)+"</i>"+f+"</span></td>"+
+      "<td><span class='coin'><i style='background:"+BG[t]+"'>"+(ICON[t].trim()||t)+"</i>"+t+"</span></td>"+
+      "<td><b>"+r.toLocaleString("ru-RU",{maximumFractionDigits:d})+"</b> "+t+"</td></tr>";
+  });
+  document.getElementById("rateTable").innerHTML=html;
+  calc();
+}
+fromAmt.addEventListener("input",calc);
+document.getElementById("swapBtn").addEventListener("click",function(){
   var a=fromSel.value;fromSel.value=toSel.value;toSel.value=a;calc();
 });
-document.getElementById('goBtn').addEventListener('click',function(){
+document.getElementById("goBtn").addEventListener("click",function(){
   var f=fromSel.value,t=toSel.value;
   var msg="Здравствуйте! Хочу обменять: "+fromAmt.value+" "+f+" → "+toAmt.textContent+" ("+t+")";
   location.href="https://t.me/Andrey_AlexandrovichAA?text="+encodeURIComponent(msg);
 });
-fill(fromSel,'USDT');fill(toSel,'BTC');calc();
-
-var rows=[["USDT","BTC",97400],["USDT","ETH",3650],["USDT","TON",5.2],["USDT","TRX",0.24],["BTC","USDT",97260],["ETH","USDT",3638]];
-var tb=document.getElementById('rateTable');
-rows.forEach(function(r){
-  var tr=document.createElement('tr');
-  var dec=(r[1]==='BTC'||r[1]==='ETH')?6:2;
-  tr.innerHTML='<td><span class="coin"><i style="background:'+BG[r[0]]+'">'+ICON[r[0]]+'</i>'+r[0]+'</span></td>'+
-    '<td><span class="coin"><i style="background:'+BG[r[1]]+'">'+ICON[r[1]]+'</i>'+r[1]+'</span></td>'+
-    '<td><b>'+r[2].toLocaleString('ru')+'</b></td>';
-  tb.appendChild(tr);
-});
+fill(fromSel,"USD");fill(toSel,"BYN");calc();
+loadRates();
+setInterval(loadRates,10*60*1000);
 </script>
 </body>
 </html>
