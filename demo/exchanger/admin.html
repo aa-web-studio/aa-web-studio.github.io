@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoinSwap — админ-панель</title>
+<style>
+:root{--bg:#f7f8fb;--card:#fff;--border:#e5e9f0;--text:#0f172a;--dim:#64748b;--acc:#2563eb;--acc2:#0d9488;--shadow:0 12px 34px rgba(15,23,42,.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+.container{width:min(1100px,92%);margin:0 auto}
+header{background:#fff;border-bottom:1px solid var(--border);padding:16px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:800;font-size:20px}
+.brand b{background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;padding:10px 20px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-weight:700;border-radius:12px;border:none;cursor:pointer;font-size:14px;text-decoration:none;transition:.2s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(37,99,235,.25)}
+.btn-gray{background:#fff;border:1.5px solid var(--border);color:var(--text)}
+.gate{display:flex;align-items:center;justify-content:center;min-height:70vh;padding:20px}
+.gbox{background:#fff;border:1px solid var(--border);border-radius:20px;padding:34px;max-width:420px;width:100%;box-shadow:var(--shadow);text-align:center}
+.gbox h2{margin-bottom:6px}
+.gbox p{color:var(--dim);font-size:14px;margin-bottom:18px}
+.gbox input{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:12px;font-size:15px;outline:none;background:#f8fafc;text-align:center;letter-spacing:2px}
+.gbox input:focus{border-color:var(--acc)}
+.gbox .btn{width:100%;margin-top:14px}
+.gerr{display:none;color:#dc2626;font-size:13px;margin-top:10px}
+.panel{display:none;padding:28px 0 60px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}
+.mc{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 22px;box-shadow:var(--shadow)}
+.mc b{display:block;font-size:24px}
+.mc span{color:var(--dim);font-size:13px}
+.wrap{display:grid;grid-template-columns:1fr 340px;gap:22px;align-items:start}
+.box{background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.box h3{padding:16px 22px;border-bottom:1px solid var(--border);font-size:16px}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{background:#f8fafc;text-align:left;padding:10px 16px;color:var(--dim);font-size:11.5px;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border)}
+.tbl td{padding:12px 16px;border-top:1px solid #eef2f6;vertical-align:top}
+.tbl input,.tbl select{padding:8px 10px;border:1.5px solid var(--border);border-radius:9px;font-size:13.5px;font-family:inherit;outline:none;background:#f8fafc}
+.tbl input:focus,.tbl select:focus{border-color:var(--acc)}
+.st{font-weight:700;padding:3px 10px;border-radius:999px;font-size:12px;white-space:nowrap}
+.st0{background:#e0e7ff;color:#3730a3}.st1{background:#fef3c7;color:#92400e}.st2{background:#dbeafe;color:#1e40af}.st3{background:#d1fae5;color:#065f46}.st4{background:#ccfbf1;color:#115e59}
+.side .box{margin-bottom:20px}
+.fld{padding:0 22px 18px}
+.fld label{display:block;font-size:12px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin:12px 0 6px}
+.fld input{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:11px;font-size:14px;outline:none;background:#f8fafc}
+.hint{padding:0 22px 18px;color:var(--dim);font-size:12.5px}
+.empty{padding:30px;text-align:center;color:var(--dim);font-size:14px}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="container nav">
+  <div class="brand">CoinSwap <b>· Админ</b></div>
+  <span style="display:flex;gap:10px"><a class="btn btn-gray" href="index.html">На сайт</a><button class="btn btn-gray" id="logoutBtn" style="display:none">Выйти</button></span>
+</div></header>
+
+<div class="gate" id="gate">
+  <div class="gbox">
+    <h2>Вход для оператора</h2>
+    <p>Введите код доступа к админ-панели</p>
+    <input id="code" type="password" placeholder="••••••" autocomplete="off">
+    <button class="btn" id="loginBtn">Войти</button>
+    <div class="gerr" id="gerr">Неверный код. Попробуйте ещё раз.</div>
+  </div>
+</div>
+
+<div class="container panel" id="panel">
+  <div class="cards">
+    <div class="mc"><b id="cTotal">0</b><span>всего заявок</span></div>
+    <div class="mc"><b id="cNew">0</b><span>новых (в работе)</span></div>
+    <div class="mc"><b id="cDone">0</b><span>выполнено</span></div>
+    <div class="mc"><b id="cFee">2%</b><span>комиссия сервиса</span></div>
+  </div>
+  <div class="wrap">
+    <div class="box">
+      <h3>Заявки</h3>
+      <div id="ordersWrap"><div class="empty">Заявок пока нет. Как только клиент создаст заявку на сайте — она появится здесь.</div></div>
+    </div>
+    <div class="side">
+      <div class="box">
+        <h3>Настройки обмена</h3>
+        <div class="fld">
+          <label>Комиссия сервиса, %</label>
+          <input id="cfgFee" type="number" step="0.1" min="0" max="50">
+        </div>
+        <div class="fld">
+          <label>Код доступа (пусто = coinswap)</label>
+          <input id="cfgCode" type="text" placeholder="новый код" autocomplete="off">
+        </div>
+        <div class="hint">Комиссия вычитается из рыночного курса в калькуляторе на сайте.</div>
+        <div style="padding:0 22px 22px"><button class="btn" id="saveCfg" style="width:100%">Сохранить настройки</button></div>
+      </div>
+      <div class="box">
+        <h3>Экспорт заявок</h3>
+        <div class="hint">Скачайте все заявки файлом JSON — удобно для бэкапа или переноса.</div>
+        <div style="padding:0 22px 22px;display:flex;gap:10px">
+          <button class="btn btn-gray" id="expBtn" style="flex:1">Скачать JSON</button>
+          <button class="btn btn-gray" id="clrBtn" style="flex:1">Очистить все</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var STEPS=["Новая","Ожидает оплату","Оплата получена","Отправлено","Выполнен"];
+function orders(){try{return JSON.parse(localStorage.getItem("cs_orders")||"{}");}catch(e){return{}}}
+function saveOrders(o){localStorage.setItem("cs_orders",JSON.stringify(o));}
+function cfg(){try{return JSON.parse(localStorage.getItem("cs_config")||"null")||{fee:2,code:""};}catch(e){return{fee:2,code:""}}}
+function saveCfg(c){localStorage.setItem("cs_config",JSON.stringify(c));}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function logged(){return sessionStorage.getItem("cs_admin")==="1";}
+
+function statusCls(s){var i=STEPS.indexOf(s);return i<0?"st0":("st"+i);}
+function renderPanel(){
+  var o=orders(),ids=Object.keys(o).sort(function(a,b){return o[b].created-o[a].created;});
+  var c=cfg();
+  document.getElementById("cTotal").textContent=ids.length;
+  document.getElementById("cNew").textContent=ids.filter(function(i){return o[i].status==="Новая"||o[i].status==="Ожидает оплату";}).length;
+  document.getElementById("cDone").textContent=ids.filter(function(i){return o[i].status==="Выполнен";}).length;
+  document.getElementById("cFee").textContent=c.fee+"%";
+  document.getElementById("cfgFee").value=c.fee;
+  var w=document.getElementById("ordersWrap");
+  if(!ids.length){w.innerHTML="<div class='empty'>Заявок пока нет. Как только клиент создаст заявку на сайте — она появится здесь.</div>";return;}
+  var html="<div style='overflow-x:auto'><table class='tbl'><thead><tr><th>Заявка</th><th>Обмен</th><th>Клиент</th><th>Статус</th><th>Хэш/№</th></tr></thead><tbody>";
+  ids.forEach(function(id){
+    var x=o[id],d=new Date(x.created);
+    html+="<tr><td><b>"+esc(x.id)+"</b><br><small style='color:var(--dim)'>"+d.toLocaleString("ru-RU",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"})+"</small></td>"+
+      "<td><b>"+esc(x.amount)+" "+esc(x.from)+"</b> → <b>"+esc(x.result)+"</b>"+(x.net?"<br><small style='color:var(--dim)'>Сеть: "+esc(x.net)+"</small>":"")+"</td>"+
+      "<td>"+esc(x.contact)+"<br><small style='color:var(--dim)'>Реквизиты: "+esc(x.wallet)+"</small>"+(x.note?"<br><small>Прим.: "+esc(x.note)+"</small>":"")+"</td>"+
+      "<td><select data-id='"+esc(x.id)+"'>"+STEPS.map(function(s){return"<option"+(s===x.status?" selected":"")+">"+s+"</option>";}).join("")+"</select></td>"+
+      "<td><input type='text' data-tx='"+esc(x.id)+"' value='"+esc(x.tx||"")+"' placeholder='tx / перевод' style='width:130px'></td></tr>";
+  });
+  html+="</tbody></table></div>";
+  w.innerHTML=html;
+  w.querySelectorAll("select[data-id]").forEach(function(sel){
+    sel.addEventListener("change",function(){
+      var oo=orders();if(oo[sel.dataset.id]){oo[sel.dataset.id].status=sel.value;saveOrders(oo);renderPanel();}
+    });
+  });
+  w.querySelectorAll("input[data-tx]").forEach(function(inp){
+    inp.addEventListener("change",function(){
+      var oo=orders();if(oo[inp.dataset.tx]){oo[inp.dataset.tx].tx=inp.value.trim();saveOrders(oo);}
+    });
+  });
+}
+function enter(){
+  sessionStorage.setItem("cs_admin","1");
+  document.getElementById("gate").style.display="none";
+  document.getElementById("panel").style.display="block";
+  document.getElementById("logoutBtn").style.display="inline-flex";
+  renderPanel();
+}
+document.getElementById("loginBtn").addEventListener("click",function(){
+  var v=document.getElementById("code").value;
+  var c=cfg(),code=c.code||"coinswap";
+  if(v===code){enter();}else{document.getElementById("gerr").style.display="block";}
+});
+document.getElementById("code").addEventListener("keydown",function(e){if(e.key==="Enter")document.getElementById("loginBtn").click();});
+document.getElementById("logoutBtn").addEventListener("click",function(){
+  sessionStorage.removeItem("cs_admin");
+  document.getElementById("gate").style.display="flex";
+  document.getElementById("panel").style.display="none";
+  document.getElementById("logoutBtn").style.display="none";
+});
+document.getElementById("saveCfg").addEventListener("click",function(){
+  var c=cfg();
+  var f=parseFloat(document.getElementById("cfgFee").value);
+  c.fee=isNaN(f)?2:Math.max(0,Math.min(50,f));
+  var nc=document.getElementById("cfgCode").value.trim();
+  if(nc)c.code=nc;
+  document.getElementById("cfgCode").value="";
+  saveCfg(c);renderPanel();
+  this.textContent="Сохранено ✓";var b=this;setTimeout(function(){b.textContent="Сохранить настройки";},1400);
+});
+document.getElementById("expBtn").addEventListener("click",function(){
+  var blob=new Blob([JSON.stringify(orders(),null,2)],{type:"application/json"});
+  var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="coinswap-orders.json";a.click();
+});
+document.getElementById("clrBtn").addEventListener("click",function(){
+  if(confirm("Удалить ВСЕ заявки без возможности восстановления?")){saveOrders({});renderPanel();}
+});
+window.addEventListener("storage",function(){if(logged())renderPanel();});
+if(logged())enter();
+</script>
+</body>
+</html>
