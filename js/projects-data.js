@@ -59,5 +59,14 @@ var SITE_PROJECTS = [
     tags: ["Лендинг", "Персональный бренд", "Цены"],
     icon: "🏋️",
     url: "demo/fitness/"
+  },
+  {
+    id: "project-exchanger",
+    title: "Сайт обменника CoinSwap",
+    desc: "Сервис обмена криптовалют с живым калькулятором обмена, таблицей курсов, резервами и заявкой в Telegram. Тёмная fintech-тема с градиентными акцентами.",
+    category: "landing",
+    tags: ["Лендинг", "Калькулятор", "Fintech"],
+    icon: "🪙",
+    url: "demo/exchanger/"
   }
 ];

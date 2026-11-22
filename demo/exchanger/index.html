@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoinSwap — быстрый обмен криптовалют</title>
+<meta name="description" content="CoinSwap — обмен BTC, ETH, TON, TRX и USDT по выгодному курсу. Фиксация курса на 15 минут, заявка за 2 минуты.">
+<style>
+:root{--bg:#0b0f17;--card:#121826;--border:rgba(255,255,255,.09);--text:#eef2f7;--dim:#93a0b4;--acc:#3ea8ff;--acc2:#29d3a3}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{width:min(1080px,92%);margin:0 auto}
+header{position:sticky;top:0;background:rgba(11,15,23,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}.nav .btn{margin-left:22px}
+.brand{font-weight:800;font-size:22px}
+.brand b{color:var(--acc)}
+.nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:22px;font-size:15px}
+.nav a.menu-link:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;box-sizing:border-box;max-width:100%;padding:12px 26px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#04121c;text-decoration:none;font-weight:800;border-radius:999px;border:none;cursor:pointer;font-size:15px;transition:.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(62,168,255,.35)}
+.btn-ghost{background:transparent;border:1px solid var(--acc);color:var(--acc)}
+.btn-ghost:hover{background:var(--acc);color:#04121c}
+.hero{padding:80px 0 56px;text-align:center;background:radial-gradient(640px 320px at 50% 0%,rgba(62,168,255,.14),transparent 70%)}
+.tagline{color:var(--acc);text-transform:uppercase;letter-spacing:4px;font-size:13px;margin-bottom:16px;font-weight:700}
+h1{font-size:clamp(30px,5.2vw,54px);line-height:1.12;margin-bottom:14px;letter-spacing:-.5px}
+h1 b{background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--dim);max-width:560px;margin:0 auto 34px;font-size:17px}
+.calc{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px;max-width:480px;margin:0 auto;text-align:left;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.calc-row{background:#0d1320;border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.calc-row label{display:block;font-size:12px;color:var(--dim);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.amount-line{display:flex;align-items:center;gap:10px}
+.amount-line input,.amount-line .out{flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--text);font-size:22px;font-weight:700;width:100%}
+.amount-line .out{color:var(--acc2)}
+.sel{background:#1a2233;border:1px solid var(--border);color:var(--text);font-weight:700;border-radius:10px;padding:9px 12px;font-size:15px;cursor:pointer;flex-shrink:0}
+.swap-line{display:flex;justify-content:center;margin:-4px 0}
+.swap{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:#1a2233;color:var(--acc);font-size:18px;cursor:pointer;transition:.2s;flex-shrink:0}
+.swap:hover{background:var(--acc);color:#04121c;transform:rotate(180deg)}
+.rate-line{color:var(--dim);font-size:13px;text-align:center;margin:4px 0 16px}
+.rate-line b{color:var(--text)}
+.calc .btn{width:100%}
+.stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:34px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 22px;min-width:150px}
+.stat b{display:block;font-size:20px;color:var(--acc2)}
+.stat span{color:var(--dim);font-size:13px}
+section{padding:64px 0}
+.sec-title{text-align:center;font-size:clamp(24px,3.4vw,34px);margin-bottom:10px}
+.sec-sub{text-align:center;color:var(--dim);margin-bottom:36px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px}
+.step .num{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#04121c;background:linear-gradient(135deg,var(--acc),var(--acc2));margin-bottom:14px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step b{display:block;margin-bottom:6px;font-size:17px}
+.step p{color:var(--dim);font-size:14px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+th,td{padding:14px 18px;text-align:left;font-size:15px}
+th{color:var(--dim);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border)}
+tr+tr td{border-top:1px solid rgba(255,255,255,.05)}
+.coin{display:flex;align-items:center;gap:10px;font-weight:700}
+.coin i{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-weight:800;font-size:12px;color:#04121c}
+.rw{display:flex;justify-content:space-between;gap:26px;align-items:flex-start}
+.rw table{width:58%}
+.reserves{width:38%;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px}
+.reserves h3{margin-bottom:14px;font-size:18px}
+.res{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:15px}
+.res:last-child{border:none}
+.res span{color:var(--dim)}
+.res b{color:var(--acc2)}
+details{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:12px;cursor:pointer}
+details b{font-size:16px}
+details p{color:var(--dim);margin-top:8px;font-size:14px}
+.cta{background:radial-gradient(600px 300px at 50% 100%,rgba(41,211,163,.12),transparent 70%);text-align:center}
+footer{padding:36px 0;color:var(--dim);font-size:14px;border-top:1px solid var(--border)}
+footer a{color:var(--acc);text-decoration:none}
+@media(max-width:860px){.steps{grid-template-columns:1fr}.rw{flex-direction:column}.rw table{width:100%}.reserves{width:100%}}
+@media(max-width:560px){.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px;margin-left:20px}.calc{padding:20px}.amount-line input,.amount-line .out{font-size:18px}}
+</style>
+</head>
+<body>
+<header><div class="container nav">
+  <div class="brand">Coin<b>Swap</b></div>
+  <nav><a class="menu-link" href="#rates">Курсы</a><a class="menu-link" href="#how">Как работает</a><a class="menu-link" href="#faq">Вопросы</a><a class="btn" href="#calc">Начать обмен</a></nav>
+</div></header>
+
+<div class="hero"><div class="container">
+  <div class="tagline">Фиксация курса на 15 минут</div>
+  <h1>Обмен криптовалют<br><b>за пару минут</b></h1>
+  <p class="sub">BTC, ETH, TON, TRX и USDT по честному курсу. Заявка обрабатывается оператором и подтверждается в Telegram.</p>
+
+  <div class="calc" id="calc">
+    <div class="calc-row">
+      <label>Отдаёте</label>
+      <div class="amount-line">
+        <input id="fromAmt" type="text" inputmode="decimal" value="100">
+        <select class="sel" id="fromCoin"></select>
+      </div>
+    </div>
+    <div class="swap-line"><button class="swap" id="swapBtn" title="Поменять местами">⇅</button></div>
+    <div class="calc-row">
+      <label>Получаете</label>
+      <div class="amount-line">
+        <span class="out" id="toAmt">—</span>
+        <select class="sel" id="toCoin"></select>
+      </div>
+    </div>
+    <div class="rate-line" id="rateLine"></div>
+    <button class="btn" id="goBtn">Обменять</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>2 мин</b><span>среднее время заявки</span></div>
+    <div class="stat"><b>24/7</b><span>поддержка в Telegram</span></div>
+    <div class="stat"><b>15 мин</b><span>фиксация курса</span></div>
+  </div>
+</div></div>
+
+<section id="rates"><div class="container">
+  <h2 class="sec-title">Актуальные курсы</h2>
+  <p class="sec-sub">Курс обновляется вручную оператором — вы всегда видите точное значение перед обменом.</p>
+  <div class="rw">
+    <table>
+      <thead><tr><th>Отдаёте</th><th>Получаете</th><th>Курс</th></tr></thead>
+      <tbody id="rateTable"></tbody>
+    </table>
+    <div class="reserves">
+      <h3>Резервы</h3>
+      <div class="res"><span>BTC</span><b>0.421</b></div>
+      <div class="res"><span>ETH</span><b>6.80</b></div>
+      <div class="res"><span>TON</span><b>12 400</b></div>
+      <div class="res"><span>TRX</span><b>48 000</b></div>
+      <div class="res"><span>USDT</span><b>21 300</b></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="how" style="background:#0e1420;border-top:1px solid var(--border);border-bottom:1px solid var(--border)"><div class="container">
+  <h2 class="sec-title">Как проходит обмен</h2>
+  <p class="sec-sub">Три шага — и крипта у вас на кошельке</p>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><b>Рассчитайте обмен</b><p>Выберите пару и сумму в калькуляторе. Курс и итоговая сумма фиксируются на 15 минут.</p></div>
+    <div class="step"><div class="num">2</div><b>Отправьте заявку</b><p>Нажмите «Обменять» — откроется чат с оператором с уже готовой заявкой. Подтвердите реквизиты.</p></div>
+    <div class="step"><div class="num">3</div><b>Получите крипту</b><p>После подтверждения перевод уходит на ваш кошелёк. Статус заявки можно отследить в чате.</p></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="container">
+  <h2 class="sec-title">Частые вопросы</h2>
+  <p class="sec-sub">Коротко о главном</p>
+  <details open><b>Курс фиксируется?</b><p>Да. По заявке курс фиксируется на 15 минут — сколько показал калькулятор, столько вы и получите.</p></details>
+  <details><b>Как быстро приходит перевод?</b><p>Стандартно — до 15 минут после подтверждения заявки оператором. Крупные суммы могут занять чуть дольше.</p></details>
+  <details><b>Какие есть лимиты?</b><p>Минимальная сумма обмена — эквивалент 10 USDT. Максимум обсудите с оператором в чате.</p></details>
+  <details><b>Как связаться с поддержкой?</b><p>Круглосуточно, в Telegram. Отвечаем быстро — это наш главный приоритет.</p></details>
+</div></section>
+
+<section class="cta"><div class="container">
+  <h2 class="sec-title">Готовы обменять?</h2>
+  <p class="sec-sub">Рассчитайте сумму и отправьте заявку — оператор ответит в течение пары минут.</p>
+  <a class="btn" href="#calc">Рассчитать обмен</a>
+</div></section>
+
+<footer><div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px"><span>© CoinSwap, 2025</span><span><a href="/">Сделано в AA Web Studio</a></span></div></footer>
+
+<script>
+var PRICE={BTC:97400,ETH:3650,TON:5.2,TRX:0.24,USDT:1};
+var NAME={BTC:"Bitcoin",ETH:"Ethereum",TON:"Toncoin",TRX:"Tron",USDT:"USDT"};
+var ICON={BTC:"₿",ETH:"Ξ",TON:"💎",TRX:"⚡",USDT:"₮"};
+var BG={BTC:"#f7931a",ETH:"#8a92b2",TON:"#28a0e9",TRX:"#e8483f",USDT:"#26a17b"};
+var fromSel=document.getElementById('fromCoin'),toSel=document.getElementById('toCoin');
+var fromAmt=document.getElementById('fromAmt'),toAmt=document.getElementById('toAmt');
+var rateLine=document.getElementById('rateLine');
+function fill(sel,def){
+  Object.keys(PRICE).forEach(function(c){
+    var o=document.createElement('option');o.value=c;o.textContent=c+" · "+NAME[c];sel.appendChild(o);
+  });
+  sel.value=def;
+  sel.addEventListener('change',calc);
+}
+function num(){
+  var v=parseFloat(String(fromAmt.value).replace(',','.').replace(/\s/g,''));
+  return isNaN(v)?0:v;
+}
+function calc(){
+  var f=fromSel.value,t=toSel.value,rate=PRICE[f]/PRICE[t],a=num(),r=a*rate;
+  var dec=(t==='BTC'||t==='ETH')?6:2;
+  toAmt.textContent=r>0?r.toFixed(dec)+" "+t:"—";
+  rateLine.innerHTML="1 "+f+" ≈ <b>"+rate.toFixed((t==='BTC'||t==='ETH')?7:3)+"</b> "+t;
+}
+fromAmt.addEventListener('input',calc);
+document.getElementById('swapBtn').addEventListener('click',function(){
+  var a=fromSel.value;fromSel.value=toSel.value;toSel.value=a;calc();
+});
+document.getElementById('goBtn').addEventListener('click',function(){
+  var f=fromSel.value,t=toSel.value;
+  var msg="Здравствуйте! Хочу обменять: "+fromAmt.value+" "+f+" → "+toAmt.textContent+" ("+t+")";
+  location.href="https://t.me/Andrey_AlexandrovichAA?text="+encodeURIComponent(msg);
+});
+fill(fromSel,'USDT');fill(toSel,'BTC');calc();
+
+var rows=[["USDT","BTC",97400],["USDT","ETH",3650],["USDT","TON",5.2],["USDT","TRX",0.24],["BTC","USDT",97260],["ETH","USDT",3638]];
+var tb=document.getElementById('rateTable');
+rows.forEach(function(r){
+  var tr=document.createElement('tr');
+  var dec=(r[1]==='BTC'||r[1]==='ETH')?6:2;
+  tr.innerHTML='<td><span class="coin"><i style="background:'+BG[r[0]]+'">'+ICON[r[0]]+'</i>'+r[0]+'</span></td>'+
+    '<td><span class="coin"><i style="background:'+BG[r[1]]+'">'+ICON[r[1]]+'</i>'+r[1]+'</span></td>'+
+    '<td><b>'+r[2].toLocaleString('ru')+'</b></td>';
+  tb.appendChild(tr);
+});
+</script>
+</body>
+</html>
