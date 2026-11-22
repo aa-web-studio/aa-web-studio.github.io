@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дмитрий Соколов — персональный тренер | Онлайн и Москва</title>
+<style>
+:root{--bg:#0c0f14;--card:#151a22;--border:rgba(255,255,255,.09);--text:#eef2f7;--dim:#93a0b1;--lime:#c8f560}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{width:min(1080px,92%);margin:0 auto}
+header{position:sticky;top:0;background:rgba(12,15,20,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{font-weight:800;font-size:19px}
+.brand b{color:var(--lime)}
+.nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:22px;font-size:15px}
+.nav a.menu-link:hover{color:var(--text)}
+.btn{display:inline-block;padding:13px 28px;background:var(--lime);color:#10230a;text-decoration:none;font-weight:800;border-radius:10px;transition:.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,245,96,.3)}
+.btn-ghost{background:transparent;border:1px solid var(--lime);color:var(--lime)}
+.btn-ghost:hover{background:var(--lime);color:#10230a}
+.hero{padding:90px 0;background:
+ radial-gradient(520px 300px at 80% 10%,rgba(200,245,96,.14),transparent 70%),
+ radial-gradient(400px 260px at 8% 95%,rgba(200,245,96,.07),transparent 70%)}
+.grid-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center}
+.pill{display:inline-block;background:rgba(200,245,96,.12);color:var(--lime);font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:20px}
+h1{font-size:clamp(32px,5.5vw,54px);line-height:1.1;letter-spacing:-1px;margin-bottom:18px}
+h1 em{font-style:normal;color:var(--lime)}
+.sub{color:var(--dim);max-width:520px;font-size:17px;margin-bottom:32px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-img{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.hero-img img{width:100%;height:440px;object-fit:cover;display:block}
+.stats{display:flex;gap:40px;flex-wrap:wrap;padding:30px 0;margin-top:48px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stat b{font-size:28px;color:var(--lime);display:block}
+.stat span{color:var(--dim);font-size:14px}
+section{padding:80px 0}
+h2{font-size:clamp(26px,4vw,38px);margin-bottom:10px}
+h2 em{font-style:normal;color:var(--lime)}
+.sec-sub{color:var(--dim);margin-bottom:40px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.25s}
+.card:hover{transform:translateY(-5px);border-color:rgba(200,245,96,.45)}
+.card img{width:100%;height:190px;object-fit:cover}
+.body{padding:24px}
+.body h3{margin-bottom:8px;font-size:18px}
+.body p{color:var(--dim);font-size:15px}
+.fmt{margin-top:12px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--lime);font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{border-left:2px solid var(--lime);padding-left:16px}
+.step b{color:var(--lime);font-size:15px}
+.step p{color:var(--dim);font-size:14px}
+.cta{background:linear-gradient(135deg,rgba(200,245,96,.16),rgba(200,245,96,.04));border:1px solid rgba(200,245,96,.35);border-radius:16px;padding:56px 30px;text-align:center}
+footer{border-top:1px solid var(--border);padding:32px 0;color:var(--dim);font-size:14px}
+footer a{color:var(--lime);text-decoration:none}
+@media(max-width:860px){.grid-hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid,.steps{grid-template-columns:1fr}.nav a.menu-link{display:none}section{padding:56px 0}}
+</style>
+</head>
+<body>
+<header><div class="container nav">
+  <div class="brand">Соколов<b>.</b>fit</div>
+  <nav><a class="menu-link" href="#programs">Программы</a><a class="menu-link" href="#how">Как работаем</a><a class="btn btn-ghost" href="#start">Записаться бесплатно</a></nav>
+</div></header>
+
+<div class="hero"><div class="container">
+  <div class="grid-hero">
+    <div>
+      <div class="pill">Первая консультация — бесплатно</div>
+      <h1>Тело, которое <em>не стыдно</em> показать к лету</h1>
+      <p class="sub">Персональный тренер, 10 лет практики. Онлайн-сопровождение и тренировки в зале: питание, техника, контроль прогресса — веду каждый день.</p>
+      <div class="hero-actions"><a class="btn" href="#start">Бесплатная консультация</a><a class="btn btn-ghost" href="#programs">Программы и цены</a></div>
+    </div>
+    <div class="hero-img"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=70&fit=crop" alt="Тренажёрный зал"></div>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>10 лет</b><span>практики</span></div>
+    <div class="stat"><b>270+</b><span>клиентов</span></div>
+    <div class="stat"><b>-14 кг</b><span>средний результат за 4 мес</span></div>
+  </div>
+</div></div>
+
+<section id="programs"><div class="container">
+  <h2>Программы <em>под любую цель</em></h2>
+  <p class="sec-sub">Каждая включает план тренировок и питание с правками раз в неделю</p>
+  <div class="grid">
+    <div class="card"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=70&fit=crop" alt=""><div class="body"><div class="fmt">Зал / онлайн</div><h3>Похудение</h3><p>Дефицит калорий без голода, силовая база и кардио. От 2 месяцев.</p><div style="margin-top:12px;font-weight:800;font-size:22px;color:var(--lime)">от 4 900 ₽/мес</div></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=70&fit=crop" alt=""><div class="body"><div class="fmt">Зал</div><h3>Набор массы</h3><p>Прогрессия нагрузок, профицит калорий, замеры каждые 2 недели.</p><div style="margin-top:12px;font-weight:800;font-size:22px;color:var(--lime)">от 5 900 ₽/мес</div></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=70&fit=crop" alt=""><div class="body"><div class="fmt">Онлайн</div><h3>Здоровье и тонус</h3><p>Мобильность, осанка, лёгкие тренировки дома без оборудования.</p><div style="margin-top:12px;font-weight:800;font-size:22px;color:var(--lime)">от 3 900 ₽/мес</div></div></div>
+  </div>
+</div></section>
+
+<section id="how" style="background:#10141b;border-top:1px solid var(--border);border-bottom:1px solid var(--border)"><div class="container">
+  <h2>Как <em>работаем</em></h2>
+  <p class="sec-sub">От заявки до первых изменений — 4 шага</p>
+  <div class="steps">
+    <div class="step"><b>01 · Заявка</b><p>Пишете в Telegram, отвечаю в течение часа.</p></div>
+    <div class="step"><b>02 · Бриф</b><p>Собираю анамнез, цели, режим дня, замеры.</p></div>
+    <div class="step"><b>03 · План</b><p>Через 2 дня — программа тренировок и питания.</p></div>
+    <div class="step"><b>04 · Сопровождение</b><p>Контроль техники и корректировки каждую неделю.</p></div>
+  </div>
+</div></section>
+
+<section id="start"><div class="container">
+  <div class="cta">
+    <h2>Начнём с <em>бесплатной консультации</em></h2>
+    <p class="sec-sub" style="max-width:480px;margin:8px auto 28px">15 минут в Telegram: разберём вашу цель, честно скажу сроки и что понадобится. Без навязчивых продаж.</p>
+    <a class="btn" href="https://t.me/">Написать в Telegram</a>
+  </div>
+</div></section>
+
+<footer><div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px"><span>© Соколов.fit, 2025</span><span>Демо-сайт · <a href="/">Сделано в AA Web Studio</a></span></div></footer>
+</body>
+</html>
