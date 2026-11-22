@@ -6,109 +6,124 @@
 <title>CoinSwap — обменник криптовалют и валют по живому курсу</title>
 <meta name="description" content="CoinSwap — обмен USDT, BTC, TON, ETH (TRC20/ERC20/BEP20) и валют USD, EUR, RUB, BYN по рыночному курсу. Заявка за 2 минуты, отслеживание статуса онлайн.">
 <style>
-:root{--bg:#f7f8fb;--card:#ffffff;--border:#e5e9f0;--text:#0f172a;--dim:#64748b;--acc:#2563eb;--acc2:#0d9488;--ok:#0d9488;--shadow:0 12px 34px rgba(15,23,42,.08);--shadow-lg:0 24px 60px rgba(15,23,42,.14)}
+:root{--bg:#faf8f4;--card:#ffffff;--border:#e7e1d4;--text:#1c1913;--dim:#7d7466;--dark:#191611;--gold:#b99046;--gold2:#8a6a2f;--ok:#0d9488;--shadow:0 14px 40px rgba(28,25,19,.07);--shadow-lg:0 28px 70px rgba(28,25,19,.16)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-.container{width:min(1100px,92%);margin:0 auto}
-header{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);z-index:50}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}.nav .btn{margin-left:22px}
-.brand{font-weight:800;font-size:22px}
-.brand b{background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:22px;font-size:15px}
+.container{width:min(1160px,92%);margin:0 auto}
+.serif{font-family:Georgia,"Times New Roman",serif}
+header{position:sticky;top:0;background:rgba(250,248,244,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.brand{font-weight:800;font-size:21px;letter-spacing:.3px}
+.brand b{color:var(--gold2)}
+.nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:24px;font-size:14.5px;letter-spacing:.4px}
 .nav a.menu-link:hover{color:var(--text)}
-.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;box-sizing:border-box;max-width:100%;padding:12px 26px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;text-decoration:none;font-weight:800;border-radius:14px;border:none;cursor:pointer;font-size:15px;transition:.25s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(37,99,235,.28)}
-.btn-big{padding:15px 34px;font-size:16px;border-radius:16px}
-.btn-ghost{background:#fff;border:1.5px solid var(--acc);color:var(--acc)}
-.btn-ghost:hover{background:var(--acc);color:#fff}
-.tagline{color:var(--acc2);text-transform:uppercase;letter-spacing:4px;font-size:13px;margin-bottom:16px;font-weight:700}
-h1{font-size:clamp(30px,5vw,52px);line-height:1.1;margin-bottom:8px;letter-spacing:-.5px}
-h1 b{background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
-h2.sec{font-size:clamp(24px,3.4vw,34px);text-align:center;margin-bottom:10px;letter-spacing:-.5px}
-.sec-sub{text-align:center;color:var(--dim);margin-bottom:36px}
-.hero{padding:72px 0 56px;text-align:center;background:radial-gradient(760px 360px at 50% 0%,rgba(37,99,235,.09),transparent 72%)}
-.live{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--dim);background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 14px;margin:14px 0 28px}
-.live .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pulse 1.6s infinite}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;box-sizing:border-box;max-width:100%;padding:13px 30px;background:var(--dark);color:#f5efe2;text-decoration:none;font-weight:700;border-radius:999px;border:none;cursor:pointer;font-size:15px;letter-spacing:.3px;transition:.3s}
+.btn:hover{transform:translateY(-2px);background:linear-gradient(135deg,var(--gold),var(--gold2));color:#fff;box-shadow:0 14px 30px rgba(138,106,47,.32)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#fff}
+.btn-gold:hover{box-shadow:0 14px 30px rgba(138,106,47,.4)}
+.tagline{color:var(--gold2);text-transform:uppercase;letter-spacing:5px;font-size:12px;margin-bottom:18px;font-weight:700}
+h1{font-size:clamp(32px,4.6vw,56px);line-height:1.08;margin-bottom:16px;letter-spacing:-.6px;font-family:Georgia,"Times New Roman",serif;font-weight:700}
+h1 em{font-style:normal;color:var(--gold2)}
+h2.sec{font-size:clamp(24px,3.2vw,34px);text-align:center;margin-bottom:10px;letter-spacing:-.4px;font-family:Georgia,"Times New Roman",serif}
+.sec-sub{text-align:center;color:var(--dim);margin-bottom:40px}
+.hero{padding:76px 0 64px;background:
+ radial-gradient(900px 420px at 12% -10%,rgba(185,144,70,.10),transparent 60%),
+ radial-gradient(700px 380px at 95% 0%,rgba(28,25,19,.05),transparent 62%)}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center}
+.hero-copy p.lead{color:var(--dim);font-size:17px;max-width:480px;margin-bottom:20px}
+.live{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;color:var(--dim);background:#fff;border:1px solid var(--border);border-radius:999px;padding:7px 16px;margin-bottom:26px;letter-spacing:.5px}
+.live .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 1.6s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
-.calc{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:28px;max-width:480px;margin:0 auto;text-align:left;box-shadow:var(--shadow)}
-.calc-row{background:#f8fafc;border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:12px}
-.calc-row label{display:block;font-size:11px;color:var(--dim);margin-bottom:6px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
+.quick{margin-top:28px}
+.quick h4{font-size:11.5px;color:var(--dim);text-transform:uppercase;letter-spacing:2.5px;font-weight:700;margin-bottom:12px}
+.qcards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.q{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 18px;box-shadow:var(--shadow)}
+.q small{display:block;color:var(--dim);font-size:11.5px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:3px}
+.q b{font-family:Georgia,serif;font-size:21px;letter-spacing:-.3px}
+.q b span{font-size:13px;color:var(--dim);font-family:"Segoe UI",system-ui,sans-serif;font-weight:600}
+.calc{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:20px;padding:30px;max-width:480px;margin:0 auto;text-align:left;box-shadow:var(--shadow-lg)}
+.calc-row{background:#f7f4ec;border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.calc-row label{display:block;font-size:11px;color:var(--dim);margin-bottom:6px;text-transform:uppercase;letter-spacing:2px;font-weight:700}
 .amount-line{display:flex;align-items:center;gap:10px}
-.amount-line input,.amount-line .out{flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--text);font-size:22px;font-weight:700;width:100%}
-.amount-line .out{color:var(--acc2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.amount-line input,.amount-line .out{flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--text);font-size:23px;font-weight:700;width:100%
+;font-family:Georgia,serif}
+.amount-line .out{color:var(--gold2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .net{font-size:11.5px;color:var(--dim);margin-top:4px}
 .sel{background:#fff;border:1px solid var(--border);color:var(--text);font-weight:700;border-radius:11px;padding:9px 10px;font-size:14px;cursor:pointer;flex-shrink:0;max-width:150px}
 .swap-line{display:flex;justify-content:center;margin:-4px 0}
-.swap{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:#fff;color:var(--acc);font-size:18px;cursor:pointer;transition:.25s;flex-shrink:0;box-shadow:var(--shadow)}
-.swap:hover{background:var(--acc);color:#fff;transform:rotate(180deg)}
-.rate-line{color:var(--dim);font-size:13px;text-align:center;margin:4px 0 16px}
+.swap{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:#fff;color:var(--gold2);font-size:18px;cursor:pointer;transition:.3s;flex-shrink:0;box-shadow:var(--shadow)}
+.swap:hover{background:var(--gold);color:#fff;transform:rotate(180deg)}
+.rate-line{color:var(--dim);font-size:13px;text-align:center;margin:4px 0 18px}
 .rate-line b{color:var(--text)}
 .calc .btn{width:100%}
-.stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:34px}
-.stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:14px 22px;min-width:150px}
-.stat b{display:block;font-size:20px;color:var(--acc)}
-.stat span{color:var(--dim);font-size:13px}
-section{padding:64px 0}
+.stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.stat{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 20px;min-width:140px}
+.stat b{display:block;font-family:Georgia,serif;font-size:20px;color:var(--gold2)}
+.stat span{color:var(--dim);font-size:12.5px}
+section{padding:68px 0}
+.band{background:#f3efe6;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.step{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px;box-shadow:var(--shadow)}
-.step .num{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--acc),var(--acc2));margin-bottom:14px}
+.step{background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px;box-shadow:var(--shadow)}
+.step .num{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--gold),var(--gold2));margin-bottom:14px;font-family:Georgia,serif}
 .step b{display:block;margin-bottom:6px;font-size:16.5px}
 .step p{color:var(--dim);font-size:14px}
 .rw{display:flex;justify-content:space-between;gap:26px;align-items:flex-start}
-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
 th,td{padding:13px 18px;text-align:left;font-size:15px}
-th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1px;background:#f8fafc;border-bottom:1px solid var(--border)}
-tr+tr td{border-top:1px solid #eef2f6}
+th{color:var(--dim);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:2px;background:#f7f4ec;border-bottom:1px solid var(--border)}
+tr+tr td{border-top:1px solid #f0ece2}
+td b{font-family:Georgia,serif}
 .coin{display:flex;align-items:center;gap:10px;font-weight:700}
 .coin i{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-weight:800;font-size:11px;color:#fff;flex-shrink:0}
 .rw table{width:58%}
-.reserves{width:38%;background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px;box-shadow:var(--shadow)}
-.reserves h3{margin-bottom:14px;font-size:18px}
-.res{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #eef2f6;font-size:15px}
+.reserves{width:38%;background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px;box-shadow:var(--shadow)}
+.reserves h3{margin-bottom:14px;font-size:18px;font-family:Georgia,serif}
+.res{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f0ece2;font-size:15px}
 .res:last-child{border:none}
 .res span{color:var(--dim)}
-.res b{color:var(--acc2)}
-details{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 22px;margin-bottom:12px;cursor:pointer;box-shadow:var(--shadow)}
+.res b{color:var(--gold2);font-family:Georgia,serif}
+details{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:12px;cursor:pointer;box-shadow:var(--shadow)}
 details b{font-size:16px}
 details p{color:var(--dim);margin-top:8px;font-size:14px}
 .faq{max-width:680px;margin:0 auto}
-.track-card{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);max-width:560px;margin:0 auto;padding:28px}
+.track-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:18px;box-shadow:var(--shadow-lg);max-width:560px;margin:0 auto;padding:28px}
 .track-line{display:flex;gap:10px}
-.track-line input{flex:1;min-width:0;padding:13px 16px;border:1.5px solid var(--border);border-radius:14px;font-size:15px;outline:none;background:#f8fafc}
-.track-line input:focus{border-color:var(--acc)}
+.track-line input{flex:1;min-width:0;padding:13px 16px;border:1.5px solid var(--border);border-radius:12px;font-size:15px;outline:none;background:#f7f4ec}
+.track-line input:focus{border-color:var(--gold)}
 .timeline{margin-top:20px;display:none}
 .tl{display:flex;gap:14px;padding:10px 0;align-items:flex-start}
 .tl .pt{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;margin-top:3px;transition:.3s}
-.tl.done .pt{background:var(--ok);border-color:var(--ok)}
-.tl.cur .pt{border-color:var(--acc);box-shadow:0 0 0 4px rgba(37,99,235,.15)}
+.tl.done .pt{background:var(--gold);border-color:var(--gold)}
+.tl.cur .pt{border-color:var(--gold2);box-shadow:0 0 0 4px rgba(185,144,70,.18)}
 .tl b{font-size:15px}
 .tl small{display:block;color:var(--dim);font-size:13px}
-.notfound{display:none;color:#b91c1c;font-size:14px;margin-top:12px;text-align:center}
-.tx{display:none;margin-top:14px;padding:12px 16px;background:#f0fdf9;border:1px solid #99f6e4;border-radius:12px;font-size:13px;word-break:break-all}
-.cta{background:radial-gradient(600px 300px at 50% 100%,rgba(13,148,136,.1),transparent 72%);text-align:center}
-.addm{display:inline-flex;color:var(--dim);font-size:13px;margin-top:12px}
+.notfound{display:none;color:#a2342a;font-size:14px;margin-top:12px;text-align:center}
+.tx{display:none;margin-top:14px;padding:12px 16px;background:#f7f4ec;border:1px solid var(--border);border-radius:12px;font-size:13px;word-break:break-all}
+.cta{background:radial-gradient(700px 320px at 50% 100%,rgba(185,144,70,.12),transparent 70%);text-align:center}
+.addm{display:inline-flex;color:var(--dim);font-size:12.5px;margin-top:14px;letter-spacing:.5px}
 footer{padding:36px 0;color:var(--dim);font-size:14px;border-top:1px solid var(--border);background:#fff}
-footer a{color:var(--acc);text-decoration:none}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+footer a{color:var(--gold2);text-decoration:none}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
 .reveal.in{opacity:1;transform:none}
-.modal{position:fixed;inset:0;background:rgba(15,23,42,.55);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
+.modal{position:fixed;inset:0;background:rgba(28,25,19,.5);backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
 .modal.open{display:flex}
-.mbox{background:#fff;border-radius:22px;max-width:460px;width:100%;padding:28px;box-shadow:var(--shadow-lg);max-height:92vh;overflow:auto}
-.mbox h3{font-size:20px;margin-bottom:4px}
+.mbox{background:#fff;border-radius:20px;max-width:460px;width:100%;padding:30px;box-shadow:var(--shadow-lg);max-height:92vh;overflow:auto;border-top:3px solid var(--gold)}
+.mbox h3{font-size:22px;margin-bottom:4px;font-family:Georgia,serif}
 .mbox .msum{color:var(--dim);font-size:14px;margin-bottom:18px}
 .fld{margin-bottom:14px}
-.fld label{display:block;font-size:12px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.fld input,.fld select,.fld textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:15px;outline:none;background:#f8fafc;font-family:inherit}
-.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--acc)}
+.fld label{display:block;font-size:11px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+.fld input,.fld select,.fld textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:15px;outline:none;background:#f7f4ec;font-family:inherit}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--gold)}
 .okview{text-align:center;display:none}
 .okview .big{font-size:44px}
-.okview .oid{font-size:22px;font-weight:800;color:var(--acc);letter-spacing:1px;margin:8px 0}
+.okview .oid{font-size:22px;font-weight:800;color:var(--gold2);letter-spacing:1.5px;margin:8px 0;font-family:Georgia,serif}
 .okview p{color:var(--dim);font-size:14px;margin-bottom:18px}
 .mbtns{display:flex;gap:10px}
 .mbtns .btn{flex:1}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:34px}.hero-copy p.lead{max-width:none}}
 @media(max-width:860px){.steps{grid-template-columns:repeat(2,1fr)}.rw{flex-direction:column}.rw table{width:100%}.reserves{width:100%}}
-@media(max-width:560px){.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px;margin-left:auto}.steps{grid-template-columns:1fr}.calc{padding:20px}.amount-line input,.amount-line .out{font-size:18px}}
+@media(max-width:560px){.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px;margin-left:auto}.steps{grid-template-columns:1fr}.calc{padding:22px}.amount-line input,.amount-line .out{font-size:19px}.qcards{grid-template-columns:1fr 1fr;gap:10px}}
 </style>
 </head>
 <body>
@@ -117,11 +132,17 @@ footer a{color:var(--acc);text-decoration:none}
   <nav><a class="menu-link" href="#rates">Курсы</a><a class="menu-link" href="#how">Как работает</a><a class="menu-link" href="#track">Моя заявка</a><a class="menu-link" href="#faq">Вопросы</a><a class="btn" href="#calc">Начать обмен</a></nav>
 </div></header>
 
-<div class="hero"><div class="container">
-  <div class="tagline">Рыночный курс · обновляется сам</div>
-  <h1>Обмен крипты и валют<br><b>за пару минут</b></h1>
-  <p style="color:var(--dim);max-width:580px;margin:0 auto">USDT (TRC20, ERC20, BEP20), BTC, TON, ETH — и валюты USD, EUR, RUB, BYN. Курс подтягивается с рынка автоматически.</p>
-  <div class="live"><span class="dot"></span><span id="liveLabel">Загружаем курс…</span></div>
+<div class="hero"><div class="container hero-grid">
+  <div class="hero-copy">
+    <div class="tagline">Рыночный курс · обновляется сам</div>
+    <h1>Обмен крипты и валют<br>без лишних <em>слов</em></h1>
+    <p class="lead">USDT (TRC20, ERC20, BEP20), BTC, TON, ETH — и валюты USD, EUR, RUB, BYN. Курс подтягивается с рынка автоматически, комиссия сразу видна в расчёте.</p>
+    <div class="live"><span class="dot"></span><span id="liveLabel">Загружаем курс…</span></div>
+    <div class="quick">
+      <h4>Курс прямо сейчас</h4>
+      <div class="qcards" id="qc"><div class="q"><small>Загрузка…</small><b>—</b></div></div>
+    </div>
+  </div>
 
   <div class="calc" id="calc">
     <div class="calc-row">
@@ -142,13 +163,11 @@ footer a{color:var(--acc);text-decoration:none}
       <div class="net" id="toNet"></div>
     </div>
     <div class="rate-line" id="rateLine">Загрузка курса…</div>
-    <button class="btn" id="goBtn">Создать заявку</button>
-  </div>
-
-  <div class="stats reveal">
-    <div class="stat"><b>2 мин</b><span>создание заявки</span></div>
-    <div class="stat"><b>24/7</b><span>поддержка в Telegram</span></div>
-    <div class="stat"><b>15 мин</b><span>фиксация курса</span></div>
+    <button class="btn btn-gold" id="goBtn">Создать заявку</button>
+    <div class="stats">
+      <div class="stat"><b>15 мин</b><span>фиксация курса</span></div>
+      <div class="stat"><b>24/7</b><span>поддержка</span></div>
+    </div>
   </div>
 </div></div>
 
@@ -163,9 +182,9 @@ footer a{color:var(--acc);text-decoration:none}
   </div>
 </div></section>
 
-<section id="rates" style="background:#eef2f7;border-top:1px solid var(--border);border-bottom:1px solid var(--border)"><div class="container">
-  <h2 class="sec reveal">Курсы прямо сейчас</h2>
-  <p class="sec-sub reveal">Фиат — данные банков (ECB/ЦБ), крипта — CoinGecko. Страница сама обновляет курс каждые 10 минут, комиссия уже учтена в калькуляторе.</p>
+<section id="rates" class="band"><div class="container">
+  <h2 class="sec reveal">Полная таблица курсов</h2>
+  <p class="sec-sub reveal">Фиат — данные банков (ECB/ЦБ), крипта — CoinGecko. Обновление каждые 10 минут. Курс в калькуляторе уже содержит комиссию сервиса.</p>
   <div class="rw reveal">
     <table>
       <thead><tr><th>Отдаёте</th><th>Получаете</th><th>Курс</th></tr></thead>
@@ -204,9 +223,9 @@ footer a{color:var(--acc);text-decoration:none}
 </div></section>
 
 <section class="cta"><div class="container">
-  <h2 class="sec reveal">Готовы обменять?</h2>
-  <p class="sec-sub reveal">Рассчитайте сумму и создайте заявку — оператор ответит в течение пары минут.</p>
-  <a class="btn btn-big reveal" href="#calc">Рассчитать обмен</a>
+  <h2 class="sec reveal">Начните с калькулятора</h2>
+  <p class="sec-sub reveal">Рассчитайте сумму по живому курсу и создайте заявку — оператор ответит в течение пары минут.</p>
+  <a class="btn btn-gold btn-big reveal" style="padding:16px 38px;font-size:16px" href="#calc">Обменять сейчас</a>
   <div class="addm reveal">Курсы фиата: open.er-api.com · Крипта: CoinGecko</div>
 </div></section>
 
@@ -221,8 +240,8 @@ footer a{color:var(--acc);text-decoration:none}
       <div class="fld"><label id="lWallet">Ваши реквизиты для получения</label><input id="fWallet" type="text" placeholder="Кошелёк / карта / счёт" autocomplete="off"></div>
       <div class="fld"><label>Комментарий (необязательно)</label><input id="fNote" type="text" placeholder="Например: спешу" autocomplete="off"></div>
       <div class="mbtns">
-        <button class="btn btn-ghost" id="cancelBtn">Отмена</button>
-        <button class="btn" id="submitBtn">Создать заявку</button>
+        <button class="btn" id="cancelBtn" style="background:#fff;border:1.5px solid var(--border);color:var(--text)">Отмена</button>
+        <button class="btn btn-gold" id="submitBtn">Создать заявку</button>
       </div>
     </div>
     <div class="okview" id="okView">
@@ -230,8 +249,8 @@ footer a{color:var(--acc);text-decoration:none}
       <div class="oid" id="okId"></div>
       <p>Заявка создана. Отправьте её оператору в Telegram — он пришлёт реквизиты для оплаты и будет вести заявку по статусам.</p>
       <div class="mbtns">
-        <button class="btn btn-ghost" id="trackLinkBtn">Найти заявку</button>
-        <a class="btn" id="tgSend" target="_blank" rel="noopener">Отправить оператору</a>
+        <button class="btn" id="trackLinkBtn" style="background:#fff;border:1.5px solid var(--border);color:var(--text)">Найти заявку</button>
+        <a class="btn btn-gold" id="tgSend" target="_blank" rel="noopener">Отправить оператору</a>
       </div>
     </div>
   </div>
@@ -247,8 +266,9 @@ var BG={USD:"#2b8a3e",EUR:"#1c4f9c",RUB:"#c23b3b",BYN:"#0aa06e",PLN:"#b0476b",CN
 var NETWORKS={USDT:["TRC20 (Tron)","ERC20 (Ethereum)","BEP20 (BNB Chain)","TON (Jetton)"],BTC:["Bitcoin"],ETH:["ERC20 (Ethereum)"],TON:["TON"],TRX:["Tron (TRC20)"],USD:["Банковский перевод","Карта"],EUR:["Банковский перевод","Карта"],RUB:["Карта РФ","СБП"],BYN:["Карта РБ","ЕРИП"]};
 var FALLBACK={USD:1,EUR:0.91,RUB:82,BYN:2.99,PLN:4.06,CNY:6.69,UAH:45,KZT:450,USDT:1,BTC:60975,ETH:1720,TON:0.98,TRX:0.31};
 var FALLBACK_RES={USD:"12 400",EUR:"8 900",RUB:"1 120 000",BYN:"31 500",USDT:"21 300",BTC:"0.421",ETH:"6.80",TON:"12 400",TRX:"48 000",PLN:"9 200",CNY:"18 400",UAH:"96 000",KZT:"2 100 000"};
+var QUICK=[["USD","BYN"],["EUR","USD"],["USDT","USD"],["BTC","USD"]];
 var DEFAULT_FEE=2;
-var rates=null,fetchedAt=null,broker=[];
+var rates=null,fetchedAt=null;
 var fromSel=document.getElementById('fromCoin'),toSel=document.getElementById('toCoin');
 var fromAmt=document.getElementById('fromAmt'),toAmt=document.getElementById('toAmt');
 var rateLine=document.getElementById('rateLine'),liveLabel=document.getElementById('liveLabel');
@@ -277,18 +297,15 @@ function loadRates(){
   r2.open("GET","https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether,the-open-network,tron&vs_currencies=usd",true);r2.send();
 }
 function rateOf(f,t){return rates[f]/rates[t];}
-function netFeeAdj(){return 1-fee()/100;}
-function num(){var v=parseFloat(String(fromAmt.value).replace(",",".").replace(/\s/g,""));return isNaN(v)?0:v;}
-function dec(t){return(t==="BTC"||t==="ETH")?6:2;}
+function calc(){
+  if(!rates)return;
+  var f=fromSel.value,t=toSel.value,r=rateOf(f,t)*(1-fee()/100),res=num()*r;
+  toAmt.textContent=num()>0?fmt(res,t)+" "+t:"—";
+  rateLine.innerHTML="Рыночный курс: 1 "+f+" = <b>"+fmt(rateOf(f,t),t)+"</b> "+t+" · комиссия сервиса "+fee()+"% учтена";
+}
 function setNet(){
   document.getElementById("fromNet").textContent=NAME[fromSel.value]+" · "+(NETWORKS[fromSel.value]||[]).join(" / ");
   document.getElementById("toNet").textContent=NAME[toSel.value]+" · "+(NETWORKS[toSel.value]||[]).join(" / ");
-}
-function calc(){
-  if(!rates)return;
-  var f=fromSel.value,t=toSel.value,r=rateOf(f,t)*netFeeAdj(),res=num()*r;
-  toAmt.textContent=num()>0?fmt(res,t)+" "+t:"—";
-  rateLine.innerHTML="Рыночный курс: 1 "+f+" = <b>"+fmt(rateOf(f,t),t)+"</b> "+t+" · комиссия сервиса "+fee()+"% учтена";
 }
 function fill(sel,def){
   sel.innerHTML="";
@@ -301,11 +318,16 @@ function fill(sel,def){
 }
 function render(){
   liveLabel.textContent=rates._stale?"Рынок недоступен — показан резервный курс":"Курс живой · обновлён "+fetchedAt.toLocaleTimeString("ru-RU",{hour:"2-digit",minute:"2-digit"});
-  var pairs=[["USD","BYN"],["EUR","BYN"],["USD","RUB"],["EUR","USD"],["USDT","USD"],["USDT","BYN"],["BTC","USD"],["ETH","USD"]];
+  var qc="";
+  QUICK.forEach(function(p){
+    qc+="<div class='q'><small>"+p[0]+" → "+p[1]+"</small><b>"+fmt(rateOf(p[0],p[1]),p[1])+" <span>"+p[1]+"</span></b></div>";
+  });
+  document.getElementById("qc").innerHTML=qc;
+  var pairs=[["USD","BYN"],["EUR","BYN"],["USD","RUB"],["EUR","USD"],["USDT","USD"],["USDT","BYN"],["USDT","EUR"],["BTC","USD"],["BTC","USDT"],["ETH","USD"],["TON","USDT"],["TRX","USDT"]];
   var html="";
   pairs.forEach(function(p){
     var f=p[0],t=p[1],r=rateOf(f,t),d=t==="BTC"||t==="ETH"?4:(r>=100?2:r>=1?3:4);
-    html+="<tr><td><span class='coin'><i style='background:"+BG[f]+"'>"+(ICON[f]||f)+"</i>"+f+"</span></td>"+
+    html+="<tr><td><span class='coin'><i style='background:"+BG[f]+"'>"+(ICON[f]||f)+"</i>"+f+" · "+NAME[f]+"</span></td>"+
       "<td><span class='coin'><i style='background:"+BG[t]+"'>"+(ICON[t]||t)+"</i>"+t+"</span></td>"+
       "<td><b>"+r.toLocaleString("ru-RU",{maximumFractionDigits:d})+"</b> "+t+"</td></tr>";
   });
@@ -315,7 +337,6 @@ function render(){
   setNet();calc();
 }
 function orders(){try{return JSON.parse(localStorage.getItem("cs_orders")||"{}");}catch(e){return{};}}
-function saveOrders(o){localStorage.setItem("cs_orders",JSON.stringify(o));}
 function openModal(){
   if(!rates)return;
   var f=fromSel.value,t=toSel.value;
@@ -329,13 +350,13 @@ function closeModal(){document.getElementById("modal").classList.remove("open");
 function submitOrder(){
   var contact=document.getElementById("fContact").value.trim();
   var wallet=document.getElementById("fWallet").value.trim();
-  if(!contact){document.getElementById("fContact").style.borderColor="#dc2626";return;}
-  if(!wallet){document.getElementById("fWallet").style.borderColor="#dc2626";return;}
+  if(!contact){document.getElementById("fContact").style.borderColor="#a2342a";return;}
+  if(!wallet){document.getElementById("fWallet").style.borderColor="#a2342a";return;}
   var f=fromSel.value,t=toSel.value;
   var id="CS-"+Math.random().toString(36).slice(2,8).toUpperCase();
   var o=orders();
-  o[id]={id:id,from:f,to:t,amount:fromAmt.value,result:toAmt.textContent,rate:rateOf(f,t)*netFeeAdj(),contact:contact,wallet:wallet,note:document.getElementById("fNote").value.trim(),net:(NETWORKS[t]||[""])[0],status:"Новая",created:Date.now(),tx:""};
-  saveOrders(o);
+  o[id]={id:id,from:f,to:t,amount:fromAmt.value,result:toAmt.textContent,rate:rateOf(f,t)*(1-fee()/100),contact:contact,wallet:wallet,note:document.getElementById("fNote").value.trim(),net:(NETWORKS[t]||[""])[0],status:"Новая",created:Date.now(),tx:""};
+  localStorage.setItem("cs_orders",JSON.stringify(o));
   var msg="Новая заявка "+id+"\nОтдаёт: "+o.amount+" "+f+"\nПолучает: "+o.result+"\nСеть: "+o.net+"\nКонтакт: "+contact+"\nРеквизиты: "+wallet+(o.note?"\nКомментарий: "+o.note:"");
   document.getElementById("okId").textContent=id;
   document.getElementById("tgSend").href="https://t.me/Andrey_AlexandrovichAA?text="+encodeURIComponent(msg);
