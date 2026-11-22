@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Цены — Ремонт-Профи</title>
+<style>
+:root{--bg:#faf8f5;--text:#22211e;--dim:#7a766d;--accent:#1f6f5c;--border:#e8e4dc}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{width:min(980px,92%);margin:0 auto}
+header{border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{font-weight:800;font-size:20px}
+.brand span{color:var(--accent)}
+.nav a.back{color:var(--dim);text-decoration:none;font-size:15px}
+.nav a.back:hover{color:var(--text)}
+section{padding:64px 0}
+h1{font-size:clamp(28px,4.5vw,42px);margin-bottom:10px}
+.sec-sub{color:var(--dim);margin-bottom:36px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+th,td{padding:16px 20px;text-align:left;border-bottom:1px solid var(--border);font-size:15px}
+th{background:#f2ede4;font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--dim)}
+td:last-child{font-weight:700;color:var(--accent);white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#fafcfa}
+.note{color:var(--dim);font-size:14px;margin-top:16px}
+.btn{display:inline-block;padding:12px 26px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;border-radius:8px;margin-top:24px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(31,111,92,.3)}
+footer{border-top:1px solid var(--border);padding:32px 0;color:var(--dim);font-size:14px}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<header><div class="container nav">
+  <div class="brand">Ремонт<span>Профи</span></div>
+  <a class="back" href="index.html">← На главную</a>
+</div></header>
+
+<section><div class="container">
+  <h1>Прайс-лист</h1>
+  <p class="sec-sub">Точная стоимость зависит от состояния квартиры — финальная смета фиксируется в договоре.</p>
+
+  <table>
+    <tr><th>Работы</th><th>Стоимость</th></tr>
+    <tr><td>Демонтаж (полный / частичный)</td><td>от 350 ₽/м²</td></tr>
+    <tr><td>Возведение и выравнивание стен</td><td>от 900 ₽/м²</td></tr>
+    <tr><td>Стяжка пола</td><td>от 550 ₽/м²</td></tr>
+    <tr><td>Электромонтаж</td><td>от 800 ₽/точку</td></tr>
+    <tr><td>Сантехнические работы</td><td>от 1 200 ₽/точку</td></tr>
+    <tr><td>Штукатурка стен</td><td>от 650 ₽/м²</td></tr>
+    <tr><td>Покраска / оклейка обоями</td><td>от 380 ₽/м²</td></tr>
+    <tr><td>Укладка плитки</td><td>от 1 100 ₽/м²</td></tr>
+    <tr><td>Укладка ламината / паркета</td><td>от 500 ₽/м²</td></tr>
+    <tr><td>Финишная уборка</td><td>от 120 ₽/м²</td></tr>
+  </table>
+
+  <p class="note">Выезд замерщика и предварительная смета — бесплатно. Гарантия на все работы — 2 года.</p>
+  <a class="btn" href="index.html#contact">Получить смету за 1 день</a>
+</div></section>
+
+<footer><div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px"><span>© Ремонт-Профи, 2025</span><span>Демо-сайт · <a href="/">Сделано в AA Web Studio</a></span></div></footer>
+</body>
+</html>
