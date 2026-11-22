@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Портфолио — AA Web Studio</title>
+  <meta name="description" content="Мои работы: лендинги, многостраничные сайты и интернет-магазины. Смотрите живые демо и заказывайте такой же проект.">
+  <link rel="icon" type="image/jpeg" href="img/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="img/logo.jpg" alt="Логотип Andrey_Alexandrovich">
+        <span class="logo-text">
+          <span class="logo-name">Andrey_Alexandrovich</span>
+          <span class="logo-role">Freelancer</span>
+        </span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html">Главная</a>
+        <a href="portfolio.html">Портфолио</a>
+        <a href="templates.html">Шаблоны</a>
+        <a href="contact.html">Контакты</a>
+      </nav>
+      <div class="header-cta">
+        <a href="contact.html" class="btn btn-primary btn-sm">Заказать сайт</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" style="padding-top: calc(var(--header-h) + 64px);">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">Витрина</span>
+          <h2 class="section-title">Портфолио работ</h2>
+          <p class="section-sub">Готовые проекты по категориям. У каждой работы есть живое демо — смотрите, как сайт выглядит и работает на самом деле.</p>
+        </div>
+
+        <div class="filters" id="filters">
+          <button class="filter-btn active" data-category="all">Все</button>
+          <button class="filter-btn" data-category="landing">Лендинги</button>
+          <button class="filter-btn" data-category="multi">Многостраничные</button>
+          <button class="filter-btn" data-category="shop">Магазины</button>
+        </div>
+
+        <div class="grid grid-3" id="projects-grid"></div>
+
+        <div class="cta-box reveal" style="margin-top: 64px;">
+          <h2>Не нашли похожий <span class="silver-text">проект</span>?</h2>
+          <p>Это не проблема — опишите свою задачу, и я предложу решение, структуру и цену.</p>
+          <a href="contact.html" class="btn btn-primary">Обсудить задачу</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="img/logo.jpg" alt="Логотип Andrey_Alexandrovich">
+            <span class="logo-text">
+              <span class="logo-name">Andrey_Alexandrovich</span>
+              <span class="logo-role">Freelancer</span>
+            </span>
+          </a>
+          <p>Создание сайтов под ключ: лендинги, многостраничные сайты и интернет-магазины.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Навигация</h4>
+          <a href="index.html">Главная</a>
+          <a href="portfolio.html">Портфолио</a>
+          <a href="templates.html">Шаблоны</a>
+          <a href="contact.html">Контакты</a>
+        </div>
+        <div class="footer-col">
+          <h4>Где заказать</h4>
+          <a href="https://kwork.ru" target="_blank" rel="noopener">Kwork</a>
+          <a href="https://fl.ru" target="_blank" rel="noopener">FL.ru</a>
+          <a href="https://freelancehunt.com" target="_blank" rel="noopener">Freelancehunt</a>
+          <a href="https://t.me/andrey_alexandrovich" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> AA Web Studio · Andrey Alexandrovich</span>
+        <span>AA Web Studio — сайты под ключ</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/projects-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/protect.js"></script>
+  <script src="js/portfolio.js"></script>
+</body>
+</html>

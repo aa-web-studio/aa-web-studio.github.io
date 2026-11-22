@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты и заказ — AA Web Studio</title>
+  <meta name="description" content="Свяжитесь со мной на любой площадке или оставьте прямую заявку на сайт. Ответ в течение часа.">
+  <link rel="icon" type="image/jpeg" href="img/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="img/logo.jpg" alt="Логотип Andrey_Alexandrovich">
+        <span class="logo-text">
+          <span class="logo-name">Andrey_Alexandrovich</span>
+          <span class="logo-role">Freelancer</span>
+        </span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html">Главная</a>
+        <a href="portfolio.html">Портфолио</a>
+        <a href="templates.html">Шаблоны</a>
+        <a href="contact.html">Контакты</a>
+      </nav>
+      <div class="header-cta">
+        <a href="#order" class="btn btn-primary btn-sm">Заказать сайт</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" style="padding-top: calc(var(--header-h) + 64px);">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">Связь</span>
+          <h2 class="section-title">Контакты и прямой заказ</h2>
+          <p class="section-sub">Выберите удобный способ связи или оставьте заявку в форме — отвечу в течение часа в рабочее время.</p>
+        </div>
+
+        <div class="contact-layout">
+          <!-- Куда написать -->
+          <div>
+            <div class="contact-quick">
+              <a href="https://t.me/andrey_alexandrovich" target="_blank" rel="noopener" class="quick-link reveal">
+                <div class="quick-icon">✈️</div>
+                <div>
+                  <b>Telegram</b>
+                  <span>@andrey_alexandrovich — самый быстрый ответ</span>
+                </div>
+                <span class="quick-arrow">→</span>
+              </a>
+              <a href="https://kwork.ru" target="_blank" rel="noopener" class="quick-link reveal">
+                <div class="quick-icon">🛠</div>
+                <div>
+                  <b>Kwork</b>
+                  <span>Заказ с безопасной сделкой</span>
+                </div>
+                <span class="quick-arrow">→</span>
+              </a>
+              <a href="https://fl.ru" target="_blank" rel="noopener" class="quick-link reveal">
+                <div class="quick-icon">💼</div>
+                <div>
+                  <b>FL.ru</b>
+                  <span>Обсуждение задачи через биржу</span>
+                </div>
+                <span class="quick-arrow">→</span>
+              </a>
+              <a href="https://freelancehunt.com" target="_blank" rel="noopener" class="quick-link reveal">
+                <div class="quick-icon">🏆</div>
+                <div>
+                  <b>Freelancehunt</b>
+                  <span>Профиль с отзывами и рейтингом</span>
+                </div>
+                <span class="quick-arrow">→</span>
+              </a>
+              <a href="https://wa.me/70000000000" target="_blank" rel="noopener" class="quick-link reveal">
+                <div class="quick-icon">💬</div>
+                <div>
+                  <b>WhatsApp</b>
+                  <span>Для голосового общения и созвонов</span>
+                </div>
+                <span class="quick-arrow">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Форма заявки -->
+          <div id="order">
+            <div class="card form-card reveal">
+              <form id="order-form" novalidate>
+                <div class="form-group">
+                  <label for="field-name">Ваше имя</label>
+                  <input type="text" id="field-name" name="name" placeholder="Как к вам обращаться" required>
+                </div>
+                <div class="form-group">
+                  <label for="field-contact">Контакт для связи</label>
+                  <input type="text" id="field-contact" name="contact" placeholder="Telegram, e-mail или телефон" required>
+                </div>
+                <div class="form-group">
+                  <label for="field-type">Тип сайта</label>
+                  <select id="field-type" name="type">
+                    <option value="landing">Лендинг</option>
+                    <option value="multi">Многостраничный сайт</option>
+                    <option value="shop">Интернет-магазин</option>
+                    <option value="other">Другое / не определился</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="field-comment">Комментарий к задаче</label>
+                  <textarea id="field-comment" name="comment" placeholder="Кратко: о чём сайт, есть ли примеры, желаемые сроки"></textarea>
+                </div>
+                <div class="hp-field" aria-hidden="true">
+                  <label for="field-company">Компания</label>
+                  <input type="text" id="field-company" name="company" tabindex="-1" autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Отправить заявку</button>
+                <p style="color: var(--text-dim); font-size: 13px; margin-top: 14px; text-align: center;">
+                  Отправляя заявку, вы соглашаетесь на обработку указанных данных для связи по заказу.
+                </p>
+              </form>
+
+              <div class="form-success" id="form-success">
+                <div class="big">✅</div>
+                <h3>Заявка отправлена!</h3>
+                <p>Я свяжусь с вами по указанному контакту в течение часа в рабочее время. Если ответ нужен срочно — напишите напрямую в Telegram.</p>
+                <p style="margin-top: 18px;">
+                  <a href="https://t.me/andrey_alexandrovich" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Написать в Telegram</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="img/logo.jpg" alt="Логотип Andrey_Alexandrovich">
+            <span class="logo-text">
+              <span class="logo-name">Andrey_Alexandrovich</span>
+              <span class="logo-role">Freelancer</span>
+            </span>
+          </a>
+          <p>Создание сайтов под ключ: лендинги, многостраничные сайты и интернет-магазины.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Навигация</h4>
+          <a href="index.html">Главная</a>
+          <a href="portfolio.html">Портфолио</a>
+          <a href="templates.html">Шаблоны</a>
+          <a href="contact.html">Контакты</a>
+        </div>
+        <div class="footer-col">
+          <h4>Где заказать</h4>
+          <a href="https://kwork.ru" target="_blank" rel="noopener">Kwork</a>
+          <a href="https://fl.ru" target="_blank" rel="noopener">FL.ru</a>
+          <a href="https://freelancehunt.com" target="_blank" rel="noopener">Freelancehunt</a>
+          <a href="https://t.me/andrey_alexandrovich" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> AA Web Studio · Andrey Alexandrovich</span>
+        <span>AA Web Studio — сайты под ключ</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/projects-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/protect.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

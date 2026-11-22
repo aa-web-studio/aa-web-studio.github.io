@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AA Web Studio — создание сайтов под ключ | Andrey Alexandrovich</title>
+  <meta name="description" content="Создание сайтов под ключ: лендинги, многостраничные сайты, интернет-магазины. Современный дизайн, чистый код, сроки от 3 дней.">
+  <link rel="icon" type="image/jpeg" href="img/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="img/logo.jpg" alt="Логотип Andrey_Alexandrovich">
+        <span class="logo-text">
+          <span class="logo-name">Andrey_Alexandrovich</span>
+          <span class="logo-role">Freelancer</span>
+        </span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html">Главная</a>
+        <a href="portfolio.html">Портфолио</a>
+        <a href="templates.html">Шаблоны</a>
+        <a href="contact.html">Контакты</a>
+      </nav>
+      <div class="header-cta">
+        <a href="contact.html" class="btn btn-primary btn-sm">Заказать сайт</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== Первый экран ===== -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-badge"><span class="dot"></span> Свободен для новых заказов</div>
+        <h1 class="hero-title reveal">Создаю сайты <span class="silver-text">под ключ</span> — от идеи до запуска</h1>
+        <p class="hero-sub reveal">Лендинги, многостраничные сайты и интернет-магазины. Дизайн, вёрстка, настройка форм и подключение домена — всё беру на себя. Вы получаете готовый работающий сайт.</p>
+        <div class="hero-actions reveal">
+          <a href="portfolio.html" class="btn btn-primary">Смотреть работы</a>
+          <a href="contact.html" class="btn btn-ghost">Заказать сайт</a>
+        </div>
+        <div class="hero-stats reveal">
+          <div class="stat">
+            <div class="stat-num silver-text">40+</div>
+            <div class="stat-label">Проектов сдано</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num silver-text">3–10 дней</div>
+            <div class="stat-label">Срок сборки</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num silver-text">5.0</div>
+            <div class="stat-label">Средний рейтинг</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Где удобно оформить заказ ===== -->
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">Как заказать</span>
+          <h2 class="section-title">Где удобно оформить заказ</h2>
+          <p class="section-sub">Выберите любую привычную площадку — работаю и через биржи, и напрямую в мессенджере.</p>
+        </div>
+        <div class="grid grid-3">
+          <a href="https://kwork.ru" target="_blank" rel="noopener" class="card platform-card reveal">
+            <div class="platform-icon">🛠</div>
+            <div class="platform-name">Kwork</div>
+            <p class="platform-desc">Заказы через кворки с фиксированной ценой и безопасной сделкой.</p>
+            <span class="platform-link">Перейти →</span>
+          </a>
+          <a href="https://fl.ru" target="_blank" rel="noopener" class="card platform-card reveal">
+            <div class="platform-icon">💼</div>
+            <div class="platform-name">FL.ru</div>
+            <p class="platform-desc">Крупнейшая биржа фриланса: обсуждаем задачу в проекте или лично.</p>
+            <span class="platform-link">Перейти →</span>
+          </a>
+          <a href="https://freelancehunt.com" target="_blank" rel="noopener" class="card platform-card reveal">
+            <div class="platform-icon">🏆</div>
+            <div class="platform-name">Freelancehunt</div>
+            <p class="platform-desc">Работа через безопасную сделку с рейтинговым профилем и отзывами.</p>
+            <span class="platform-link">Перейти →</span>
+          </a>
+          <a href="https://t.me/andrey_alexandrovich" target="_blank" rel="noopener" class="card platform-card reveal">
+            <div class="platform-icon">✈️</div>
+            <div class="platform-name">Telegram</div>
+            <p class="platform-desc">Самый быстрый вариант: обсудим задачу и договоримся напрямую.</p>
+            <span class="platform-link">Написать →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Лучшие работы ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">Портфолио</span>
+          <h2 class="section-title">Лучшие работы</h2>
+          <p class="section-sub">Три проекта, которые показывают подход к дизайну и коду лучше всего.</p>
+        </div>
+        <div class="grid grid-3" id="featured-grid"></div>
+        <div style="text-align:center; margin-top: 40px;" class="reveal">
+          <a href="portfolio.html" class="btn btn-ghost">Все проекты →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Преимущества ===== -->
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">Почему я</span>
+          <h2 class="section-title">Мои преимущества</h2>
+        </div>
+        <div class="grid grid-3">
+          <div class="card adv-card reveal">
+            <div class="adv-icon">⚡</div>
+            <h3>Скорость без потери качества</h3>
+            <p>Лендинг готов за 3–5 дней, многостраничник — за неделю. Работаю на готовых основах и отлаженном процессе.</p>
+          </div>
+          <div class="card adv-card reveal">
+            <div class="adv-icon">📱</div>
+            <h3>Адаптив под любые экраны</h3>
+            <p>Каждый сайт одинаково хорошо выглядит на телефоне, планшете и большом мониторе — проверяю перед сдачей.</p>
+          </div>
+          <div class="card adv-card reveal">
+            <div class="adv-icon">⌨️</div>
+            <h3>Чистый код без конструкторов</h3>
+            <p>HTML, CSS и JS без лишних зависимостей: сайт быстро загружается, его легко поддерживать и дорабатывать.</p>
+          </div>
+          <div class="card adv-card reveal">
+            <div class="adv-icon">🤝</div>
+            <h3>Поддержка после сдачи</h3>
+            <p>Две недели бесплатных правок после приёмки работа, помогу с доменом, хостингом и публикацией.</p>
+          </div>
+          <div class="card adv-card reveal">
+            <div class="adv-icon">👁️</div>
+            <h3>Прозрачные этапы</h3>
+            <p>Показываю прогресс, обсуждаю правки на каждом шаге — вы всегда видите, за что платите.</p>
+          </div>
+          <div class="card adv-card reveal">
+            <div class="adv-icon">🎯</div>
+            <h3>Сайт уже настроен под конверсию</h3>
+            <p>Структура, тексты и кнопки проектируются под главную цель — чтобы посетитель оставил заявку.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-box reveal">
+          <h2>Готов обсудить <span class="silver-text">ваш сайт</span>?</h2>
+          <p>Расскажите о задаче — за 15 минут оценим объём, назову точный срок и стоимость.</p>
+          <a href="contact.html" class="btn btn-primary">Оставить заявку</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="img/logo.jpg" alt="Логотип Andrey_Alexandrovich">
+            <span class="logo-text">
+              <span class="logo-name">Andrey_Alexandrovich</span>
+              <span class="logo-role">Freelancer</span>
+            </span>
+          </a>
+          <p>Создание сайтов под ключ: лендинги, многостраничные сайты и интернет-магазины.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Навигация</h4>
+          <a href="index.html">Главная</a>
+          <a href="portfolio.html">Портфолио</a>
+          <a href="templates.html">Шаблоны</a>
+          <a href="contact.html">Контакты</a>
+        </div>
+        <div class="footer-col">
+          <h4>Где заказать</h4>
+          <a href="https://kwork.ru" target="_blank" rel="noopener">Kwork</a>
+          <a href="https://fl.ru" target="_blank" rel="noopener">FL.ru</a>
+          <a href="https://freelancehunt.com" target="_blank" rel="noopener">Freelancehunt</a>
+          <a href="https://t.me/andrey_alexandrovich" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> AA Web Studio · Andrey Alexandrovich</span>
+        <span>AA Web Studio — сайты под ключ</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/projects-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/protect.js"></script>
+  <script>
+    /* Превью 3 лучших работ на главной — из того же списка проектов */
+    document.addEventListener("DOMContentLoaded", function () {
+      var grid = document.getElementById("featured-grid");
+      if (!grid || typeof SITE_PROJECTS === "undefined") return;
+
+      var featured = SITE_PROJECTS.slice(0, 3);
+      grid.innerHTML = featured.map(function (p) {
+        var tags = (p.tags || []).slice(0, 3).map(function (t) {
+          return '<span class="tag">' + t + "</span>";
+        }).join("");
+        return (
+          '<a class="card work-card reveal" href="portfolio.html">' +
+          '<div class="work-preview"><span>' + p.icon + "</span></div>" +
+          '<div class="work-body">' +
+          '<h3 class="work-title">' + p.title + "</h3>" +
+          '<p class="work-desc">' + p.desc + "</p>" +
+          '<div class="tags">' + tags + "</div>" +
+          "</div></a>"
+        );
+      }).join("");
+
+      grid.querySelectorAll(".reveal").forEach(function (el) {
+        el.classList.add("visible");
+      });
+    });
+  </script>
+</body>
+</html>
