@@ -8,9 +8,9 @@
 :root{--bg:#12100d;--card:#1c1915;--border:rgba(255,255,255,.1);--text:#f2ede4;--dim:#a49c8d;--amber:#e8a54b}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-.container{width:min(1080px,88%);padding:0 clamp(12px,3vw,24px);box-sizing:border-box;margin:0 auto}
+.container{width:min(1080px,92%);margin:0 auto}
 header{position:sticky;top:0;background:rgba(18,16,13,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:10}
-.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}.nav .btn{margin-left:22px}
 .brand{font-weight:800;font-size:22px}
 .brand b{color:var(--amber)}
 .nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:22px;font-size:15px}
@@ -45,7 +45,7 @@ section.info{background:#181510;border-top:1px solid var(--border);border-bottom
 footer{padding:36px 0;color:var(--dim);font-size:14px}
 footer a{color:var(--amber);text-decoration:none}
 @media(max-width:860px){.grid,.cols{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.grid,.cols{grid-template-columns:1fr}.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px}}
+@media(max-width:560px){.grid,.cols{grid-template-columns:1fr}.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px;margin-left:20px}}
 </style>
 </head>
 <body>
