@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluently — онлайн-школа английского</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+:root{--bg:#fbfaf7;--card:#ffffff;--border:#e7e3da;--text:#232019;--dim:#7d776b;--teal:#0e7a6e;--teal-soft:#e5f2ef}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{width:min(1080px,92%);margin:0 auto}
+header{position:sticky;top:0;background:rgba(251,250,247,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.brand{font-weight:800;font-size:21px}
+.brand b{color:var(--teal)}
+.nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:22px;font-size:15px;transition:.2s}
+.nav a.menu-link:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;max-width:100%;padding:12px 26px;background:var(--teal);color:#fff;text-decoration:none;font-weight:700;border-radius:8px;transition:.25s;border:1px solid var(--teal);cursor:pointer}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(14,122,110,.3)}
+.btn-outline{background:transparent;color:var(--teal)}
+.btn-outline:hover{background:var(--teal);color:#fff}
+.hero{background:#10221f;color:#f2f2ee;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1513258496099-48168024aec0?w=1600&q=70&fit=crop") center/cover no-repeat;opacity:.22}
+.hero .container{position:relative;z-index:2;padding:90px 0 84px;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+.tagline{color:#7fd4c7;text-transform:uppercase;letter-spacing:3px;font-size:12px;margin-bottom:18px}
+.hero h1{font-size:clamp(30px,5vw,52px);line-height:1.15;margin-bottom:18px}
+.hero h1 em{font-style:normal;color:#7fd4c7}
+.sub{color:#c8d2cd;max-width:460px;font-size:17px;margin-bottom:30px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero .btn{box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:24px;backdrop-filter:blur(6px)}
+.hero-card b{color:#7fd4c7}
+.hero-card p{color:#c8d2cd;font-size:14px;margin-top:6px}
+.hero-card .row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:14px}
+.hero-card .row:last-child{border-bottom:none}
+section{padding:80px 0}
+.band{background:#f3f0e9;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sec-head{max-width:620px;margin:0 auto 40px;text-align:center}
+.sec-tag{color:var(--teal);text-transform:uppercase;letter-spacing:3px;font-size:12px}
+h2{font-size:clamp(26px,4vw,38px);margin:10px 0 10px}
+.sec-sub{color:var(--dim)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(35,32,25,.12)}
+.card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.card-body{padding:20px}
+.card-body h3{margin-bottom:8px;font-size:17px}
+.card-body p{color:var(--dim);font-size:14px}
+.quiz-wrap{max-width:640px;margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:0 24px 60px rgba(35,32,25,.08)}
+.qbar{height:8px;background:var(--teal-soft);border-radius:100px;overflow:hidden;margin-bottom:26px}
+.qbar-fill{height:100%;width:0;background:var(--teal);border-radius:100px;transition:width .35s}
+.qstep{color:var(--dim);font-size:13px;margin-bottom:6px}
+.qtext{font-size:19px;font-weight:700;margin-bottom:20px}
+.qopt{display:block;width:100%;text-align:left;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;font-size:15px;cursor:pointer;transition:.2s;color:var(--text)}
+.qopt:hover{border-color:var(--teal);background:var(--teal-soft)}
+.qres{text-align:center;display:none}
+.qres .level{font-size:26px;font-weight:800;color:var(--teal);margin:10px 0 6px}
+.qres p{color:var(--dim)}
+.qres .btn{margin-top:20px}
+.qback{background:none;border:none;color:var(--dim);cursor:pointer;font-size:13px;margin-top:14px;text-decoration:underline}
+.prog{max-width:640px;margin:0 auto}
+.prog details{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0 22px;margin-bottom:10px;transition:border-color .25s}
+.prog details[open]{border-color:var(--teal)}
+.prog summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 0;font-weight:600}
+.prog summary::-webkit-details-marker{display:none}
+.prog summary::after{content:"+";color:var(--teal);font-size:24px;line-height:1;transition:transform .25s}
+.prog details[open] summary::after{transform:rotate(45deg)}
+.prog .prog-a{color:var(--dim);padding:0 0 17px;font-size:15px}
+.sets{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.set{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px 26px;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s}
+.set:hover{transform:translateY(-5px);border-color:var(--teal);box-shadow:0 20px 44px rgba(35,32,25,.12)}
+.set.hot{border:2px solid var(--teal);position:relative}
+.set .hot-badge{position:absolute;top:-12px;left:24px;background:var(--teal);color:#fff;font-size:12px;font-weight:700;border-radius:100px;padding:4px 14px}
+.set h3{font-size:19px;margin-bottom:4px}
+.set .per{color:var(--dim);font-size:13px;margin-bottom:16px}
+.set .pp{font-size:26px;font-weight:800;color:var(--teal)}
+.set .pp span{font-size:13px;color:var(--dim);font-weight:400}
+.set ul{list-style:none;color:var(--dim);font-size:14px;margin:16px 0 22px}
+.set li{padding:8px 0;border-bottom:1px dashed var(--border)}
+.set li::before{content:"✓ ";color:var(--teal);font-weight:700}
+.set .btn{margin-top:auto}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px}
+.step b{color:var(--teal);display:block;margin-bottom:8px;font-size:15px}
+.step p{color:var(--dim);font-size:14px}
+.faq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0 22px;transition:border-color .25s}
+.faq details[open]{border-color:var(--teal)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 0;font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--teal);font-size:24px;line-height:1;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .faq-a{color:var(--dim);padding:0 0 17px;font-size:15px}
+.dark-cta{background:#10221f;color:#f2f2ee}
+.dark-cta .sec-head h2{color:#fff}
+.dark-cta .sec-sub{color:#c8d2cd}
+footer{border-top:1px solid var(--border);padding:26px 0;color:var(--dim);font-size:14px}
+footer a{color:var(--dim)}
+footer a:hover{color:var(--text)}
+@media(max-width:880px){.hero .container{grid-template-columns:1fr}.grid,.sets,.steps{grid-template-columns:repeat(2,1fr)}section{padding:56px 0}}
+@media(max-width:560px){.grid,.sets,.steps{grid-template-columns:1fr}.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px;margin-left:16px}}
+</style>
+</head>
+<body>
+<header><div class="container"><nav class="nav">
+  <div class="brand">Fluently<b>.</b></div>
+  <div style="display:flex;align-items:center">
+    <a class="menu-link" href="#quiz">Определить уровень</a>
+    <a class="menu-link" href="#program">Программа</a>
+    <a class="menu-link" href="#price">Цены</a>
+    <a class="menu-link" href="#faq">Вопросы</a>
+    <a class="btn" href="https://t.me/">Пробный урок</a>
+  </div>
+</nav></div></header>
+
+<section class="hero"><div class="container">
+  <div>
+    <div class="tagline">Онлайн-школа английского</div>
+    <h1>Заговорите свободно — <em>без зубрёжки</em></h1>
+    <p class="sub">Живые уроки с преподавателем, разговорные клубы и план, собранный под вашу цель: работа, переезд или мечта цитировать фильмы без субтитров.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#quiz">Определить уровень за 2 минуты</a>
+      <a class="btn btn-outline" style="border-color:#7fd4c7;color:#7fd4c7" href="#price">Посмотреть цены</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <b>Средний путь студента</b>
+    <div class="row"><span>Пробный урок</span><span>бесплатно</span></div>
+    <div class="row"><span>Первые фразы</span><span>через 2 недели</span></div>
+    <div class="row"><span>Свободный разговор</span><span>6–9 месяцев</span></div>
+    <div class="row"><span>Уроков в мини-группе</span><span>2–3 в неделю</span></div>
+  </div>
+</div></section>
+
+<section id="quiz"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Тест</div>
+    <h2>Определение уровня</h2>
+    <p class="sec-sub">5 вопросов — покажем уровень и подходящую программу</p>
+  </div>
+  <div class="quiz-wrap" id="quiz-box">
+    <div class="qbar"><div class="qbar-fill" id="qbar-fill"></div></div>
+    <div id="quiz-live">
+      <div class="qstep" id="q-step"></div>
+      <div class="qtext" id="q-text"></div>
+      <div id="q-opts"></div>
+      <button class="qback" id="q-back" type="button" hidden>← назад</button>
+    </div>
+    <div class="qres" id="q-result">
+      <div class="sec-tag">Ваш результат</div>
+      <div class="level" id="res-level"></div>
+      <p id="res-text"></p>
+      <a class="btn" href="https://t.me/">Забрать пробный урок</a><br>
+      <button class="qback" id="q-restart" type="button">пройти ещё раз</button>
+    </div>
+  </div>
+</div></section>
+
+<section id="program" class="band"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Программа</div>
+    <h2>Что внутри обучения</h2>
+  </div>
+  <div class="prog">
+    <details open><summary>Разговорные клубы каждую неделю</summary><p class="prog-a">Группа 4–6 человек с преподавателем: обсудить можно от сериалов до собеседований. Страх говорить лечится только разговором — поэтому клубы с первого дня.</p></details>
+    <details><summary>Грамматика — на практике, а не на правилах</summary><p class="prog-a">Каждая структура проходится на живых примерах и мини-диалогах. Домашка — 20 минут в день на платформе, без конспектов на 40 страниц.</p></details>
+    <details><summary>Лексика под вашу цель</summary><p class="prog-a">Собеседование, переезд, бизнес-переписка или путешествия: профессиональные наборы слов собираются индивидуально после пробного урока.</p></details>
+    <details><summary>Аудио-задания и разбор ошибок</summary><p class="prog-a">Персональные аудио-брифы: слушаете, отвечаете голосом, в течение дня получаете разбор ошибок с комментариями преподавателя.</p></details>
+    <details><summary>Отчёты по прогрессу</summary><p class="prog-a">Каждый месяц — отметка уровня по четырём навыкам и план на следующий. Прогресс виден вам, а не только сертификату в конце.</p></details>
+  </div>
+</div></section>
+
+<section><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Форматы</div>
+    <h2>Как проходят занятия</h2>
+  </div>
+  <div class="grid">
+    <div class="card"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=72&fit=crop" alt="Групповой онлайн-урок"><div class="card-body"><h3>Мини-группы 4–6</h3><p>Разговорная практика со студентами вашего уровня. Расписание гибкое, уроки онлайн.</p></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=700&q=72&fit=crop" alt="Индивидуальное занятие"><div class="card-body"><h3>Индивидуально 1-на-1</h3><p>Темп и план полностью под вас — для занятых и для подготовки к собеседованию.</p></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=700&q=72&fit=crop" alt="Воркшоп школы"><div class="card-body"><h3>Воркшопы и марафоны</h3><p>Разовые интенсивы: телефонные переговоры, собеседование, презентации на английском.</p></div></div>
+  </div>
+</div></section>
+
+<section id="price" class="band"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Цены</div>
+    <h2>Выберите свой ритм</h2>
+    <p class="sec-sub">Первый урок — бесплатный в любом тарифе. Оплата помесячно, без «заманивания» на год</p>
+  </div>
+  <div class="sets">
+    <div class="set">
+      <h3>Ритм</h3>
+      <div class="per">2 урока в неделю</div>
+      <div class="pp">190 <span>₽ / урок</span></div>
+      <ul>
+        <li>Мини-группа по уровню</li>
+        <li>Разговорный клуб</li>
+        <li>Домашка с проверкой</li>
+        <li>Отчёт по прогрессу</li>
+      </ul>
+      <a class="btn btn-outline" href="#quiz">Начать</a>
+    </div>
+    <div class="set hot">
+      <div class="hot-badge">Выбор студентов</div>
+      <h3>Ритм+</h3>
+      <div class="per">3 урока в неделю</div>
+      <div class="pp">175 <span>₽ / урок</span></div>
+      <ul>
+        <li>Всё из тарифа «Ритм»</li>
+        <li>Персональные аудио-задания</li>
+        <li>Разбор ошибок голосом</li>
+        <li>Связь с преподавателем в чате</li>
+      </ul>
+      <a class="btn" href="#quiz">Начать</a>
+    </div>
+    <div class="set">
+      <h3>Индивидуально</h3>
+      <div class="per">личный план</div>
+      <div class="pp">1 400 <span>₽ / урок</span></div>
+      <ul>
+        <li>1-на-1 с преподавателем</li>
+        <li>Программа под цель</li>
+        <li>Гибкое расписание</li>
+        <li>Подготовка к IELTS / интервью</li>
+      </ul>
+      <a class="btn btn-outline" href="#quiz">Начать</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="dark-cta"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Как начать</div>
+    <h2>Четыре шага до первого урока</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><b>01 · Тест</b><p>Определяете уровень за 2 минуты прямо на сайте.</p></div>
+    <div class="step"><b>02 · Пробный</b><p>Бесплатный урок: знакомство, цель, подбор группы.</p></div>
+    <div class="step"><b>03 · План</b><p>Получаете программу и расписание под свой ритм.</p></div>
+    <div class="step"><b>04 · Практика</b><p>Начинаете говорить с первой недели. Это нормально.</p></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Вопросы</div>
+    <h2>Частые вопросы</h2>
+  </div>
+  <div class="faq">
+    <details><summary>А если я всё забыл со школы?</summary><p class="faq-a">Так начинается большинство наших студентов. Начинаем с живого разговора «с нуля» — без «Present Perfect, страница 87»: всё через речь и понятные примеры.</p></details>
+    <details><summary>Кто преподаватели?</summary><p class="faq-a">Сертифицированные преподаватели с опытом онлайн и носители языка для разговорных клубов. У каждого — специализация: бизнес, собеседования, переезд.</p></details>
+    <details><summary>Что нужно для занятий?</summary><p class="faq-a">Ноутбук или телефон и наушники с микрофоном. Материалы, платформа и записи уроков — у нас, дополнительно ничего покупать не нужно.</p></details>
+    <details><summary>Можно заморозить обучение?</summary><p class="faq-a">Да, один раз в период обучения можно поставить паузу на 2–4 недели — командировка, сессия, что угодно. Оплата переносится.</p></details>
+    <details><summary>Как можно оплатить?</summary><p class="faq-a">Картой, наличными или криптой — при записи выберется удобный способ. Оплата помесячно, никаких автосписаний.</p></details>
+  </div>
+</div></section>
+
+<footer><div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px"><span>© Fluently, 2025</span><span><a href="/">Сделано в AA Web Studio</a></span></div></footer>
+
+<script>
+var QUIZ = [
+  {q:"Выберите правильный вариант: «Я живу здесь 5 лет»", opts:["I live here for 5 years","I have been living here for 5 years","I living here for 5 years"], pts:[1,3,0]},
+  {q:"Как сказать, что вы планируете встретиться завтра?", opts:["I'm meeting them tomorrow","I meet them tomorrow always","I will been meeting them"], pts:[3,1,0]},
+  {q:"Что означает «I'd rather stay home»?", opts:["Я бы лучше остался дома","Я должен остаться дома","Я часто остаюсь дома"], pts:[3,1,2]},
+  {q:"Собеседование на английском — вы…", opts:["молчите и паникуете","говорите уверенно почти всё","обходитесь базовыми фразами"], pts:[1,3,2]},
+  {q:"Смотрите ли вы контент на английском?", opts:["только с субтитрами на русском","с английскими субтитрами","без субтитров, свободно"], pts:[1,2,3]}
+];
+var LEVELS = [
+  {min:0,max:5,level:"Beginner (A1–A2)",txt:"Начнём с базы: простые фразы и уверенный старт. Подойдёт тариф «Ритм» — два урока в неделю дают ровную динамику."},
+  {min:6,max:10,level:"Intermediate (B1–B2)",txt:"База есть, разговор тормозит. Хороший выбор — «Ритм+»: больше практики и разбор ошибок раз в неделю."},
+  {min:11,max:15,level:"Advanced (C1)",txt:"Вы уже близко к свободе. Подтянем точность и профессиональные темы — смотрите тариф «Индивидуально» или воркшопы."}
+];
+var qi = 0, score = 0, history = [];
+var qText = document.getElementById("q-text");
+var qOpts = document.getElementById("q-opts");
+var qStep = document.getElementById("q-step");
+var qBar = document.getElementById("qbar-fill");
+var qBack = document.getElementById("q-back");
+var live = document.getElementById("quiz-live");
+var result = document.getElementById("q-result");
+
+function show() {
+  var item = QUIZ[qi];
+  qStep.textContent = "Вопрос " + (qi + 1) + " из " + QUIZ.length;
+  qBar.style.width = Math.round(qi / QUIZ.length * 100) + "%";
+  qText.textContent = item.q;
+  qOpts.innerHTML = "";
+  item.opts.forEach(function (o, i) {
+    var b = document.createElement("button");
+    b.className = "qopt"; b.type = "button"; b.textContent = o;
+    b.addEventListener("click", function () { answer(i); });
+    qOpts.appendChild(b);
+  });
+  qBack.hidden = qi === 0;
+}
+function answer(i) {
+  score += QUIZ[qi].pts[i];
+  history.push(i);
+  qi++;
+  if (qi < QUIZ.length) show();
+  else finish();
+}
+function finish() {
+  qBar.style.width = "100%";
+  var lvl = LEVELS.filter(function (l) { return score >= l.min && score <= l.max; })[0] || LEVELS[1];
+  live.style.display = "none";
+  result.style.display = "block";
+  document.getElementById("res-level").textContent = lvl.level;
+  document.getElementById("res-text").textContent = lvl.txt;
+}
+function restart() {
+  qi = 0; score = 0; history = [];
+  result.style.display = "none";
+  live.style.display = "block";
+  show();
+}
+function back() {
+  if (qi === 0) return;
+  qi--;
+  score -= QUIZ[qi].pts[history.pop()];
+  show();
+}
+qBack.addEventListener("click", back);
+document.getElementById("q-restart").addEventListener("click", restart);
+show();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prestige Motors — салон премиальных автомобилей</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
+<style>
+:root{--bg:#101114;--card:#17191d;--border:rgba(255,255,255,.09);--text:#eef0f3;--dim:#98a0ac;--red:#e05545;--red-soft:rgba(224,85,69,.12)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{width:min(1120px,92%);margin:0 auto}
+header{position:sticky;top:0;background:rgba(16,17,20,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.brand{font-weight:800;font-size:20px;letter-spacing:1.5px}
+.brand b{color:var(--red)}
+.nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:22px;font-size:15px;transition:.25s}
+.nav a.menu-link:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;max-width:100%;padding:12px 26px;background:var(--red);color:#fff;text-decoration:none;font-weight:700;border-radius:6px;transition:.25s;border:1px solid var(--red);cursor:pointer}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(224,85,69,.35)}
+.btn-outline{background:transparent;color:var(--red)}
+.btn-outline:hover{background:var(--red);color:#fff}
+.hero{position:relative;padding:120px 0 100px;background:url("https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1600&q=72&fit=crop") center/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,17,20,.84),rgba(16,17,20,.6) 50%,rgba(16,17,20,.95))}
+.hero .container{position:relative;z-index:2}
+.tagline{color:var(--red);text-transform:uppercase;letter-spacing:4px;font-size:12px;margin-bottom:18px}
+.hero h1{font-size:clamp(34px,6vw,60px);line-height:1.1;letter-spacing:-1px;margin-bottom:18px;max-width:640px}
+.hero h1 em{font-style:normal;color:var(--red)}
+.sub{color:#d5d9e0;max-width:480px;font-size:17px;margin-bottom:32px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.stats{display:flex;gap:44px;margin-top:52px;flex-wrap:wrap}
+.stat b{display:block;font-size:26px}
+.stat span{color:var(--dim);font-size:13px}
+section{padding:80px 0}
+.dark-band{background:#14161a;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sec-head{max-width:640px;margin:0 auto 40px;text-align:center}
+.sec-tag{color:var(--red);text-transform:uppercase;letter-spacing:3px;font-size:12px}
+h2{font-size:clamp(26px,4vw,38px);margin:10px 0 10px}
+.sec-sub{color:var(--dim)}
+.filters{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px}
+.filters label{display:block;color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:7px}
+.filters select,.filters input{width:100%;background:#0e0f12;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:11px 12px;font-size:15px}
+.filters select:focus{outline:none;border-color:var(--red)}
+.fbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:26px;margin-top:14px}
+.fcount{color:var(--dim);font-size:14px}
+.fcount b{color:var(--text)}
+input[type=range]{accent-color:var(--red)}
+.rgov{display:flex;justify-content:space-between;color:var(--dim);font-size:12px;margin-top:2px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.car{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
+.car:hover{transform:translateY(-6px);border-color:rgba(224,85,69,.45);box-shadow:0 24px 50px rgba(0,0,0,.45)}
+.car img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.car-body{padding:18px 20px 20px}
+.car-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.car-top h3{font-size:17px}
+.year{color:var(--dim);font-size:13px;white-space:nowrap}
+.car-specs{display:flex;gap:14px;color:var(--dim);font-size:13px;margin:10px 0 14px;flex-wrap:wrap}
+.cprice{font-size:19px;font-weight:800;color:var(--red)}
+.cbtn{margin-top:14px;display:flex;gap:10px}
+.cbtn .btn{padding:10px 16px;font-size:14px;flex:1}
+.empty{text-align:center;color:var(--dim);padding:48px 0;border:1px dashed var(--border);border-radius:14px;display:none;margin-top:4px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+.chip{background:var(--red-soft);border:1px solid rgba(224,85,69,.35);color:var(--red);border-radius:100px;padding:7px 16px;font-size:13px;font-weight:600}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px}
+.step b{color:var(--red);display:block;margin-bottom:8px;font-size:15px}
+.step p{color:var(--dim);font-size:14px}
+.faq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0 22px;transition:border-color .25s}
+.faq details[open]{border-color:var(--red)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 0;font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--red);font-size:24px;line-height:1;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .faq-a{color:var(--dim);padding:0 0 17px;font-size:15px}
+.cta-box{text-align:center;background:linear-gradient(135deg,#1b1519,#131116);border:1px solid rgba(224,85,69,.3);border-radius:18px;padding:60px 24px}
+.cta-box p{color:var(--dim);max-width:460px;margin:10px auto 26px}
+footer{border-top:1px solid var(--border);padding:26px 0;color:var(--dim);font-size:14px}
+footer a{color:var(--dim)}
+footer a:hover{color:var(--text)}
+@media(max-width:880px){.grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}.filters{grid-template-columns:repeat(2,1fr)}section{padding:56px 0}.hero{padding:80px 0 64px}}
+@media(max-width:560px){.grid,.steps,.filters{grid-template-columns:1fr}.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px;margin-left:16px}}
+</style>
+</head>
+<body>
+<header><div class="container"><nav class="nav">
+  <div class="brand">PRESTIGE <b>MOTORS</b></div>
+  <div style="display:flex;align-items:center">
+    <a class="menu-link" href="#catalog">Каталог</a>
+    <a class="menu-link" href="#trade">Trade-in</a>
+    <a class="menu-link" href="#faq">Вопросы</a>
+    <a class="btn" href="https://t.me/">Тест-драйв</a>
+  </div>
+</nav></div></header>
+
+<section class="hero"><div class="container">
+  <div class="tagline">Салон премиальных автомобилей · Минск</div>
+  <h1>Автомобиль под твой <em>характер</em></h1>
+  <p class="sub">Проверенные автомобили с полной историей обслуживания. Подбор по параметрам — за минуту, тест-драйв — в удобный день.</p>
+  <div class="hero-actions">
+    <a class="btn" href="#catalog">Подобрать автомобиль</a>
+    <a class="btn btn-outline" href="#trade">Оценить trade-in</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>140+</b><span>автомобилей в наличии</span></div>
+    <div class="stat"><b>8 лет</b><span>на рынке</span></div>
+    <div class="stat"><b>120</b><span>пунктов проверки</span></div>
+  </div>
+</div></section>
+
+<section id="catalog" class="dark-band"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Каталог</div>
+    <h2>Выбери своё</h2>
+    <p class="sec-sub">Фильтры работают сразу: марка, кузов, бюджет — список пересобирается на ходу</p>
+  </div>
+  <div class="filters">
+    <div>
+      <label for="f-brand">Марка</label>
+      <select id="f-brand"><option value="">Любая</option></select>
+    </div>
+    <div>
+      <label for="f-body">Кузов</label>
+      <select id="f-body"><option value="">Любой</option><option>Седан</option><option>Купе</option><option>Спорткар</option><option>SUV</option></select>
+    </div>
+    <div>
+      <label for="f-price">Бюджет до</label>
+      <input type="range" id="f-price" min="4000000" max="25000000" step="500000" value="25000000">
+      <div class="rgov"><span>4 млн</span><span id="f-price-label"></span></div>
+    </div>
+    <div>
+      <label for="f-sort">Сортировка</label>
+      <select id="f-sort"><option value="pop">Популярные</option><option value="asc">Цена ↑</option><option value="desc">Цена ↓</option></select>
+    </div>
+  </div>
+  <div class="fbar">
+    <div class="fcount">Найдено: <b id="f-found">0</b></div>
+    <button class="btn btn-outline" id="f-reset" type="button">Сбросить фильтры</button>
+  </div>
+  <div class="grid" id="cars-grid"></div>
+  <div class="empty" id="cars-empty">Под выбранные параметры автомобилей нет. Попробуйте расширить бюджет или сбросить фильтры.</div>
+  <div class="chips">
+    <span class="chip">Юридическая чистота</span>
+    <span class="chip">Полная диагностика</span>
+    <span class="chip">Помощь с лизингом</span>
+    <span class="chip">Доставка по РБ</span>
+  </div>
+</div></section>
+
+<section id="trade"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Trade-in</div>
+    <h2>Оцените свой автомобиль</h2>
+    <p class="sec-sub">Честный расчёт онлайн: укажите данные — покажем диапазон выкупа</p>
+  </div>
+  <div class="filters">
+    <div>
+      <label for="t-brand">Автомобиль</label>
+      <select id="t-brand">
+        <option value="bmw">BMW</option>
+        <option value="mercedes">Mercedes-Benz</option>
+        <option value="audi">Audi</option>
+        <option value="porsche">Porsche</option>
+        <option value="other">Другой</option>
+      </select>
+    </div>
+    <div>
+      <label for="t-year">Год выпуска</label>
+      <input type="number" id="t-year" min="1995" max="2026" value="2019">
+    </div>
+    <div>
+      <label for="t-mile">Пробег, тыс. км</label>
+      <input type="number" id="t-mile" min="0" max="500" value="80">
+    </div>
+    <div style="display:flex;align-items:flex-end">
+      <button class="btn" id="t-calc" type="button" style="width:100%">Рассчитать</button>
+    </div>
+  </div>
+  <div class="empty" id="t-result" style="border-style:solid;text-align:left"></div>
+</div></section>
+
+<section class="dark-band"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Как это работает</div>
+    <h2>От подбора до ключей</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><b>01 · Подбор</b><p>Фильтры или заявка: подберём варианты под бюджет и стиль.</p></div>
+    <div class="step"><b>02 · Осмотр</b><p>Диагностика 120 пунктов на подъёмнике, отчёт — на руки.</p></div>
+    <div class="step"><b>03 · Сделка</b><p>Trade-in, лизинг или полный расчёт — оформим на месте.</p></div>
+    <div class="step"><b>04 · Сопровождение</b><p>Страховка, шины, сервис — с которыми работаем годами.</p></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Вопросы</div>
+    <h2>Частые вопросы</h2>
+  </div>
+  <div class="faq">
+    <details><summary>Автомобили новые или с пробегом?</summary><p class="faq-a">В основном — тщательно отобранные с пробегом 1–5 лет: лучший баланс цены и состояния. Новые — под заказ по договорённости с дилером.</p></details>
+    <details><summary>Как проверяете историю автомобиля?</summary><p class="faq-a">Каждая машина проходит диагностику из 120 пунктов и проверку по базам: ДТП, залоги, ограничения, история обслуживания. Отчёты отдадим на руки при осмотре.</p></details>
+    <details><summary>Что с гарантией после покупки?</summary><p class="faq-a">На автомобили салона действует гарантия 6 месяцев на двигатель и трансмиссию. Если что-то не так — чиним за свой счёт.</p></details>
+    <details><summary>Как работает Trade-in?</summary><p class="faq-a">Оцениваем ваш автомобиль онлайн за 10 минут и идём в зачёт новой покупки. Разницу можно оплатить сразу или через лизинг.</p></details>
+    <details><summary>Можно ли оформить лизинг?</summary><p class="faq-a">Да, работаем с несколькими лизинговыми компаниями. Условия подбираем под ваш статус — ИП, юрлицо или физлицо.</p></details>
+  </div>
+</div></section>
+
+<section><div class="container">
+  <div class="cta-box">
+    <h2>Запишитесь на тест-драйв</h2>
+    <p>Напишите марку и удобный день — подготовим автомобиль к встрече. Руль испытывают, а не смотрят на фото.</p>
+    <a class="btn" href="https://t.me/">Написать в Telegram</a>
+  </div>
+</div></section>
+
+<footer><div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px"><span>© Prestige Motors, 2025</span><span><a href="/">Сделано в AA Web Studio</a></span></div></footer>
+
+<script>
+var CARS = [
+  {brand:"Mercedes-AMG", model:"GT", body:"Спорткар", year:2023, hp:585, km:"6 600", price:12900000, img:"https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=700&q=72&fit=crop", pop:5},
+  {brand:"Lamborghini", model:"Huracán", body:"Спорткар", year:2022, hp:640, km:"9 800", price:24500000, img:"https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=700&q=72&fit=crop", pop:5},
+  {brand:"BMW", model:"M340i xDrive", body:"Седан", year:2022, hp:374, km:"19 400", price:8400000, img:"https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=700&q=72&fit=crop", pop:4},
+  {brand:"BMW", model:"530i", body:"Седан", year:2021, hp:248, km:"34 200", price:6200000, img:"https://images.unsplash.com/photo-1555215695-3004980ad54e?w=700&q=72&fit=crop", pop:3},
+  {brand:"Range Rover", model:"Sport", body:"SUV", year:2022, hp:400, km:"21 700", price:9800000, img:"https://images.unsplash.com/photo-1563720223185-11003d516935?w=700&q=72&fit=crop", pop:4},
+  {brand:"Tesla", model:"Model S", body:"Седан", year:2023, hp:670, km:"11 900", price:7600000, img:"https://images.unsplash.com/photo-1542362567-b07e54358753?w=700&q=72&fit=crop", pop:4},
+  {brand:"Ford", model:"Mustang GT", body:"Купе", year:2021, hp:450, km:"28 300", price:5400000, img:"https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=700&q=72&fit=crop", pop:3}
+];
+
+var grid = document.getElementById("cars-grid");
+var empty = document.getElementById("cars-empty");
+var foundEl = document.getElementById("f-found");
+var brandSel = document.getElementById("f-brand");
+var bodySel = document.getElementById("f-body");
+var priceEl = document.getElementById("f-price");
+var priceLabel = document.getElementById("f-price-label");
+var sortSel = document.getElementById("f-sort");
+var resetBtn = document.getElementById("f-reset");
+
+(function fillBrands() {
+  var seen = {};
+  CARS.forEach(function (c) {
+    if (!seen[c.brand]) { seen[c.brand] = 1; brandSel.innerHTML += "<option>" + c.brand + "</option>"; }
+  });
+})();
+
+function fmt(n) {
+  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u2009") + " ₽";
+}
+
+function render() {
+  var brand = brandSel.value;
+  var body = bodySel.value;
+  var maxPrice = +priceEl.value;
+  var sort = sortSel.value;
+  priceLabel.textContent = "до " + fmt(maxPrice);
+
+  var list = CARS.filter(function (c) {
+    return (!brand || c.brand === brand) && (!body || c.body === body) && c.price <= maxPrice;
+  });
+
+  if (sort === "asc") list.sort(function (a, b) { return a.price - b.price; });
+  else if (sort === "desc") list.sort(function (a, b) { return b.price - a.price; });
+  else list.sort(function (a, b) { return b.pop - a.pop || b.year - a.year; });
+
+  foundEl.textContent = list.length;
+  grid.innerHTML = list.map(function (c) {
+    return "<div class=\"car\"><img src=\"" + c.img + "\" alt=\"" + c.brand + " " + c.model + "\">" +
+      "<div class=\"car-body\">" +
+        "<div class=\"car-top\"><h3>" + c.brand + " " + c.model + "</h3><span class=\"year\">" + c.year + "</span></div>" +
+        "<div class=\"car-specs\"><span>" + c.body + "</span><span>" + c.hp + " л.с.</span><span>" + c.km + " км</span></div>" +
+        "<div class=\"cprice\">" + fmt(c.price) + "</div>" +
+        "<div class=\"cbtn\"><a class=\"btn btn-outline\" href=\"https://t.me/\">Быстрый вопрос</a><a class=\"btn\" href=\"https://t.me/\">Тест-драйв</a></div>" +
+      "</div></div>";
+  }).join("");
+  empty.style.display = list.length ? "none" : "block";
+}
+
+[brandSel, bodySel, priceEl, sortSel].forEach(function (el) { el.addEventListener("input", render); });
+resetBtn.addEventListener("click", function () {
+  brandSel.value = ""; bodySel.value = ""; priceEl.value = priceEl.max; sortSel.value = "pop";
+  render();
+});
+render();
+
+document.getElementById("t-calc").addEventListener("click", function () {
+  var brandBase = { bmw: 3200000, mercedes: 3400000, audi: 3100000, porsche: 5200000, other: 2600000 };
+  var year = Math.min(Math.max(+document.getElementById("t-year").value || 2019, 1995), 2026);
+  var mile = Math.max(+document.getElementById("t-mile").value || 0, 0);
+  var base = brandBase[document.getElementById("t-brand").value] || 2600000;
+  var age = Math.max(0, 2026 - year);
+  var price = base * Math.pow(0.88, age) * Math.max(0.55, 1 - mile / 400);
+  var low = Math.round(price * 0.94 / 50000) * 50000;
+  var high = Math.round(price * 1.06 / 50000) * 50000;
+  var box = document.getElementById("t-result");
+  box.style.display = "block";
+  box.innerHTML = "<div style=\"padding:8px 6px\"><b style=\"font-size:17px\">Диапазон оценки: " +
+    fmt(low) + " — " + fmt(high) + "</b>" +
+    "<p style=\"color:var(--dim);margin-top:8px\">Расчёт предварительный. Точная цена — после осмотра за 40 минут: привозите автомобиль, уходите с цифрой на руках.</p>" +
+    "<a class=\"btn\" href=\"https://t.me/\" style=\"margin-top:14px\">Осмотр + точная цена</a></div>";
+  box.scrollIntoView({ behavior: "smooth", block: "center" });
+});
+</script>
+
+</body>
+</html>
