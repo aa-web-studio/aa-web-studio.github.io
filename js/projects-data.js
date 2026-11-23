@@ -168,7 +168,79 @@ var SITE_PROJECTS = [
     icon: "🏛️",
     url: "demo/residence/",
     img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=72&fit=crop",
+  },  {
+    id: "project-vela-nails",
+    title: "Студия маникюра Vela",
+    desc: "Лёгкая сайт-визитка мастера маникюра: услуги с ценами, преимущества, запись в Telegram. Собирается за день, контент меняется своими силами.",
+    category: "landing",
+    price: "от 200 BYN",
+    tags: ["Визитка", "Запись", "Быстрый старт"],
+    icon: "💅",
+    url: "demo/vela-nails/",
+    img: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=72&fit=crop"
   },
+  {
+    id: "project-profi-master",
+    title: "Мастер на час «ПрофиДом»",
+    desc: "Визитка бытового мастера: список услуг с ценами от, три шага вызова и кнопка заявки в мессенджер. Одностраничник без сложной логики.",
+    category: "landing",
+    price: "от 200 BYN",
+    tags: ["Визитка", "Услуги", "Заявка"],
+    icon: "🔧",
+    url: "demo/profi-master/",
+    img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=72&fit=crop"
+  },
+  {
+    id: "project-bean-brew",
+    title: "Промо открытия Bean & Brew",
+    desc: "Одностраничная промо-страница к открытию кофейни: живой обратный отсчёт до даты, акция первого гостя и сбор подписчиков в Telegram.",
+    category: "landing",
+    price: "от 120 BYN",
+    tags: ["Промо", "Отсчёт", "Мероприятие"],
+    icon: "☕",
+    url: "demo/bean-brew/"
+  },
+  {
+    id: "project-math-tutor",
+    title: "Онлайн-репетитор по математике",
+    desc: "Мини-лендинг репетитора: три формата занятий с ценами, FAQ на аккордеонах и запись на пробный урок. Светлый, аккуратный, без лишнего.",
+    category: "landing",
+    price: "от 80 BYN",
+    tags: ["Мини-лендинг", "FAQ", "Образование"],
+    icon: "📐",
+    url: "demo/math-tutor/",
+    img: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&q=72&fit=crop"
+  },
+  {
+    id: "project-fastcut",
+    title: "Экспресс-стрижка FastCut",
+    desc: "Мини-лендинг быстрого барбершопа: три шага обслуживания и прайс из трёх позиций. Идеален, когда нужен простой сайт за один вечер.",
+    category: "landing",
+    price: "от 80 BYN",
+    tags: ["Мини-лендинг", "Прайс", "Запуск"],
+    icon: "💈",
+    url: "demo/fastcut/",
+    img: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=800&q=72&fit=crop"
+  },
+  {
+    id: "project-fixes",
+    title: "Разовые правки на сайте",
+    desc: "Поправить тексты, заменить картинки, поменять цвета или контакты, доработать секцию. Точная цена зависит от объёма, старт — от 30 BYN.",
+    category: "service",
+    price: "от 30 BYN",
+    tags: ["Правки", "Контент", "Быстро"],
+    icon: "🛠️"
+  },
+  {
+    id: "project-support",
+    title: "Обновление и поддержка сайта",
+    desc: "Регулярное обновление контента: новости, цены, фото акций и мелкие доработки по мере роста. Пакеты обсуждаются индивидуально.",
+    category: "service",
+    price: "от 30 BYN",
+    tags: ["Поддержка", "Контент", "Месяц"],
+    icon: "🧰"
+  },
+
   {
     id: "project-detailing",
     title: "Детейлинг-студия BlackGlass",

@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     all: "Все",
     landing: "Лендинги",
     multi: "Многостраничные",
-    shop: "Магазины"
+    shop: "Магазины",
+    service: "Услуги и правки"
   };
 
   function esc(str) {
@@ -48,9 +49,11 @@ document.addEventListener("DOMContentLoaded", function () {
         ? '<p class="work-price">Стоимость: <span>' + esc(project.price) + "</span></p>"
         : "") +
       '<div class="work-actions">' +
-      '<a class="btn btn-primary btn-sm" href="' +
-      esc(project.url || "#") +
-      '" target="_blank" rel="noopener">Посмотреть сайт вживую</a>' +
+      (project.url
+        ? '<a class="btn btn-primary btn-sm" href="' +
+          esc(project.url) +
+          '" target="_blank" rel="noopener">Посмотреть сайт вживую</a>'
+        : "") +
       '<a class="btn btn-ghost btn-sm" href="contact.html?type=' +
       encodeURIComponent(project.category) +
       '&project=' +

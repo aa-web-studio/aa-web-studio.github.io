@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bean &amp; Brew — открытие кофейни</title>
+<style>
+:root { --bg: #171310; --panel: #201a15; --text: #f3ebe2; --dim: #a89a8b; --accent: #e8a54b; --border: rgba(255, 255, 255, 0.08); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.badge { display: inline-block; border: 1px solid var(--accent); color: var(--accent); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 999px; margin-bottom: 22px; }
+.hero { text-align: center; padding: 80px 0 50px; }
+.hero h1 { font-size: 52px; line-height: 1.1; letter-spacing: 1px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p { color: var(--dim); max-width: 520px; margin: 18px auto 0; }
+.timer { display: flex; justify-content: center; gap: 14px; margin: 40px 0; flex-wrap: wrap; }
+.tcell { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; width: 96px; padding: 16px 0; text-align: center; }
+.tcell b { display: block; font-size: 34px; color: var(--accent); font-variant-numeric: tabular-nums; }
+.tcell span { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); }
+.offer { background: linear-gradient(135deg, #2a2118, #201a15); border: 1px solid var(--border); border-radius: 20px; padding: 40px 30px; text-align: center; margin-bottom: 50px; }
+.offer h2 { font-size: 26px; }
+.offer h2 span { color: var(--accent); }
+.offer p { color: var(--dim); margin: 10px auto 26px; max-width: 440px; }
+.btn { display: inline-block; padding: 14px 32px; border-radius: 999px; background: var(--accent); color: #191410; text-decoration: none; font-weight: 700; font-size: 14px; transition: transform 0.25s; }
+.btn:hover { transform: translateY(-2px); }
+.guests { padding: 20px 0 70px; }
+.guests h2 { text-align: center; font-size: 24px; margin-bottom: 30px; }
+.perks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.perk { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: center; }
+.perk b { color: var(--accent); display: block; font-size: 22px; margin-bottom: 6px; }
+.perk span { color: var(--dim); font-size: 14px; }
+footer { padding: 30px 0 44px; text-align: center; color: var(--dim); font-size: 14px; border-top: 1px solid var(--border); }
+footer a { color: var(--text); }
+@media (max-width: 700px) {
+  .hero h1 { font-size: 34px; }
+  .perks { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="badge">Открытие — скоро</div>
+    <h1>Bean <em>&amp;</em> Brew</h1>
+    <p>Новая спешелти-кофейня в вашем квартале: зерно светлой обжарки, десерты местной кондитерки и столики у окна с видом на сквер.</p>
+    <div class="timer" id="timer">
+      <div class="tcell"><b id="d">00</b><span>дней</span></div>
+      <div class="tcell"><b id="h">00</b><span>часов</span></div>
+      <div class="tcell"><b id="m">00</b><span>минут</span></div>
+      <div class="tcell"><b id="s">00</b><span>секунд</span></div>
+    </div>
+  </div>
+
+  <div class="offer">
+    <h2>Первым гостям — <span>-50%</span> на любой напиток</h2>
+    <p>В день открытия и всю первую неделю. Напишите в Telegram — отправим промокод и напомним о дате.</p>
+    <a class="btn" href="https://t.me/Andrey_AlexandrovichAA" target="_blank" rel="noopener">Получить промокод</a>
+  </div>
+
+  <div class="guests">
+    <h2>Что ждёт гостей</h2>
+    <div class="perks">
+      <div class="perk"><b>Зерно</b><span>Альтернативная обжарка и два вида молока на выбор</span></div>
+      <div class="perk"><b>Десерты</b><span>Свежая выпечка привозится каждое утро из местной пекарни</span></div>
+      <div class="perk"><b>Кофе с собой</b><span>Своя кружка — скидка на каждый напиток</span></div>
+    </div>
+  </div>
+
+  <footer><a href="/">Сделано в AA Web Studio</a></footer>
+</div>
+<script>
+var target = new Date("2027-02-01T10:00:00");
+function tick() {
+  var diff = Math.max(0, target - new Date());
+  var d = Math.floor(diff / 864e5), h = Math.floor(diff / 36e5) % 24, m = Math.floor(diff / 6e4) % 60, s = Math.floor(diff / 1e3) % 60;
+  function two(n) { return n < 10 ? "0" + n : "" + n; }
+  document.getElementById("d").textContent = two(d);
+  document.getElementById("h").textContent = two(h);
+  document.getElementById("m").textContent = two(m);
+  document.getElementById("s").textContent = two(s);
+}
+setInterval(tick, 1000);
+tick();
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Математика с Мариной — онлайн-репетитор</title>
+<style>
+:root { --bg: #fbfaf6; --panel: #ffffff; --text: #232930; --dim: #6e7a85; --accent: #1f7a68; --soft: #eef6f2; --border: #e2e8e4; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.hero { text-align: center; padding: 70px 0 20px; }
+.hero .tag { color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+.hero h1 { font-size: 42px; line-height: 1.15; margin: 14px 0; }
+.hero h1 em { font-style: italic; color: var(--accent); font-family: Georgia, serif; }
+.hero p { color: var(--dim); max-width: 520px; margin: 0 auto 30px; }
+.btn { display: inline-block; padding: 14px 32px; border-radius: 999px; background: var(--text); color: #fff; text-decoration: none; font-weight: 600; font-size: 14px; transition: transform 0.25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn.accent { background: var(--accent); }
+section { padding: 40px 0 20px; }
+h2 { font-size: 26px; margin-bottom: 26px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 26px; }
+.card b { display: block; margin-bottom: 8px; }
+.card p { color: var(--dim); font-size: 14px; }
+.card .price { color: var(--accent); font-weight: 700; margin-top: 12px; display: block; }
+details { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; }
+summary { cursor: pointer; font-weight: 600; }
+details p { color: var(--dim); font-size: 14px; margin-top: 10px; }
+.cta { background: var(--soft); border-radius: 18px; text-align: center; padding: 46px 24px; margin: 50px 0 20px; }
+.cta h2 { margin-bottom: 8px; }
+.cta p { color: var(--dim); margin-bottom: 24px; }
+footer { padding: 26px 0 40px; text-align: center; color: var(--dim); font-size: 14px; }
+footer a { color: var(--text); }
+@media (max-width: 700px) {
+  .hero h1 { font-size: 30px; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="tag">Онлайн-репетитор</div>
+    <h1>Математика станет<br><em>понятной дисциплиной</em></h1>
+    <p>Занятия для 5–11 классов: догоняем школьную программу, готовим к ЦТ и контрольным. Первый пробный урок — знакомство и разбор уровня.</p>
+    <a class="btn accent" href="https://t.me/Andrey_AlexandrovichAA" target="_blank" rel="noopener">Записаться на пробный урок</a>
+  </div>
+
+  <section>
+    <h2>Форматы занятий</h2>
+    <div class="grid">
+      <div class="card">
+        <b>Подтягивание программы</b>
+        <p>Разбираем непонятные темы школьного курса, восстанавливаем базу и уверенность.</p>
+        <span class="price">от 25 BYN / урок</span>
+      </div>
+      <div class="card">
+        <b>Подготовка к ЦТ</b>
+        <p>Стратегия решения, типовые задания, разбор ошибок и тайминг на экзамене.</p>
+        <span class="price">от 30 BYN / урок</span>
+      </div>
+      <div class="card">
+        <b>Олимпиадный кружок</b>
+        <p>Нестандартные задачи и логика для тех, кому школьной программы мало.</p>
+        <span class="price">от 35 BYN / урок</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Частые вопросы</h2>
+    <details>
+      <summary>Как проходят уроки?</summary>
+      <p>По видеосвязи с виртуальной доской: видно решение шаг за шагом, конспект остаётся у ученика.</p>
+    </details>
+    <details>
+      <summary>Что нужно для первого занятия?</summary>
+      <p>Только тетрадь и последняя школьная оценка — на пробном уроке определяем уровень и план.</p>
+    </details>
+    <details>
+      <summary>Что если урок пропущен?</summary>
+      <p>Перенос бесплатный, если предупредили за сутки до занятия.</p>
+    </details>
+  </section>
+
+  <div class="cta">
+    <h2>Напишите — обсудим цель</h2>
+    <p>Расскажите про класс и текущие оценки, отвечу с планом занятий.</p>
+    <a class="btn accent" href="https://t.me/Andrey_AlexandrovichAA" target="_blank" rel="noopener">Написать в Telegram</a>
+  </div>
+
+  <footer><a href="/">Сделано в AA Web Studio</a></footer>
+</div>
+</body>
+</html>

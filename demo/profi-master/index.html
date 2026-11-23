@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ПрофиДом — мастер на час</title>
+<style>
+:root { --bg: #f3f6f8; --card: #ffffff; --text: #212b33; --dim: #71818d; --accent: #2f6ea5; --border: #dfe7ec; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+.wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+header { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; }
+.logo { font-weight: 800; font-size: 19px; letter-spacing: 0.5px; }
+.logo span { color: var(--accent); }
+.hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 30px 0 70px; }
+.hero h1 { font-size: 42px; line-height: 1.15; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p { color: var(--dim); margin: 16px 0 28px; max-width: 440px; }
+.hero-img { border-radius: 16px; overflow: hidden; box-shadow: 0 30px 70px rgba(30, 50, 70, 0.2); }
+.hero-img img { width: 100%; height: 420px; object-fit: cover; display: block; }
+.btn { display: inline-block; padding: 14px 30px; border-radius: 10px; background: var(--text); color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; transition: transform 0.25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn.accent { background: var(--accent); }
+section { padding: 60px 0; }
+.sec-head { text-align: center; margin-bottom: 44px; }
+.sec-head h2 { font-size: 30px; }
+.sec-head p { color: var(--dim); margin-top: 8px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.svc { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 26px; }
+.svc h3 { font-size: 18px; margin-bottom: 8px; }
+.svc p { color: var(--dim); font-size: 14px; margin-bottom: 12px; }
+.svc-price { color: var(--accent); font-weight: 700; }
+.steps { counter-reset: step; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.step { counter-increment: step; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 26px; }
+.step::before { content: counter(step); display: inline-flex; width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: #fff; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 12px; }
+.step b { display: block; margin-bottom: 6px; }
+.step span { color: var(--dim); font-size: 14px; }
+.cta { background: #21303b; color: #e8eef3; border-radius: 20px; text-align: center; padding: 60px 24px; }
+.cta h2 { font-size: 29px; }
+.cta p { opacity: 0.75; margin: 12px auto 28px; max-width: 480px; }
+footer { padding: 34px 0; text-align: center; color: var(--dim); font-size: 14px; }
+footer a { color: var(--text); }
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; padding-bottom: 40px; }
+  .hero h1 { font-size: 32px; }
+  .grid, .steps { grid-template-columns: 1fr; }
+  .hero-img img { height: 300px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">Профи<span>Дом</span></div>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Мастер на час<br><em>в день обращения</em></h1>
+      <p>Мелкий бытовой ремонт: электрика, сантехника, мебель, двери и замки. Приезжаю с инструментом и расходниками, работу подтверждаю чеком.</p>
+      <a class="btn accent" href="#order">Вызвать мастера</a>
+    </div>
+    <div class="hero-img"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=900&q=75&fit=crop" alt="Мастер за работой"></div>
+  </div>
+
+  <section>
+    <div class="sec-head"><h2>Что делаем</h2><p>Это не весь список — точную цену назову после осмотра</p></div>
+    <div class="grid">
+      <div class="svc">
+        <h3>Электрика</h3>
+        <p>Розетки, выключатели, люстры, устранение короткого замыкания, замена автомата.</p>
+        <div class="svc-price">от 25 BYN</div>
+      </div>
+      <div class="svc">
+        <h3>Сантехника</h3>
+        <p>Смесители, слив бачка, прочистка труб, замена прокладок и подключение техники.</p>
+        <div class="svc-price">от 25 BYN</div>
+      </div>
+      <div class="svc">
+        <h3>Двери и мебель</h3>
+        <p>Замена замков, регулировка створок, сборка мебели, навеска полок и картин.</p>
+        <div class="svc-price">от 20 BYN</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Как проходит вызов</h2></div>
+    <div class="steps">
+      <div class="step"><b>Заявка в Telegram</b><span>Прислать фото проблемы и адрес — сразу называю ориентир по цене</span></div>
+      <div class="step"><b>Выезд и осмотр</b><span>В удобный интервал, привожу свой инструмент и расходники</span></div>
+      <div class="step"><b>Работа и чек</b><span>Делаю, убираю за собой, показываю результат и выдаю чек</span></div>
+    </div>
+  </section>
+
+  <section id="order">
+    <div class="cta">
+      <h2>Опишите проблему — отвечу за 15 минут</h2>
+      <p>Фото в Telegram — и мастер уже в пути. Работаю без авансов за выезд по городу.</p>
+      <a class="btn accent" href="https://t.me/Andrey_AlexandrovichAA" target="_blank" rel="noopener">Написать в Telegram</a>
+    </div>
+  </section>
+
+  <footer><a href="/">Сделано в AA Web Studio</a></footer>
+</div>
+</body>
+</html>

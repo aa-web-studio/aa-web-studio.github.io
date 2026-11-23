@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FastCut — экспресс-стрижка</title>
+<style>
+:root { --bg: #0e1211; --panel: #151b19; --text: #eef4f1; --dim: #93a39c; --accent: #19c39a; --border: rgba(255, 255, 255, 0.08); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.hero { text-align: center; padding: 80px 0 20px; }
+.badge { display: inline-block; background: rgba(25, 195, 154, 0.12); color: var(--accent); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; padding: 7px 18px; border-radius: 999px; margin-bottom: 20px; }
+.badge::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 8px; animation: pulse 1.4s infinite; }
+@keyframes pulse { 50% { opacity: 0.3; } }
+.hero h1 { font-size: 46px; line-height: 1.1; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p { color: var(--dim); max-width: 500px; margin: 16px auto 30px; }
+.btn { display: inline-block; padding: 14px 32px; border-radius: 999px; background: var(--accent); color: #08130f; text-decoration: none; font-weight: 700; font-size: 14px; transition: transform 0.25s; }
+.btn:hover { transform: translateY(-2px); }
+section { padding: 40px 0 10px; }
+h2 { font-size: 26px; margin-bottom: 26px; text-align: center; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.step { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 26px; }
+.step b { color: var(--accent); font-size: 22px; display: block; margin-bottom: 8px; }
+.step span { color: var(--dim); font-size: 14px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.cut { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: center; }
+.cut h3 { font-size: 16px; }
+.cut p { color: var(--dim); font-size: 14px; margin: 8px 0 12px; }
+.cut b { color: var(--accent); font-size: 20px; }
+footer { padding: 40px 20px; text-align: center; color: var(--dim); font-size: 14px; }
+footer a { color: var(--text); }
+@media (max-width: 700px) {
+  .hero h1 { font-size: 32px; }
+  .steps, .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="badge">Свободное окно есть сегодня</div>
+    <h1>Стрижка за <em>25 минут</em><br>без записи за стол</h1>
+    <p>Экспресс-барбершоп у метро: вошёл, сел, вышел с ровной стрижкой. Опытные мастера, фиксированный прайс, кофе и Wi-Fi в зале ожидания.</p>
+    <a class="btn" href="https://t.me/Andrey_AlexandrovichAA" target="_blank" rel="noopener">Занять окно в Telegram</a>
+  </div>
+
+  <section>
+    <h2>Три шага — и готово</h2>
+    <div class="steps">
+      <div class="step"><b>01</b><span>Пишете в Telegram и выбираете удобный час</span></div>
+      <div class="step"><b>02</b><span>Подходите к назначенному времени без ожидания</span></div>
+      <div class="step"><b>03</b><span>25 минут на кресле — и вы с новой стрижкой</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Прайс</h2>
+    <div class="grid">
+      <div class="cut">
+        <h3>Экспресс-мужская</h3>
+        <p>Машинка плюс ножницы, без укладки</p>
+        <b>18 BYN</b>
+      </div>
+      <div class="cut">
+        <h3>Классика</h3>
+        <p>Стрижка ножницами, борода в подарок</p>
+        <b>25 BYN</b>
+      </div>
+      <div class="cut">
+        <h3>Фейд 0-1-0</h3>
+        <p>Аккуратный переход и линия виска</p>
+        <b>30 BYN</b>
+      </div>
+    </div>
+  </section>
+
+  <footer>Открыто ежедневно 10:00–21:00, ул. Примерная 1 · <a href="/">Сделано в AA Web Studio</a></footer>
+</div>
+</body>
+</html>
