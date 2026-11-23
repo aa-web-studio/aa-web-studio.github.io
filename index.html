@@ -337,6 +337,7 @@
       var grid = document.getElementById("featured-grid");
       if (!grid || typeof SITE_PROJECTS === "undefined") return;
 
+      var catLabels = { landing: "Лендинг", multi: "Многостраничный", shop: "Магазин", service: "Услуга" };
       var featured = SITE_PROJECTS.slice(0, 3);
       grid.innerHTML = featured.map(function (p) {
         var tags = (p.tags || []).slice(0, 3).map(function (t) {
@@ -344,7 +345,13 @@
         }).join("");
         return (
           '<a class="card work-card reveal" href="portfolio.html">' +
-          '<div class="work-preview"><span>' + p.icon + "</span></div>" +
+          '<div class="work-preview">' +
+          (p.img
+            ? '<img class="work-photo" src="' + p.img + '" alt="' + p.title + '" loading="lazy">'
+            : "<span>" + p.icon + "</span>") +
+          '<span class="preview-chip preview-cat">' + (catLabels[p.category] || "Проект") + "</span>" +
+          (p.price ? '<span class="preview-chip preview-price">' + p.price + "</span>" : "") +
+          "</div>" +
           '<div class="work-body">' +
           '<h3 class="work-title">' + p.title + "</h3>" +
           '<p class="work-desc">' + p.desc + "</p>" +
