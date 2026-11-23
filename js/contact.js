@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
       landing: "Лендинг",
       multi: "Многостраничный сайт",
       shop: "Интернет-магазин",
+      service: "Сервис / онлайн-услуга",
       other: "Другое"
     };
     var paymentLabels = {
