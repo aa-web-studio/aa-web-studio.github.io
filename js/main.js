@@ -61,4 +61,17 @@ document.addEventListener("DOMContentLoaded", function () {
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+
+  var progress = document.createElement("div");
+  progress.id = "scroll-progress";
+  document.body.appendChild(progress);
+
+  function updateProgress() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var done = max > 0 ? window.scrollY / max : 0;
+    progress.style.width = (done * 100).toFixed(2) + "%";
+  }
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("resize", updateProgress);
+  updateProgress();
 });
