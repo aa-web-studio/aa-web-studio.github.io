@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админ — AA Web Studio</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/jpeg" href="img/logo.jpg?v=2">
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <style>
+    body { padding-top: 0; }
+    .admin-wrap { min-height: 100vh; padding-top: calc(var(--header-h) + 48px); padding-bottom: 80px; }
+    .gate { max-width: 420px; margin: 0 auto; }
+    .gate-box { display: flex; flex-direction: column; gap: 16px; }
+    .gate input {
+      padding: 14px 18px; border-radius: 12px; border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04); color: var(--text); font-family: inherit; font-size: 16px;
+    }
+    .gate input:focus { outline: none; border-color: var(--border-strong); }
+    .gate-err { color: #ff8080; font-size: 14px; display: none; }
+    .admin-panel { display: none; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .admin-panel.open { display: grid; }
+    .admin-card { display: flex; flex-direction: column; gap: 14px; }
+    .admin-card h3 { font-size: 18px; }
+    .admin-card p { color: var(--text-dim); font-size: 14px; }
+    .admin-links { display: flex; flex-direction: column; gap: 10px; }
+    .admin-links a {
+      display: block; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03); color: var(--text); text-decoration: none;
+      font-size: 14px; font-weight: 600; transition: all 0.25s ease;
+    }
+    .admin-links a:hover { border-color: var(--border-strong); transform: translateX(4px); }
+    .admin-meta { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 13px; line-height: 1.9; }
+    #gate[hidden], #panel[hidden] { display: none; }
+  </style>
+</head>
+<body>
+
+  <main class="admin-wrap">
+    <div class="container">
+
+      <div class="section-head reveal visible" style="margin-bottom: 40px;">
+        <span class="section-tag">Служебный доступ</span>
+        <h2 class="section-title">Панель управления <span class="silver-text">AA Web Studio</span></h2>
+        <p class="section-sub">Статистика, каналы заказов и управление — в одном месте. Доступ только для владельца.</p>
+      </div>
+
+      <form class="gate card" id="gate">
+        <div class="gate-box">
+          <h3>Введите пароль</h3>
+          <input type="password" id="pass" placeholder="Пароль владельца" autocomplete="current-password">
+          <p class="gate-err" id="err">Пароль неверный. Попробуйте ещё раз.</p>
+          <button type="submit" class="btn btn-primary">Открыть панель</button>
+        </div>
+      </form>
+
+      <div class="admin-panel" id="panel">
+
+        <div class="card admin-card">
+          <h3>📊 Статистика сайта</h3>
+          <p>Счётчик Яндекс.Метрики № 114630010</p>
+          <div class="admin-links">
+            <a href="https://metrika.yandex.ru/dashboard?id=114630010" target="_blank" rel="noopener">Дашборд — общая статистика</a>
+            <a href="https://metrika.yandex.ru/online?id=114630010" target="_blank" rel="noopener">Онлайн-визиты — кто на сайте сейчас</a>
+            <a href="https://metrika.yandex.ru/dashboard?id=114630010#tab=webvisor" target="_blank" rel="noopener">Вебвизор — записи экрана посетителей</a>
+          </div>
+          <p>Шпаргалка: Посещаемость — отчёты по дням · Технологии — телефон/ПК · География — города</p>
+        </div>
+
+        <div class="card admin-card">
+          <h3>💼 Каналы заказов</h3>
+          <p>Все площадки, где продаёшь услуги</p>
+          <div class="admin-links">
+            <a href="https://kwork.com/user/andrey_alexandravich" target="_blank" rel="noopener">Kwork — профиль</a>
+            <a href="https://www.kufar.by/item/1096636232" target="_blank" rel="noopener">Kufar — объявление</a>
+            <a href="https://laborx.com/freelancers/users/id481226" target="_blank" rel="noopener">Laborx — профиль</a>
+            <a href="https://t.me/Andrey_AlexandrovichAA" target="_blank" rel="noopener">Telegram — личный чат</a>
+          </div>
+        </div>
+
+        <div class="card admin-card">
+          <h3>🌐 Сайт и репозиторий</h3>
+          <p>Живой сайт и исходный код</p>
+          <div class="admin-links">
+            <a href="index.html">Открыть сайт — главная</a>
+            <a href="portfolio.html">Открыть сайт — портфолио</a>
+            <a href="https://github.com/aa-web-studio/aa-web-studio.github.io" target="_blank" rel="noopener">GitHub — репозиторий</a>
+          </div>
+        </div>
+
+        <div class="card admin-card">
+          <h3>🧭 Быстрые действия</h3>
+          <p>Что делать, когда пришёл заказ или хочешь что-то обновить</p>
+          <div class="admin-links">
+            <a href="https://github.com/aa-web-studio/aa-web-studio.github.io/new/main" target="_blank" rel="noopener">Добавить файл на GitHub (если сам)</a>
+            <a href="https://metrika.yandex.ru/dashboard?id=114630010#goals" target="_blank" rel="noopener">Цели в Метрике — что сработало</a>
+          </div>
+          <p>Новое задание для студии — просто напиши мне в чат, я сделаю и задеплою.</p>
+        </div>
+
+        <div class="admin-meta">
+          Пароль меняется по запросу — просто скажи новый, я обновлю. Внутри панели нет платёжных данных: кошелёк и доступы живут только у тебя.
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var HASH = "46617f91de710fcbe53c748f7263293f4b75ff91cf003ef47a9aee4878a17cba";
+      var gate = document.getElementById("gate");
+      var panel = document.getElementById("panel");
+      var err = document.getElementById("err");
+      var passInput = document.getElementById("pass");
+
+      function toHex(buffer) {
+        var bytes = new Uint8Array(buffer);
+        var hex = "";
+        for (var i = 0; i < bytes.length; i++) {
+          hex += ("0" + bytes[i].toString(16)).slice(-2);
+        }
+        return hex;
+      }
+
+      function openPanel() {
+        gate.hidden = true;
+        panel.classList.add("open");
+        try { sessionStorage.setItem("aa_admin_ok", "1"); } catch (e) {}
+      }
+
+      if (sessionStorage.getItem("aa_admin_ok") === "1") {
+        openPanel();
+      }
+
+      gate.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var value = passInput.value;
+        if (!window.crypto || !crypto.subtle) {
+          err.textContent = "Браузер не поддерживает проверку пароля. Открой сайт по адресу https://aa-web-studio.github.io/admin.html";
+          err.style.display = "block";
+          return;
+        }
+        crypto.subtle.digest("SHA-256", new TextEncoder().encode(value)).then(function (buf) {
+          if (toHex(buf) === HASH) {
+            err.style.display = "none";
+            openPanel();
+          } else {
+            err.style.display = "block";
+            passInput.value = "";
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
