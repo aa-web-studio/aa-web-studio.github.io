@@ -50,6 +50,12 @@ h2{font-family:Georgia,serif;font-size:clamp(26px,4vw,38px);margin-bottom:10px}
 .fact .ic{font-size:26px;margin-bottom:10px}
 .fact h3{font-size:17px;margin-bottom:6px}
 .fact p{color:var(--dim);font-size:14px}
+.ptable{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.ptable th,.ptable td{padding:15px 20px;text-align:left;border-bottom:1px solid var(--border);font-size:15px}
+.ptable th{background:#1c1e21;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--dim)}
+.ptable td:last-child{font-weight:700;color:var(--silver);font-family:Georgia,serif;white-space:nowrap}
+.ptable tr:last-child td{border-bottom:none}
+.ptable tr:hover td{background:#1a1c1f}
 .cta{background:linear-gradient(135deg,rgba(215,218,222,.14),rgba(215,218,222,.04));border:1px solid rgba(215,218,222,.35);border-radius:16px;padding:56px 30px;text-align:center}
 footer{border-top:1px solid var(--border);padding:36px 0;color:var(--dim);font-size:14px}
 .fwrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
@@ -85,6 +91,20 @@ footer a{color:var(--silver);text-decoration:none}
     <div class="card reveal"><img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=600&q=70&fit=crop" alt=""><h3>Полировка кузова</h3><p>Убираем голограммы, паутинку и сколы. Восстановительная + защита воском.</p><div class="price">от 250 BYN</div></div>
     <div class="card reveal"><img src="https://images.unsplash.com/photo-1558317374-067fb5f30001?w=600&q=70&fit=crop" alt=""><h3>Керамика 9H</h3><p>Гидрофобный слой на 2–3 года: грязь скатывается, блеск держится.</p><div class="price">от 600 BYN</div></div>
     <div class="card reveal"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=600&q=70&fit=crop" alt=""><h3>Химчистка интерьера</h3><p>Сиденья, ковры и потолок в два слоя. Убираем запахи, не маскируем.</p><div class="price">от 200 BYN</div></div>
+  </div>
+</div></section>
+
+<section><div class="container">
+  <h2>Цены по классам кузова</h2>
+  <p class="sec-sub">Полный комплекс: мойка, полировка воском и защита. Керамика считается отдельно от класса</p>
+  <div style="overflow-x:auto">
+  <table class="ptable">
+    <tr><th>Комплекс</th><th>Седан</th><th>Кроссовер</th><th>Внедорожник / минивэн</th></tr>
+    <tr><td>Восстановительная полировка + воск</td><td>250 BYN</td><td>290 BYN</td><td>330 BYN</td></tr>
+    <tr><td>Керамика 9H, 2 слоя</td><td>600 BYN</td><td>700 BYN</td><td>800 BYN</td></tr>
+    <tr><td>Керамика 9H, 3 слоя с гарантией 3 года</td><td>850 BYN</td><td>950 BYN</td><td>1100 BYN</td></tr>
+    <tr><td>Химчистка интерьера в два слоя</td><td>200 BYN</td><td>240 BYN</td><td>280 BYN</td></tr>
+  </table>
   </div>
 </div></section>
 
