@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var success = document.getElementById("form-success");
   var typeSelect = document.getElementById("field-type");
-  var paymentSelect = document.getElementById("field-payment");
   var openedAt = Date.now();
 
   var params = new URLSearchParams(window.location.search);
@@ -38,6 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var elapsed = Date.now() - openedAt;
     var looksLikeBot = honeypot !== "" || elapsed < 2000;
 
+    var paymentInput = form.querySelector("input[name='payment']:checked");
+    var paymentValue = paymentInput ? paymentInput.value : "";
+
     if (!looksLikeBot) {
       var orders = [];
       try {
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
         name: name,
         contact: contact,
         type: typeSelect ? typeSelect.value : "",
-        payment: paymentSelect ? paymentSelect.value : "",
+        payment: paymentValue,
         comment: commentField ? commentField.value.trim() : ""
       });
       localStorage.setItem("site_orders", JSON.stringify(orders));
@@ -78,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Имя: " + name + "\n" +
         "Контакт: " + contact + "\n" +
         "Тип сайта: " + (typeLabels[typeSelect ? typeSelect.value : ""] || "Не указан") + "\n" +
-        "Оплата: " + (paymentLabels[paymentSelect ? paymentSelect.value : ""] || "Не указан") + "\n";
+        "Оплата: " + (paymentLabels[paymentValue] || "Не указан") + "\n";
       var comment = commentField ? commentField.value.trim() : "";
       if (comment) message += "Комментарий: " + comment;
 

@@ -18,7 +18,7 @@
   <meta name="twitter:title" content="Контакты и заказ — AA Web Studio">
   <meta name="twitter:description" content="Свяжитесь со мной на любой площадке или оставьте прямую заявку на сайт. Ответ в течение часа.">
   <meta name="twitter:image" content="https://aa-web-studio.github.io/img/og-cover.png?v=1">
-  <link rel="stylesheet" href="css/style.css?v=8">
+  <link rel="stylesheet" href="css/style.css?v=9">
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -74,7 +74,7 @@
           <div>
             <div class="contact-quick">
               <a href="https://t.me/Andrey_AlexandrovichAA" target="_blank" rel="noopener" class="quick-link reveal">
-                <div class="quick-icon">✈️</div>
+                <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
                 <div>
                   <b>Telegram</b>
                   <span>@Andrey_AlexandrovichAA — самый быстрый ответ</span>
@@ -82,7 +82,7 @@
                 <span class="quick-arrow">→</span>
               </a>
               <a href="https://kwork.com/web-development/55556027/one-page-business-card-website-responsive-design?ref=25591701" target="_blank" rel="noopener" class="quick-link reveal">
-                <div class="quick-icon">🛠</div>
+                <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg></div>
                 <div>
                   <b>Kwork</b>
                   <span>Заказ с безопасной сделкой</span>
@@ -90,7 +90,7 @@
                 <span class="quick-arrow">→</span>
               </a>
               <a href="https://www.kufar.by/item/1096636232" target="_blank" rel="noopener" class="quick-link reveal">
-                <div class="quick-icon">🏪</div>
+                <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
                 <div>
                   <b>Kufar</b>
                   <span>Объявление на Kufar — заказ через безопасный чат</span>
@@ -98,7 +98,7 @@
                 <span class="quick-arrow">→</span>
               </a>
               <a href="https://laborx.com/freelancers/users/id481226" target="_blank" rel="noopener" class="quick-link reveal">
-                <div class="quick-icon">🌍</div>
+                <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
                 <div>
                   <b>Laborx</b>
                   <span>Международная криптобиржа — оплата в USDT</span>
@@ -106,7 +106,7 @@
                 <span class="quick-arrow">→</span>
               </a>
               <div class="quick-link is-static reveal">
-                <div class="quick-icon">💠</div>
+                <div class="quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
                 <div>
                   <b>Оплата</b>
                   <span>На выбор: крипта (USDT TRC20), карта или договорённость — реквизиты вышлю в чате</span>
@@ -118,32 +118,42 @@
           <!-- Форма заявки -->
           <div id="order">
             <div class="card form-card reveal">
+              <div class="form-head">
+                <span class="section-tag">Заявка</span>
+                <h3 class="form-title">Обсудим <span class="silver-text">ваш проект</span></h3>
+                <p class="form-sub">Обязательные поля — только имя и контакт. Остальное поможет сделать задачу точнее, но можно заполнить позже. Отвечаю в течение часа.</p>
+              </div>
               <form id="order-form" novalidate>
-                <div class="form-group">
-                  <label for="field-name">Ваше имя</label>
-                  <input type="text" id="field-name" name="name" placeholder="Как к вам обращаться" required>
-                </div>
-                <div class="form-group">
-                  <label for="field-contact">Контакт для связи</label>
-                  <input type="text" id="field-contact" name="contact" placeholder="Telegram, e-mail или телефон" required>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="field-name">Ваше имя *</label>
+                    <input type="text" id="field-name" name="name" placeholder="Как к вам обращаться" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="field-contact">Контакт для связи *</label>
+                    <input type="text" id="field-contact" name="contact" placeholder="Telegram, e-mail или телефон" required>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="field-type">Тип сайта</label>
                   <select id="field-type" name="type">
-                    <option value="landing">Лендинг</option>
-                    <option value="multi">Многостраничный сайт</option>
-                    <option value="shop">Интернет-магазин</option>
-                    <option value="service">Правки / поддержка</option>
-                    <option value="other">Другое / не определился</option>
-                  </select>
+                      <option value="landing">Лендинг</option>
+                      <option value="multi">Многостраничный сайт</option>
+                      <option value="shop">Интернет-магазин</option>
+                      <option value="service">Правки / поддержка</option>
+                      <option value="other">Другое / не определился</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                  <label for="field-payment">Способ оплаты</label>
-                  <select id="field-payment" name="payment">
-                    <option value="usdt">Крипта (USDT TRC20)</option>
-                    <option value="card">Банковская карта</option>
-                    <option value="agreed">По договорённости</option>
-                  </select>
+                  <label>Способ оплаты</label>
+                  <div class="form-chips">
+                    <input type="radio" id="pay-usdt" name="payment" value="usdt" checked>
+                    <label for="pay-usdt">Крипта · USDT TRC20</label>
+                    <input type="radio" id="pay-card" name="payment" value="card">
+                    <label for="pay-card">Банковская карта</label>
+                    <input type="radio" id="pay-agreed" name="payment" value="agreed">
+                    <label for="pay-agreed">По договорённости</label>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="field-comment">Комментарий к задаче</label>
@@ -160,7 +170,7 @@
               </form>
 
               <div class="form-success" id="form-success">
-                <div class="big">✅</div>
+                <div class="form-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="56" height="56" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg></div>
                 <h3>Заявка готова к отправке!</h3>
                 <p>Мы открыли Telegram с готовым сообщением — проверьте его и нажмите «Отправить».</p>
                 <p style="margin-top: 18px;">
@@ -212,6 +222,6 @@
   <script src="js/projects-data.js?v=7"></script>
   <script src="js/main.js?v=2"></script>
   <script src="js/protect.js"></script>
-  <script src="js/contact.js?v=2"></script>
+  <script src="js/contact.js?v=3"></script>
 </body>
 </html>
