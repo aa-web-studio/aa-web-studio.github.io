@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var success = document.getElementById("form-success");
   var typeSelect = document.getElementById("field-type");
+  var paymentSelect = document.getElementById("field-payment");
   var openedAt = Date.now();
 
   var params = new URLSearchParams(window.location.search);
@@ -50,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
         name: name,
         contact: contact,
         type: typeSelect ? typeSelect.value : "",
+        payment: paymentSelect ? paymentSelect.value : "",
         comment: commentField ? commentField.value.trim() : ""
       });
       localStorage.setItem("site_orders", JSON.stringify(orders));
@@ -64,12 +66,18 @@ document.addEventListener("DOMContentLoaded", function () {
       shop: "Интернет-магазин",
       other: "Другое"
     };
+    var paymentLabels = {
+      usdt: "Крипта (USDT TRC20)",
+      card: "Банковская карта",
+      agreed: "По договорённости"
+    };
     if (!looksLikeBot) {
       var message =
         "Здравствуйте, Andrey! Хочу заказать сайт.\n\n" +
         "Имя: " + name + "\n" +
         "Контакт: " + contact + "\n" +
-        "Тип сайта: " + (typeLabels[typeSelect ? typeSelect.value : ""] || "Не указан") + "\n";
+        "Тип сайта: " + (typeLabels[typeSelect ? typeSelect.value : ""] || "Не указан") + "\n" +
+        "Оплата: " + (paymentLabels[paymentSelect ? paymentSelect.value : ""] || "Не указан") + "\n";
       var comment = commentField ? commentField.value.trim() : "";
       if (comment) message += "Комментарий: " + comment;
 

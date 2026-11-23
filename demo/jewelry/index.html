@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURÉLIA — ювелирный дом</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+<style>
+:root{--bg:#0e0d0b;--card:#171512;--border:rgba(255,255,255,.09);--text:#f1ece3;--dim:#9c948a;--gold:#d4b872;--gold-soft:rgba(212,184,114,.14)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.serif{font-family:Georgia,"Times New Roman",serif}
+.container{width:min(1080px,92%);margin:0 auto}
+header{position:sticky;top:0;background:rgba(14,13,11,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:70px}
+.brand{font-family:Georgia,serif;font-weight:700;font-size:21px;letter-spacing:4px;text-transform:uppercase}
+.brand b{color:var(--gold)}
+.nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:22px;font-size:15px;transition:.25s}
+.nav a.menu-link:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;max-width:100%;padding:12px 28px;background:var(--gold);color:#141210;text-decoration:none;font-weight:700;border-radius:6px;transition:.25s;border:1px solid var(--gold)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(212,184,114,.3)}
+.btn-outline{background:transparent;color:var(--gold)}
+.btn-outline:hover{background:var(--gold);color:#141210}
+.hero{position:relative;overflow:hidden;padding:100px 0 80px;background:radial-gradient(600px 340px at 80% 10%,rgba(212,184,114,.12),transparent 70%),radial-gradient(420px 280px at 0% 95%,rgba(212,184,114,.07),transparent 70%)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.tagline{color:var(--gold);text-transform:uppercase;letter-spacing:4px;font-size:12px;margin-bottom:20px}
+.hero h1{font-size:clamp(34px,5.5vw,58px);line-height:1.12;letter-spacing:-.5px;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.sub{color:var(--dim);max-width:460px;font-size:17px;margin-bottom:34px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-img{border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.hero-img img{width:100%;height:440px;object-fit:cover;display:block}
+section{padding:80px 0}
+.sec-head{text-align:center;max-width:600px;margin:0 auto 48px}
+.sec-tag{color:var(--gold);text-transform:uppercase;letter-spacing:3px;font-size:12px}
+h2{font-size:clamp(26px,4vw,38px);margin:10px 0 12px}
+.sec-sub{color:var(--dim)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(0,0,0,.45);border-color:rgba(212,184,114,.4)}
+.card img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:#faf9f7}
+.card-body{padding:20px}
+.card-body h3{font-size:17px;margin-bottom:6px}
+.card-body p{color:var(--dim);font-size:14px;margin-bottom:12px}
+.price{font-weight:800;color:var(--gold);font-size:18px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.split img{width:100%;border-radius:14px;border:1px solid var(--border);object-fit:cover;display:block}
+.quote{font-size:19px;line-height:1.7;margin:18px 0}
+.quote b{color:var(--gold)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+.fact{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center}
+.fact b{display:block;font-size:24px;color:var(--gold)}
+.fact span{color:var(--dim);font-size:13px}
+.dark-band{background:#141210;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px}
+.step b{color:var(--gold);display:block;margin-bottom:8px;font-size:15px}
+.step p{color:var(--dim);font-size:14px}
+.faq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0 22px;transition:border-color .25s}
+.faq details[open]{border-color:var(--gold)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 0;font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--gold);font-size:24px;line-height:1;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .faq-a{color:var(--dim);padding:0 0 17px;font-size:15px}
+.cta-box{text-align:center;background:linear-gradient(135deg,#1a1712,#12100c);border:1px solid rgba(212,184,114,.25);border-radius:18px;padding:60px 24px}
+.cta-box p{color:var(--dim);max-width:460px;margin:10px auto 26px}
+footer{border-top:1px solid var(--border);padding:26px 0;color:var(--dim);font-size:14px}
+footer a{color:var(--dim)}
+footer a:hover{color:var(--text)}
+@media(max-width:880px){.hero-grid,.split{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}section{padding:56px 0}.hero{padding:60px 0 56px}.hero-img img{height:300px}}
+@media(max-width:560px){.grid,.steps{grid-template-columns:1fr}.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px;margin-left:16px}}
+</style>
+</head>
+<body>
+<header><div class="container"><nav class="nav">
+  <div class="brand">AURÉL<b>IA</b></div>
+  <div style="display:flex;align-items:center">
+    <a class="menu-link" href="#collections">Коллекции</a>
+    <a class="menu-link" href="#catalog">Каталог</a>
+    <a class="menu-link" href="#atelier">Мастерская</a>
+    <a class="menu-link" href="#faq">Вопросы</a>
+    <a class="btn" href="https://t.me/">Записаться в бутик</a>
+  </div>
+</nav></div></header>
+
+<section class="hero"><div class="container"><div class="hero-grid">
+  <div>
+    <div class="tagline">Ювелирный дом · с 1998 года</div>
+    <h1 class="serif">Украшения, которые<br><em>переживают поколения</em></h1>
+    <p class="sub">Собственные мастерские: от эскиза до закрепки камня. Дизайн, о котором не надо кричать, и качество, которое видно на свету.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#catalog">Смотреть каталог</a>
+      <a class="btn btn-outline" href="#atelier">О мастерской</a>
+    </div>
+  </div>
+  <div class="hero-img"><img src="https://images.unsplash.com/photo-1633934542430-0905ccb5f050?w=900&q=75&fit=crop" alt="Ювелирное украшение ручной работы"></div>
+</div></div></section>
+
+<section id="collections" class="dark-band"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Коллекции</div>
+    <h2>Три линии дома</h2>
+    <p class="sec-sub">Каждая линия живёт по своим правилам: от строгой классики до свободной пластики</p>
+  </div>
+  <div class="grid">
+    <div class="card"><img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=700&q=72&fit=crop" alt="Жемчужное колье"><div class="card-body"><h3>CLASSIQUE · Жемчуг</h3><p>Морской жемчуг, отсортированный по блеску вручную. Застёжки — из 18-каратного золота.</p><div class="price">от 84 000 ₽</div></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=700&q=72&fit=crop" alt="Кольцо с камнем"><div class="card-body"><h3>ÉCLAT · Кольца</h3><p>Белое и жёлтое золото, бриллианты с сертификатом GIA. Роскошь первого взгляда — и сотого.</p><div class="price">от 126 000 ₽</div></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=700&q=72&fit=crop" alt="Слоистое колье с бриллиантовым кулоном"><div class="card-body"><h3>NOMADE · Колье</h3><p>Свободная пластика звеньев: колье струится по линии ключиц и не ощущается на шее.</p><div class="price">от 74 500 ₽</div></div></div>
+  </div>
+</div></section>
+
+<section id="catalog"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Каталог</div>
+    <h2>Выбранное из витрины</h2>
+    <p class="sec-sub">Каждое украшение уникально: повтор с правками — под ваш размер и камень</p>
+  </div>
+  <div class="grid">
+    <div class="card"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=700&q=72&fit=crop" alt="Широкий золотой браслет"><div class="card-body"><h3>Браслет «Гранадо»</h3><p>Плотный браслет с зернью, ручная чеканка. Размеры 16–19 см.</p><div class="price">92 000 ₽</div></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=700&q=72&fit=crop" alt="Кольцо с камнем"><div class="card-body"><h3>Кольцо «Изабель»</h3><p>Центральный сапфир 1,2 ct, плечи из бриллиантов. Сертификат прилагается.</p><div class="price">148 000 ₽</div></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=700&q=72&fit=crop" alt="Серьги с сапфирами"><div class="card-body"><h3>Серьги «Марианна»</h3><p>Синие сапфиры в обрамлении золота. Тихий акцент вечера.</p><div class="price">96 500 ₽</div></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?w=700&q=72&fit=crop" alt="Серьги на тёмном фоне"><div class="card-body"><h3>Серьги «Молода»</h3><p>Вытянутая капля, строгий блеск. Соберут вечерний образ одной подвеской.</p><div class="price">68 000 ₽</div></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=700&q=72&fit=crop" alt="Золотая цепочка-браслет"><div class="card-body"><h3>Браслет «Шале»</h3><p>Плетение двойной ромб, золото 585. Подходит для гравировки памятной даты.</p><div class="price">38 000 ₽</div></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=700&q=72&fit=crop" alt="Колье с кулоном из золота"><div class="card-body"><h3>Колье «Лумина»</h3><p>Сложное звено-каскад, ручная пайка. Вечерний образ собирается одним движением.</p><div class="price">104 000 ₽</div></div></div>
+  </div>
+</div></section>
+
+<section id="atelier"><div class="container"><div class="split">
+  <img src="https://images.unsplash.com/photo-1620656798579-1984d9e87df7?w=800&q=72&fit=crop" alt="Украшения из дома AURÉLIA" style="aspect-ratio:4/3">
+  <div>
+    <div class="sec-tag">Мастерская</div>
+    <h2>От эскиза до закрепки</h2>
+    <p class="quote" style="color:var(--dim)">«Украшение делается не для витрины, а для человека. Сначала слушаем, потом рисуем.» — <b>главный мастер дома</b></p>
+    <p style="color:var(--dim)">Своя ювелирная студия в Минске: 3D-моделирование до выреза, камни с сертификатами, примерка восковки и правки без ограничений. Каждое изделие — с паспортом и клеймом пробирной палаты.</p>
+    <div class="facts">
+      <div class="fact"><b>25 лет</b><span>дому и мастерским</span></div>
+      <div class="fact"><b>2 000+</b><span>изделий на заказ</span></div>
+      <div class="fact"><b>98%</b><span>сдают работы не с первого эскиза</span></div>
+    </div>
+  </div>
+</div></div></section>
+
+<section class="dark-band"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Процесс</div>
+    <h2>Как рождается ваш заказ</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><b>01 · Беседа</b><p>История повода, образ, бюджет. Без давления — украшение должно радовать годы.</p></div>
+    <div class="step"><b>02 · Эскизы и 3D</b><p>2–3 варианта от идеи до точной 3D-модели, примерка восковки.</p></div>
+    <div class="step"><b>03 · Мастерская</b><p>Литьё, пайка, закрепка камня. Фотоотчёт на каждом ключевом этапе.</p></div>
+    <div class="step"><b>04 · Паспорт и выдача</b><p>Клеймо, паспорт, подарочная упаковка. Правки по размеру — бесплатно.</p></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Вопросы</div>
+    <h2>Частые вопросы</h2>
+  </div>
+  <div class="faq">
+    <details><summary>Можно ли заказать украшение по своему эскизу?</summary><p class="faq-a">Да, это основной формат работы мастерской. Подойдёт набросок на бумаге, фото вдохновения или референс — смоделируем и согласуем до финальной модели.</p></details>
+    <details><summary>Откуда камни и есть ли сертификаты?</summary><p class="faq-a">Работаем только с поставщиками, дающими сертификаты: бриллианты — GIA/IGI, самоцветы — геммологические лаборатории. Сертификат передаётся вместе с изделием.</p></details>
+    <details><summary>Сколько делается индивидуальный заказ?</summary><p class="faq-a">Обычно 2–4 недели: неделя на 3D-модель и восковку, остальное — мастерская. К конкретной дате заложим запас и предупредим.</p></details>
+    <details><summary>Что с гарантией и правками?</summary><p class="faq-a">Гарантия на изделия — 2 года. Изменение размера и полировка — бесплатно и пожизненно: кольца носятся годами, мы это знаем.</p></details>
+    <details><summary>Можно ли примерить перед покупкой?</summary><p class="faq-a">Да, бутик принимает по записи: покажем витрину, померим кольца, подскажем по размеру. Кофе и никакого «надо брать сейчас».</p></details>
+  </div>
+</div></section>
+
+<section><div class="container">
+  <div class="cta-box">
+    <h2 class="serif">Запишитесь в бутик</h2>
+    <p>Витрина обновляется каждую неделю. Приходите с историей и образом — подберём украшение, а не «товар».</p>
+    <a class="btn" href="https://t.me/">Написать в Telegram</a>
+  </div>
+</div></section>
+
+<footer><div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px"><span>© AURÉLIA, 2025</span><span><a href="/">Сделано в AA Web Studio</a></span></div></footer>
+
+</body>
+</html>

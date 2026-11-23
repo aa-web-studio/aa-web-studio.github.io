@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumière — авторская кухня</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>">
+<style>
+:root{--bg:#121110;--card:#1a1815;--border:rgba(255,255,255,.09);--text:#f2ede4;--dim:#a19a8e;--brass:#c9a15e}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.serif{font-family:Georgia,"Times New Roman",serif;font-style:italic}
+.container{width:min(1080px,92%);margin:0 auto}
+header{position:sticky;top:0;background:rgba(18,17,16,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:70px}
+.brand{font-family:Georgia,serif;font-style:italic;font-weight:700;font-size:22px;letter-spacing:1px}
+.nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:22px;font-size:15px;transition:.25s}
+.nav a.menu-link:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;max-width:100%;padding:12px 28px;background:var(--brass);color:#191612;text-decoration:none;font-weight:700;border-radius:6px;transition:.25s;border:1px solid var(--brass)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(201,161,94,.3)}
+.btn-outline{background:transparent;color:var(--brass)}
+.btn-outline:hover{background:var(--brass);color:#191612}
+.hero{position:relative;padding:120px 0 110px;background:url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=72&fit=crop") center/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,17,16,.82),rgba(18,17,16,.66) 55%,rgba(18,17,16,.94))}
+.hero .container{position:relative;z-index:2;text-align:center}
+.tagline{color:var(--brass);text-transform:uppercase;letter-spacing:5px;font-size:12px;margin-bottom:20px}
+.hero h1{font-size:clamp(36px,6vw,64px);line-height:1.1;letter-spacing:-.5px;margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--brass)}
+.sub{color:#d8d2c6;max-width:520px;font-size:17px;margin:0 auto 36px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+section{padding:80px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 48px}
+.sec-tag{color:var(--brass);text-transform:uppercase;letter-spacing:3px;font-size:12px}
+h2{font-size:clamp(26px,4vw,38px);margin:10px 0 12px}
+.sec-sub{color:var(--dim)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.sets{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.set{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px 26px;display:flex;flex-direction:column;transition:transform .3s,border-color .3s,box-shadow .3s}
+.set:hover{transform:translateY(-6px);border-color:rgba(201,161,94,.45);box-shadow:0 24px 50px rgba(0,0,0,.45)}
+.set h3{font-family:Georgia,serif;font-style:italic;font-size:22px;margin-bottom:6px}
+.set .servings{color:var(--brass);font-size:13px;text-transform:uppercase;letter-spacing:2px;margin-bottom:18px}
+.set ul{list-style:none;color:var(--dim);font-size:14px;margin-bottom:22px}
+.set li{padding:7px 0;border-bottom:1px dashed var(--border)}
+.set li:last-child{border-bottom:none}
+.set .price{margin-top:auto;font-size:24px;font-weight:800;color:var(--brass)}
+.set .price span{font-size:13px;color:var(--dim);font-weight:400}
+.set .btn{margin-top:18px}
+.chef{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center}
+.chef img{width:100%;border-radius:14px;border:1px solid var(--border);object-fit:cover;aspect-ratio:4/5;display:block}
+blockquote{font-family:Georgia,serif;font-style:italic;font-size:20px;line-height:1.7;margin:18px 0;color:var(--text)}
+blockquote b{color:var(--brass)}
+.menu-list{max-width:680px;margin:0 auto}
+.menu-item{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:16px 0;border-bottom:1px solid var(--border)}
+.menu-item:last-child{border-bottom:none}
+.mi-name{font-weight:600}
+.mi-name span{display:block;color:var(--dim);font-weight:400;font-size:13px;margin-top:3px}
+.mi-dots{flex:1;border-bottom:1px dotted var(--border);transform:translateY(-4px)}
+.mi-price{color:var(--brass);font-weight:700;white-space:nowrap}
+.faq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0 22px;transition:border-color .25s}
+.faq details[open]{border-color:var(--brass)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 0;font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--brass);font-size:24px;line-height:1;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .faq-a{color:var(--dim);padding:0 0 17px;font-size:15px}
+.dark-band{background:#171512;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cta-box{text-align:center;background:linear-gradient(135deg,#1d1a15,#141210);border:1px solid rgba(201,161,94,.3);border-radius:18px;padding:60px 24px}
+.cta-box p{color:var(--dim);max-width:480px;margin:10px auto 26px}
+footer{border-top:1px solid var(--border);padding:26px 0;color:var(--dim);font-size:14px}
+footer a{color:var(--dim)}
+footer a:hover{color:var(--text)}
+@media(max-width:880px){.grid,.sets{grid-template-columns:repeat(2,1fr)}.chef{grid-template-columns:1fr}section{padding:56px 0}.hero{padding:80px 0 70px}}
+@media(max-width:560px){.grid,.sets{grid-template-columns:1fr}.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px;margin-left:16px}.mi-dots{display:none}}
+</style>
+</head>
+<body>
+<header><div class="container"><nav class="nav">
+  <div class="brand">Lumière</div>
+  <div style="display:flex;align-items:center">
+    <a class="menu-link" href="#chef">Шеф</a>
+    <a class="menu-link" href="#sets">Дегустация</a>
+    <a class="menu-link" href="#menu">Меню</a>
+    <a class="menu-link" href="#faq">Вопросы</a>
+    <a class="btn" href="#book">Забронировать</a>
+  </div>
+</nav></div></header>
+
+<section class="hero"><div class="container">
+  <div class="tagline">Ресторан авторской кухни · Минск</div>
+  <h1 class="serif">Вечер, который<br><em>останется в памяти</em></h1>
+  <p class="sub">Восемь подач из локальных продуктов, камин вместо шума и вина, о которых хочется слушать истории. Мы располагаем всего 30 столами — резервируем заранее.</p>
+  <div class="hero-actions">
+    <a class="btn" href="#sets">Дегустационные сеты</a>
+    <a class="btn btn-outline" href="#book">Забронировать</a>
+  </div>
+</div></section>
+
+<section id="sets" class="dark-band"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Дегустация</div>
+    <h2>Три сета на выбор</h2>
+    <p class="sec-sub">Меню меняется каждые три недели — из продуктов этого сезона</p>
+  </div>
+  <div class="sets">
+    <div class="set">
+      <h3>Начало</h3>
+      <div class="servings">5 подач · ~1,5 часа</div>
+      <ul>
+        <li>Закуска из слабосолёного лосося</li>
+        <li>Тартар из говядины с каперсами</li>
+        <li>Ризотто с белыми грибами</li>
+        <li>Рыба дня с овощами гриль</li>
+        <li>Десерт от шефа</li>
+      </ul>
+      <div class="price">4 900 <span>₽ / гость</span></div>
+      <a class="btn btn-outline" href="#book">Забронировать</a>
+    </div>
+    <div class="set">
+      <h3>Signature</h3>
+      <div class="servings">7 подач · ~2,5 часа</div>
+      <ul>
+        <li>Холодная закуска сезона</li>
+        <li>Утка с печёными яблоками</li>
+        <li>Печень с портвейном</li>
+        <li>Рыба дня на бульоне из трав</li>
+        <li>Мясо длительного томления</li>
+        <li>Сырная тарелка от шефа</li>
+        <li>Десерт Lumière</li>
+      </ul>
+      <div class="price">7 400 <span>₽ / гость</span></div>
+      <a class="btn" href="#book">Забронировать</a>
+    </div>
+    <div class="set">
+      <h3>Сомелье</h3>
+      <div class="servings">7 подач + 7 вин · ~3 часа</div>
+      <ul>
+        <li>Всё из сета Signature</li>
+        <li>К каждой подаче — 75 мл вина</li>
+        <li>Рассказ сомелье об истории вин</li>
+        <li>Вина Италии и Франции</li>
+        <li>Лучший формат на подарок</li>
+      </ul>
+      <div class="price">11 900 <span>₽ / гость</span></div>
+      <a class="btn btn-outline" href="#book">Забронировать</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="chef"><div class="container"><div class="chef">
+  <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&q=72&fit=crop" alt="Шеф-повар за работой">
+  <div>
+    <div class="sec-tag">Шеф</div>
+    <h2>Кухня без компромиссов</h2>
+    <blockquote>«Продукт важнее соуса. Мы не прячем вкус — мы его усиливаем.» — <b>Антон Шумский, шеф-повар</b></blockquote>
+    <p style="color:var(--dim)">Пятнадцать лет в профессии: от кухонь европейских отелей до авторского меню дома Lumière. Покупаем продукты у местных ферм, обновляем меню по сезону и отвергаем полуфабрикаты как концепцию.</p>
+    <p style="margin-top:22px;color:var(--dim);font-size:14px">Кухня полностью открыта на зал — приходите посмотреть, как работает команда.</p>
+  </div>
+</div></div></section>
+
+<section id="menu" class="dark-band"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Меню</div>
+    <h2>Кухня на любой вечер</h2>
+    <p class="sec-sub">Ассортимент текущего сезона — проверен на ужинах прошлой недели</p>
+  </div>
+  <div class="menu-list">
+    <div class="menu-item"><div class="mi-name">Тартар из говядины<span>каперсы, желток конфи, домашние хлебцы</span></div><div class="mi-dots"></div><div class="mi-price">1 250 ₽</div></div>
+    <div class="menu-item"><div class="mi-name">Утиная ножка конфи<span>печёные яблоки, соус из тёмного порто</span></div><div class="mi-dots"></div><div class="mi-price">1 900 ₽</div></div>
+    <div class="menu-item"><div class="mi-name">Ризотто с белыми грибами<span>карнароли, выдержанный пармезан, трюфельное масло</span></div><div class="mi-dots"></div><div class="mi-price">1 450 ₽</div></div>
+    <div class="menu-item"><div class="mi-name">Рыба дня<span>улов этого утра, сезонный гарнир, бульон на травах</span></div><div class="mi-dots"></div><div class="mi-price">1 750 ₽</div></div>
+    <div class="menu-item"><div class="mi-name">Стейк мраморной говядины<span>желаемая прожарка, перечный соус, овощи гриль</span></div><div class="mi-dots"></div><div class="mi-price">2 900 ₽</div></div>
+    <div class="menu-item"><div class="mi-name">Десерт Lumière<span>крем-брюле с кардамоном и сезонные ягоды</span></div><div class="mi-dots"></div><div class="mi-price">700 ₽</div></div>
+  </div>
+</div></section>
+
+<section><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Зал и терраса</div>
+    <h2>Пространство дома</h2>
+    <p class="sec-sub">Три зала на 30 гостей: у кухни, у камина и терраса с естественным светом днём</p>
+  </div>
+  <div class="grid">
+    <div class="card"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=72&fit=crop" alt="Сервировка стола в зале"><div class="card-body"><h3>Основной зал</h3><p>Мягкий свет, открытая кухня и стулья с шагом «между разговорами».</p></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=700&q=72&fit=crop" alt="Стол с блюдами на компанию"><div class="card-body"><h3>Зал у камина</h3><p>Для долгих вечеров и разговоров без спешки.</p></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=700&q=72&fit=crop" alt="Терраса ресторана"><div class="card-body"><h3>Терраса</h3><p>Сезонная: работает с весны до осенних заморозков.</p></div></div>
+  </div>
+</div></section>
+
+<section id="faq" class="dark-band"><div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Вопросы</div>
+    <h2>Частые вопросы</h2>
+  </div>
+  <div class="faq">
+    <details><summary>Нужно ли бронировать заранее?</summary><p class="faq-a">Да, на выходные столы разбирают за 4–5 дней. В будни свободные столы обычно есть в день визита, но сообщение заранее сэкономит время.</p></details>
+    <details><summary>Есть ли вегетарианские подачи?</summary><p class="faq-a">Да, скажите при бронировании — пересоберём сет под вас. Полное веган-меню тоже делаем, но просим предупредить за сутки.</p></details>
+    <details><summary>Можно ли приходить с детьми?</summary><p class="faq-a">Конечно — у нас детское меню и стульчики. Дегустационные сеты больше рассчитаны на взрослый вечер, но запретов нет.</p></details>
+    <details><summary>Как можно оплатить счёт?</summary><p class="faq-a">Картой, наличными или криптовалютой через сайт. Счёт можно разбить между гостями — попросите официанта.</p></details>
+    <details><summary>Можно выкупить зал на праздник?</summary><p class="faq-a">Да, залы отдаём под целиком для вечеринок: обсудим меню, вина и сервировку. Напишите в Telegram — предложим 2–3 формата под бюджет.</p></details>
+  </div>
+</div></section>
+
+<section id="book"><div class="container">
+  <div class="cta-box">
+    <h2 class="serif">Забронировать стол</h2>
+    <p>Столов всего тридцать. Пишите дату, количество гостей и повод — остальное сделаем сами.</p>
+    <a class="btn" href="https://t.me/">Написать в Telegram</a>
+  </div>
+</div></section>
+
+<footer><div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px"><span>© Ресторан Lumière, 2025</span><span><a href="/">Сделано в AA Web Studio</a></span></div></footer>
+
+</body>
+</html>

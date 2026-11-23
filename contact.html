@@ -83,7 +83,7 @@
                 <div class="quick-icon">💠</div>
                 <div>
                   <b>Оплата</b>
-                  <span>Крипта (USDT) — перевод напрямую без комиссий бирж, или по договорённости</span>
+                  <span>На выбор: крипта (USDT TRC20), карта или договорённость — реквизиты вышлю в чате</span>
                 </div>
               </div>
             </div>
@@ -108,6 +108,14 @@
                     <option value="multi">Многостраничный сайт</option>
                     <option value="shop">Интернет-магазин</option>
                     <option value="other">Другое / не определился</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="field-payment">Способ оплаты</label>
+                  <select id="field-payment" name="payment">
+                    <option value="usdt">Крипта (USDT TRC20)</option>
+                    <option value="card">Банковская карта</option>
+                    <option value="agreed">По договорённости</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -174,7 +182,7 @@
     </div>
   </footer>
 
-  <script src="js/projects-data.js"></script>
+  <script src="js/projects-data.js?v=2"></script>
   <script src="js/main.js"></script>
   <script src="js/protect.js"></script>
   <script src="js/contact.js"></script>
