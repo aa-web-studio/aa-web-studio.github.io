@@ -47,6 +47,14 @@ h2 b{font-weight:700}
 footer{border-top:1px solid var(--border);padding:32px 0;color:var(--dim);font-size:14px}
 footer a{color:var(--sand);text-decoration:none}
 @media(max-width:760px){.gal,.grid2,.about{grid-template-columns:1fr}.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px;margin-left:20px}section{padding:56px 0}}
+.faq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0 22px;transition:border-color .25s}
+.faq details[open]{border-color:var(--sand)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 0;font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--sand);font-size:24px;line-height:1;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .faq-a{color:var(--dim);padding:0 0 17px;font-size:15px}
 </style>
 </head>
 <body>
@@ -79,6 +87,18 @@ footer a{color:var(--sand);text-decoration:none}
   <div class="grid2">
     <div class="pack"><h3>Экспресс</h3><p>30 минут, 1 локация, 15 обработанных кадров.</p><div class="price">5 000 ₽</div><a class="btn btn-outline" href="#book">Выбрать</a></div>
     <div class="pack"><h3>Стандарт</h3><p>1,5 часа, 2 образа, 40 кадров, помощь с позированием.</p><div class="price">9 000 ₽</div><a class="btn btn-outline" href="#book">Выбрать</a></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="container">
+  <h2>Частые вопросы</h2>
+  <p class="sec-sub">То, что спрашивают перед записью</p>
+  <div class="faq">
+    <details><summary>Я нефотогеничен(на) — что делать?</summary><p class="faq-a">Таких людей не существует, есть неудачные кадры. Я направляю во время съёмки: подсажу, подскажу, где смотреть — живые эмоции получаются у всех.</p></details>
+    <details><summary>Сколько ждать фотографии?</summary><p class="faq-a">Обработанный контроль — в течение 3 дней, вся серия — до недели. Срочная обработка может быть договорённость — уточняйте при записи.</p></details>
+    <details><summary>Что делать с одеждой и образом?</summary><p class="faq-a">После записи пришлю короткую шпаргалку: 2–3 варианта под локацию без покупки нового гардероба.</p></details>
+    <details><summary>Можно ли снимать с детьми/питомцами?</summary><p class="faq-a">Да, и это часто самые живые кадры. Просто не планируем «идеальную позу» — ловим моменты.</p></details>
+    <details><summary>Как передаются готовые снимки?</summary><p class="faq-a">Ссылкой на онлайн-галерею: можно скачать в полном качестве или переслать друзьям прямо оттуда.</p></details>
   </div>
 </div></section>
 

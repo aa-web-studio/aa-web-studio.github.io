@@ -57,6 +57,14 @@ footer a{color:var(--green);text-decoration:none}
 .reveal.vis{opacity:1;transform:none}
 @media(max-width:860px){.hero-grid{grid-template-columns:1fr}.grid,.reviews{grid-template-columns:repeat(2,1fr)}.adv{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.hero-grid{grid-template-columns:1fr}.grid,.reviews,.adv{grid-template-columns:1fr}.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px;margin-left:20px}section{padding:56px 0}}
+.faq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0 22px;transition:border-color .25s,box-shadow .25s}
+.faq details[open]{border-color:var(--green);box-shadow:0 10px 30px rgba(30,122,90,.12)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 0;font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--green);font-size:24px;line-height:1;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .faq-a{color:var(--dim);padding:0 0 17px;font-size:15px}
 </style>
 </head>
 <body>
@@ -110,6 +118,18 @@ footer a{color:var(--green);text-decoration:none}
     <div class="rev"><b>Алена, 29</b>«Боялась стоматологов 10 лет. Лечила два зуба во сне — очнулась, а уже всё красиво. Теперь хожу без страха.»</div>
     <div class="rev"><b>Дмитрий, 41</b>«Ставил имплант: смету просчитали заранее, ни рублем больше. Прижился идеально — пью чай как с родным зубом.»</div>
     <div class="rev"><b>Марина, 35</b>«Водим детей всей семьей. Врач умеет разговорить даже самого молчаливого шестилетку.»</div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="container">
+  <h2>Частые вопросы</h2>
+  <p class="sec-sub">Спрашивают почти на каждом приёме</p>
+  <div class="faq">
+    <details><summary>Больно ли лечить зубы?</summary><p class="faq-a">Современная анестезия делает процедуру комфортной: зуб «спит», боли вы не чувствуете, плюс есть лечение во сне для тех, кто сильно тревожится.</p></details>
+    <details><summary>Почему нельзя лечить без снимка?</summary><p class="faq-a">По снимку видно корни и скрытые полости: без него легко недолечить или перегрузить соседние зубы. Снимок входит в первичный приём.</p></details>
+    <details><summary>С какого возраста приводить детей?</summary><p class="faq-a">С появления первых зубов — в игровой форме, чтобы визит к стоматологу стал нормой, а не стрессом.</p></details>
+    <details><summary>Сколько служит пломба/имплант?</summary><p class="faq-a">Пломба — 5–10 лет при регулярной гигиене и профилактике, имплант — десятилетиями. Точный срок зависит от ухода, расскажем на осмотре.</p></details>
+    <details><summary>Можно ли лечить в рассрочку?</summary><p class="faq-a">Да, план лечения можно разбить на этапы и оплачивать поэтапно — без переплат.</p></details>
   </div>
 </div></section>
 

@@ -51,6 +51,14 @@ footer{border-top:1px solid var(--border);padding:32px 0;color:var(--dim);font-s
 footer a{color:var(--accent);text-decoration:none}
 @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}.wide{grid-template-columns:1fr}}
 @media(max-width:560px){.grid{grid-template-columns:1fr}.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px;margin-left:20px}section{padding:56px 0}}
+.faq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0 22px;transition:border-color .25s,box-shadow .25s}
+.faq details[open]{border-color:var(--accent);box-shadow:0 10px 30px rgba(31,111,92,.15)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 0;font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--accent);font-size:24px;line-height:1;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .faq-a{color:var(--dim);padding:0 0 17px;font-size:15px}
 </style>
 </head>
 <body>
@@ -90,6 +98,18 @@ footer a{color:var(--accent);text-decoration:none}
     <div style="margin-top:24px"><a class="btn" href="#contact">Обсудить проект</a></div>
   </div>
   <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=700&q=70&fit=crop" alt="Бригада за работой">
+</div></section>
+
+<section id="faq"><div class="container">
+  <h2>Частые вопросы</h2>
+  <p class="sec-sub">Что спрашивают чаще всего</p>
+  <div class="faq">
+    <details><summary>Как считается стоимость — точно?</summary><p class="faq-a">По плану квартиры и выбранным материалам. Смета фиксируемая в договоре: никаких «дороже по ходу ремонта» — сумма в договоре и есть конечная.</p></details>
+    <details><summary>Можно ли заказать только дизайн-проект?</summary><p class="faq-a">Да. Соберём визуализацию и список материалов с ценами — реализовать можно самим или пригласить нас.</p></details>
+    <details><summary>А если у меня уже есть бригада?</summary><p class="faq-a">Работаем и так: возьмём на себя только техконтроль и приёмку этапов, чтобы качество не зависело от «на глазок».</p></details>
+    <details><summary>Можно ли делать ремонт поэтапно?</summary><p class="faq-a">Да. Многие начинают с одной комнаты или отдельного этапа — продолжим без пересчёта уже сделанного.</p></details>
+    <details><summary>Материалы выбираю я или вы?</summary><p class="faq-a">Вместе: подбираем 2–3 варианта под бюджет, вы утверждаете финальный. Закупку берем на себя по желанию.</p></details>
+  </div>
 </div></section>
 
 <section id="contact"><div class="container">
