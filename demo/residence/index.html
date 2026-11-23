@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURUM Residence — премиальный жилой комплекс | Минск</title>
+<style>
+:root{--bg:#f7f5f0;--panel:#ffffff;--line:#e6e0d3;--text:#211e18;--dim:#7c7566;--gold:#a8813a;--gold-h:#8a6a2e;--dark:#171512;--free:#2e7d5b;--res:#b08b3a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.container{width:min(1160px,92%);margin:0 auto}
+header{position:sticky;top:0;background:rgba(247,245,240,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}.nav .btn{margin-left:22px}
+.brand{font-family:Georgia,serif;font-size:21px;letter-spacing:4px;text-transform:uppercase}
+.brand b{color:var(--gold);font-weight:400}
+.nav a.menu-link{color:var(--dim);text-decoration:none;margin-left:22px;font-size:14.5px}
+.nav a.menu-link:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;box-sizing:border-box;max-width:100%;padding:13px 30px;background:var(--dark);color:#fff;text-decoration:none;font-weight:700;border:0;border-radius:2px;cursor:pointer;font-size:14px;letter-spacing:.5px;transition:.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(23,21,18,.3)}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:var(--gold-h)}
+.btn-line{background:transparent;border:1px solid var(--dark);color:var(--dark);padding:12px 28px}
+.btn-line:hover{background:var(--dark);color:#fff;box-shadow:none;transform:none}
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;background:url("https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&q=75&fit=crop") center/cover fixed no-repeat}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(15,13,10,.88) 22%,rgba(15,13,10,.45) 60%,rgba(15,13,10,.25))}
+.hero .container{position:relative;z-index:2;padding:120px 0}
+.tagline{color:var(--gold);text-transform:uppercase;letter-spacing:6px;font-size:12px;margin-bottom:24px}
+h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(40px,6.4vw,76px);line-height:1.05;color:#fff;margin-bottom:22px;max-width:760px}
+h1 em{font-style:italic;color:var(--gold)}
+.sub{color:#d8d3c8;max-width:520px;font-size:17.5px;margin-bottom:40px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hstats{position:absolute;bottom:0;left:0;right:0;z-index:2;background:rgba(15,13,10,.72);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.12)}
+.hstat{display:flex;justify-content:center;flex-wrap:wrap;gap:0}
+.hstat div{flex:1;min-width:170px;text-align:center;padding:22px 10px;border-right:1px solid rgba(255,255,255,.1)}
+.hstat div:last-child{border-right:0}
+.hstat b{display:block;font-family:Georgia,serif;font-weight:400;font-size:28px;color:var(--gold)}
+.hstat span{font-size:12.5px;color:#b6b0a4;letter-spacing:1.5px;text-transform:uppercase}
+section{padding:96px 0}
+.kicker{color:var(--gold);text-transform:uppercase;letter-spacing:4px;font-size:12px;margin-bottom:14px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(28px,4.2vw,46px);margin-bottom:12px}
+h2 em{font-style:italic;color:var(--gold)}
+.sec-sub{color:var(--dim);margin-bottom:50px;max-width:600px}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.feat{background:var(--panel);border:1px solid var(--line);transition:.3s}
+.feat:hover{transform:translateY(-5px);box-shadow:0 24px 50px rgba(23,21,18,.1)}
+.feat img{width:100%;height:230px;object-fit:cover;display:block}
+.feat .fi{padding:26px}
+.feat h3{font-family:Georgia,serif;font-weight:400;font-size:22px;margin-bottom:8px}
+.feat p{color:var(--dim);font-size:14.5px}
+.selector{background:var(--panel);border:1px solid var(--line);padding:34px}
+.sel-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:22px}
+.sel-top h3{font-family:Georgia,serif;font-weight:400;font-size:24px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:9px 16px;border:1px solid var(--line);background:var(--bg);cursor:pointer;font-size:14px;font-weight:600;border-radius:2px;color:var(--dim);transition:.2s}
+.chip:hover{border-color:var(--gold);color:var(--text)}
+.chip.on{background:var(--dark);color:#fff;border-color:var(--dark)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--dim);margin-bottom:20px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.aparts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.apart{border:1px solid var(--line);border-radius:3px;padding:18px;cursor:pointer;transition:.2s;background:var(--bg);position:relative}
+.apart:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 14px 30px rgba(23,21,18,.08)}
+.apart .no{font-family:Georgia,serif;font-size:24px;margin-bottom:4px}
+.apart .meta{color:var(--dim);font-size:13.5px}
+.apart .st{margin-top:12px;font-size:12px;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:7px}
+.apart .st i{width:9px;height:9px;border-radius:50%}
+.apart.free .st{color:var(--free)}.apart.free .st i{background:var(--free)}
+.apart.res .st{color:var(--res)}.apart.res .st i{background:var(--res)}
+.apart.sold{opacity:.45;cursor:not-allowed}
+.apart.sold .st{color:#8f8f88}.apart.sold .st i{background:#8f8f88}
+.apart .tick{position:absolute;top:12px;right:14px;color:var(--gold);font-weight:800;display:none}
+.apart.sel{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.apart.sel .tick{display:block}
+.config{margin-top:26px;border-top:1px solid var(--line);padding-top:26px;display:grid;grid-template-columns:1.1fr .9fr;gap:34px}
+.cfg h4{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin:14px 0 10px}
+.vbtns{display:flex;gap:8px;flex-wrap:wrap}
+.vb{padding:9px 18px;border:1px solid var(--line);border-radius:2px;background:var(--bg);cursor:pointer;font-size:14px;font-weight:600;color:var(--dim);transition:.2s}
+.vb:hover{border-color:var(--gold);color:var(--text)}
+.vb.on{background:var(--gold);border-color:var(--gold);color:#fff}
+.total{font-family:Georgia,serif;font-size:34px;margin-top:6px}
+.total small{font-size:14px;color:var(--dim);font-family:"Segoe UI",sans-serif;display:block}
+.inst{background:var(--bg);border:1px solid var(--line);padding:24px;border-radius:3px}
+.inst .ir{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.inst .ir:last-of-type{border-bottom:0}
+.inst .ir b{font-family:Georgia,serif;font-size:17px}
+.inst .big{display:flex;justify-content:space-between;align-items:baseline;padding-top:14px}
+.inst .big span{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim)}
+.inst .big b{font-family:Georgia,serif;font-size:30px;color:var(--gold)}
+.inst .note2{font-size:12.5px;color:var(--dim);margin-top:10px}
+.time{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.tp{border-left:2px solid var(--gold);padding-left:16px}
+.tp b{font-size:14.5px;color:var(--text);display:block;margin-bottom:5px}
+.tp p{color:var(--dim);font-size:14px}
+.tp .bar{display:block;height:6px;border-radius:3px;background:var(--line);margin-top:12px;overflow:hidden}
+.tp .bar i{display:block;height:100%;background:var(--gold);border-radius:3px}
+.cta{background:var(--dark);color:#fff;text-align:center;padding:80px 30px}
+.cta h2{color:#fff}
+.cta .sec-sub{color:#a9a294;margin:0 auto 34px}
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--dim);font-size:14px}
+.fwrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{color:var(--gold);text-decoration:none}
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(15,13,10,.6)}
+.modal.show{display:flex}
+.mbox{background:var(--bg);max-width:440px;width:100%;padding:32px;border-radius:3px;border:1px solid var(--line)}
+.mbox h3{font-family:Georgia,serif;font-weight:400;font-size:24px;margin-bottom:6px}
+.mbox .msub{color:var(--dim);font-size:14px;margin-bottom:18px}
+.mbox input{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:2px;padding:12px 14px;font-size:15px;margin-bottom:10px}
+.mbox input:focus{outline:1px solid var(--gold)}
+#m-done{display:none;font-size:14.5px;line-height:1.6;margin:10px 0}
+#m-done b{color:var(--gold);font-family:Georgia,serif;font-size:18px}
+#m-done a{color:var(--gold);font-weight:700}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.vis{opacity:1;transform:none}
+@media(max-width:900px){.hero{background-attachment:scroll}.feats{grid-template-columns:1fr}.aparts{grid-template-columns:repeat(2,1fr)}.config{grid-template-columns:1fr}.time{grid-template-columns:repeat(2,1fr)}.hstat div{min-width:120px}}
+@media(max-width:560px){.nav a.menu-link{display:none}.nav .btn{padding:9px 14px;font-size:13px;margin-left:20px}section{padding:64px 0}.aparts{grid-template-columns:1fr}.time{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="container nav">
+  <div class="brand">AURUM<b>&nbsp;Residence</b></div>
+  <nav><a class="menu-link" href="#select">Выбрать квартиру</a><a class="menu-link" href="#life">О комплексе</a><a class="menu-link" href="#time">Сроки</a><a class="btn btn-gold" href="#select">Цены и планировки</a></nav>
+</div></header>
+
+<div class="hero"><div class="container reveal vis">
+  <div class="tagline">Премиальный жилой комплекс · Минск · сдача — 2027</div>
+  <h1>Квартиры, в которые<br>въезжают <em>раз в жизни</em></h1>
+  <p class="sub">Два дома бизнес-класса у парка: свободные планировки, террасы на верхних этажах, приватный двор без машин. Выберите свою квартиру на карте дома — цена и рассрочка рассчитаются мгновенно.</p>
+  <div class="hero-actions"><a class="btn btn-gold" href="#select">Выбрать квартиру</a><a class="btn btn-line" style="border-color:rgba(255,255,255,.4);color:#fff" href="https://t.me/Andrey_AlexandrovichAA">Консультация в Telegram</a></div>
+</div>
+<div class="hstats"><div class="container hstat">
+  <div><b>2</b><span>дома</span></div>
+  <div><b>от $2 600</b><span>за м² · дом 2</span></div>
+  <div><b>0%</b><span>рассрочка до 3 лет</span></div>
+  <div><b>2027</b><span>сдача · II квартал</span></div>
+</div></div></div>
+
+<section id="select"><div class="container">
+  <div class="kicker">Интерактивный выбор</div>
+  <h2>Карта <em>свободных</em> квартир</h2>
+  <p class="sec-sub">Выберите дом и этаж — кликните на квартиру, чтобы увидеть цену и рассчитать рассрочку</p>
+
+  <div class="selector reveal">
+    <div class="sel-top">
+      <h3 id="sel-title">Дом 1 · этаж 5</h3>
+      <div class="chips" id="house-chips"></div>
+    </div>
+    <div class="chips" id="floor-chips" style="margin-bottom:22px"></div>
+    <div class="legend">
+      <span><i style="background:var(--free)"></i>свободна</span>
+      <span><i style="background:var(--res)"></i>забронирована</span>
+      <span><i style="background:#8f8f88"></i>продана</span>
+    </div>
+    <div class="aparts" id="apart-grid"></div>
+
+    <div class="config" id="config" style="display:none">
+      <div class="cfg">
+        <h4>Ваша квартира</h4>
+        <div class="total" id="c-no"></div>
+        <div class="inst" style="margin-top:16px">
+          <div class="ir"><span>Этаж</span><b id="c-floor"></b></div>
+          <div class="ir"><span>Комнат</span><b id="c-rooms"></b></div>
+          <div class="ir"><span>Площадь</span><b id="c-area"></b></div>
+          <div class="ir"><span>Цена за м²</span><b id="c-rate"></b></div>
+        </div>
+        <h4>Первый взнос</h4>
+        <div class="vbtns" id="down-chips"></div>
+        <h4>Срок рассрочки</h4>
+        <div class="vbtns" id="term-chips"></div>
+      </div>
+      <div class="inst">
+        <h4 style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px">Расчёт рассрочки</h4>
+        <div class="ir"><span>Стоимость квартиры</span><b id="i-total"></b></div>
+        <div class="ir"><span>Первый взнос</span><b id="i-down"></b></div>
+        <div class="big"><span>Платёж в месяц</span><b id="i-month"></b></div>
+        <p class="note2">Рассрочка от застройщика без процентов и банков. Цена растёт по мере стройки — зафиксируйте текущую бронью на 5 дней бесплатно.</p>
+        <button class="btn btn-gold" id="reserve-btn" style="margin-top:16px;width:100%">Забронировать за 1 минуту</button>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="life" style="background:#efece4;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="container">
+  <div class="kicker">О комплексе</div>
+  <h2>Продумано <em>до мелочей</em></h2>
+  <p class="sec-sub">Три кита AURUM Residence — то, за что платят премию к цене</p>
+  <div class="feats">
+    <div class="feat reveal"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=72&fit=crop" alt=""><div class="fi"><h3>Свет и высота</h3><p>Потолки 3.2 метра, панорамные окна в пол с двух сторон, светлые интерьеры под ваш дизайн-проект.</p></div></div>
+    <div class="feat reveal"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=72&fit=crop" alt=""><div class="fi"><h3>Приватный двор</h3><p>Двор без машин: лаунж-зона, детская площадка из дуба, круглосуточная охрана и видеонаблюдение по периметру.</p></div></div>
+    <div class="feat reveal"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=72&fit=crop" alt=""><div class="fi"><h3>Своя инфраструктура</h3><p>Спа-зона и фитнес в цокольном этаже, консьерж-сервис, кладовые и подземный паркинг — всё внутри комплекса.</p></div></div>
+  </div>
+</div></section>
+
+<section id="time"><div class="container">
+  <div class="kicker">Ход строительства</div>
+  <h2>По графику — <em>без сюрпризов</em></h2>
+  <p class="sec-sub">Фотоотчёт с площадки каждую неделю в Telegram-канале комплекса</p>
+  <div class="time">
+    <div class="tp reveal"><b>II кв. 2026 · Каркас</b><p>Монолит завершён, фасады закрыты.</p><span class="bar"><i style="width:100%"></i></span></div>
+    <div class="tp reveal"><b>IV кв. 2026 · Сети</b><p>Электрика, водоснабжение, слаботочка.</p><span class="bar"><i style="width:72%"></i></span></div>
+    <div class="tp reveal"><b>I кв. 2027 · Отделка лобби</b><p>Мрамор, свет, мебель общих зон.</p><span class="bar"><i style="width:40%"></i></span></div>
+    <div class="tp reveal"><b>II кв. 2027 · Сдача</b><p>Ключи и подписание актов.</p><span class="bar"><i style="width:12%"></i></span></div>
+  </div>
+</div></section>
+
+<section><div class="container">
+  <div class="cta reveal" style="border-radius:3px">
+    <div class="kicker">Персональная презентация</div>
+    <h2>Приходите на экскурсию</h2>
+    <p class="sec-sub" style="max-width:520px">Покажем шоурум-квартиру с готовой отделкой, ответим на вопросы по рассрочке и зафиксируем цену бронью на 5 дней бесплатно.</p>
+    <a class="btn btn-gold" href="https://t.me/Andrey_AlexandrovichAA">Записаться в Telegram</a>
+  </div>
+</div></section>
+
+<footer><div class="container fwrap"><span>© AURUM Residence, 2025 · Минск</span><span><a href="/">Сделано в AA Web Studio</a></span></div></footer>
+
+<div class="modal" id="modal"><div class="mbox">
+  <h3>Бронь квартиры</h3>
+  <p class="msub" id="m-sub"></p>
+  <form id="m-form">
+    <input id="m-name" placeholder="Имя" required>
+    <input id="m-contact" placeholder="Телефон или Telegram" required>
+    <button class="btn btn-gold" style="width:100%" type="submit">Отправить бронь</button>
+  </form>
+  <div id="m-done"></div>
+  <button class="btn btn-line" id="m-close" style="margin-top:12px;width:100%;display:none">Закрыть</button>
+</div></div>
+
+<script>
+var RATE={1:2800,2:2600};
+var POS=[{r:1,a:44.2},{r:2,a:58.6},{r:2,a:64.1},{r:3,a:81.3}];
+var HOUSE=1,FLOOR=5,SEL=null,DOWN=30,TERM=24;
+function status(h,f,p){var n=h*1000+f*10+p,x=(n*137+29)%10;return x<5?"free":(x<8?"sold":"res")}
+function apart(h,f,p){var s=POS[p];var rate=RATE[h];var k=1+(f-2)*0.004;var price=Math.round(rate*k*s.a);
+ return {h:h,f:f,p:p,no:(h-1)*1000+f*100+p+1,rooms:s.r,area:s.a,st:status(h,f,p),rate:rate,price:price}}
+function money(n){return "$"+Math.round(n).toLocaleString("ru-RU")}
+function renderHouses(){var c=document.getElementById("house-chips");c.innerHTML="";[1,2].forEach(function(h){var b=document.createElement("button");b.className="chip"+(h===HOUSE?" on":"");b.textContent="Дом "+h;b.onclick=function(){HOUSE=h;FLOOR=5;SEL=null;DOWN=30;TERM=24;renderAll()};c.appendChild(b)})}
+function renderFloors(){var c=document.getElementById("floor-chips");c.innerHTML="";for(var f=2;f<=9;f++){var b=document.createElement("button");b.className="chip"+(f===FLOOR?" on":"");b.textContent="Этаж "+f;(function(f){b.onclick=function(){FLOOR=f;SEL=null;renderAll()}})(f);c.appendChild(b)}}
+function renderAparts(){var g=document.getElementById("apart-grid");g.innerHTML="";
+ for(var p=0;p<4;p++){var a=apart(HOUSE,FLOOR,p);
+  var d=document.createElement("div");d.className="apart "+a.st+(SEL===p?" sel":"");
+  d.innerHTML='<span class="tick">✓</span><div class="no">№'+a.no+'</div><div class="meta">'+a.rooms+'-ком · '+a.area+' м²</div><div class="st"><i></i>'+(a.st==="free"?"свободна":a.st==="res"?"забронирована":"продана")+'</div>';
+  if(a.st!=="sold"){d.onclick=function(p){return function(){SEL=(SEL===p?null:p);DOWN=30;TERM=24;renderAll()}}(p)}
+  g.appendChild(d)}
+ document.getElementById("sel-title").textContent="Дом "+HOUSE+" · этаж "+FLOOR;
+ document.getElementById("config").style.display=(SEL===null)?"none":"grid"}
+function renderConfig(){if(SEL===null)return;var a=apart(HOUSE,FLOOR,SEL);
+ document.getElementById("c-no").innerHTML='№ '+a.no+' <small>'+money(a.rate)+' / м²</small>';
+ document.getElementById("c-floor").textContent=a.f+" из 9";
+ document.getElementById("c-rooms").textContent=a.rooms;
+ document.getElementById("c-area").textContent=a.area+" м²";
+ document.getElementById("c-rate").textContent=money(a.rate);
+ var dc=document.getElementById("down-chips");dc.innerHTML="";[30,50,70].forEach(function(v){var b=document.createElement("button");b.className="vb"+(v===DOWN?" on":"");b.textContent=v+"%";b.onclick=function(){DOWN=v;renderConfig()};dc.appendChild(b)});
+ var tc=document.getElementById("term-chips");tc.innerHTML="";[12,24,36].forEach(function(v){var b=document.createElement("button");b.className="vb"+(v===TERM?" on":"");b.textContent=v+" мес";b.onclick=function(){TERM=v;renderConfig()};tc.appendChild(b)});
+ var down=Math.round(a.price*DOWN/100),month=Math.round((a.price-down)/TERM);
+ document.getElementById("i-total").textContent=money(a.price);
+ document.getElementById("i-down").textContent=money(down);
+ document.getElementById("i-month").textContent=money(month)+" / мес";}
+function renderAll(){renderHouses();renderFloors();renderAparts();renderConfig()}
+document.getElementById("reserve-btn").addEventListener("click",function(){
+ var a=apart(HOUSE,FLOOR,SEL);
+ document.getElementById("m-sub").textContent="№ "+a.no+" · "+a.rooms+"-ком · "+a.area+" м² · "+money(a.price);
+ document.getElementById("m-form").style.display="block";
+ document.getElementById("m-done").style.display="none";
+ document.getElementById("m-close").style.display="none";
+ document.getElementById("modal").classList.add("show")});
+document.getElementById("m-close").addEventListener("click",function(){document.getElementById("modal").classList.remove("show")});
+document.getElementById("modal").addEventListener("click",function(e){if(e.target===this)this.classList.remove("show")});
+document.getElementById("m-form").addEventListener("submit",function(e){
+ e.preventDefault();var a=apart(HOUSE,FLOOR,SEL);
+ var name=document.getElementById("m-name").value.trim(),contact=document.getElementById("m-contact").value.trim();
+ var id="AR-"+(1000+Math.floor(Math.random()*9000));
+ try{var all=JSON.parse(localStorage.getItem("aurum_orders")||"{}");
+ all[id]={id:id,no:a.no,house:a.h,floor:a.f,rooms:a.rooms,area:a.area,price:a.price,down:DOWN,term:TERM,name:name,contact:contact,created:new Date().toISOString()};
+ localStorage.setItem("aurum_orders",JSON.stringify(all))}catch(err){}
+ var text="Бронь AURUM Residence "+id+"%0A№ "+a.no+" · дом "+a.h+" · этаж "+a.f+"%0A"+a.rooms+"-ком · "+a.area+" м² · "+money(a.price)+"%0AВзнос "+DOWN+"% · рассрочка "+TERM+" мес%0A"+encodeURIComponent(name+", "+contact);
+ document.getElementById("m-form").style.display="none";
+ var done=document.getElementById("m-done");
+ done.style.display="block";
+ done.innerHTML='Квартира № '+a.no+' забронирована на 5 дней.<br>Номер брони: <b>'+id+'</b><br><br>Отправьте бронь менеджеру: <a href="https://t.me/Andrey_AlexandrovichAA?text='+text+'" target="_blank">написать в Telegram</a>';
+ document.getElementById("m-close").style.display="block"});
+var io=("IntersectionObserver" in window)?new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("vis");io.unobserve(en.target)}})},{threshold:.1}):null;
+document.querySelectorAll(".reveal").forEach(function(el){io?io.observe(el):el.classList.add("vis")});
+renderAll();
+</script>
+</body>
+</html>
