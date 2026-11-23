@@ -23,7 +23,8 @@ var SITE_PROJECTS = [
     price: "от 300 BYN",
     tags: ["Лендинг", "Онлайн-запись", "Тёмный дизайн"],
     icon: "✂️",
-    url: "demo/barbershop/"
+    url: "demo/barbershop/",
+    img: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=72&fit=crop",
   },
   {
     id: "project-interior",
@@ -33,7 +34,8 @@ var SITE_PROJECTS = [
     price: "от 450 BYN",
     tags: ["Многостраничный", "Прайс-лист", "Светлый дизайн"],
     icon: "🏠",
-    url: "demo/interior/"
+    url: "demo/interior/",
+    img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=72&fit=crop",
   },
   {
     id: "project-coffee",
@@ -43,7 +45,8 @@ var SITE_PROJECTS = [
     price: "от 650 BYN",
     tags: ["Магазин", "Каталог", "Фильтры"],
     icon: "☕",
-    url: "demo/coffee/"
+    url: "demo/coffee/",
+    img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=72&fit=crop",
   },
   {
     id: "project-photo",
@@ -53,7 +56,8 @@ var SITE_PROJECTS = [
     price: "от 450 BYN",
     tags: ["Визитка", "Портфолио", "Минимализм"],
     icon: "📷",
-    url: "demo/photo/"
+    url: "demo/photo/",
+    img: "https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=800&q=72&fit=crop",
   },
   {
     id: "project-fitness",
@@ -63,7 +67,8 @@ var SITE_PROJECTS = [
     price: "от 300 BYN",
     tags: ["Лендинг", "Персональный бренд", "Цены"],
     icon: "🏋️",
-    url: "demo/fitness/"
+    url: "demo/fitness/",
+    img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=72&fit=crop",
   },
   {
     id: "project-exchanger",
@@ -73,7 +78,8 @@ var SITE_PROJECTS = [
     price: "от 500 BYN",
     tags: ["Обменник", "Живые курсы", "Заявки", "Админ-панель"],
     icon: "🪙",
-    url: "demo/exchanger/"
+    url: "demo/exchanger/",
+    img: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800&q=72&fit=crop",
   },
   {
     id: "project-watches",
@@ -83,7 +89,8 @@ var SITE_PROJECTS = [
     price: "от 650 BYN",
     tags: ["Интернет-магазин", "Корзина", "Люкс", "Часы"],
     icon: "⌚",
-    url: "demo/watches/"
+    url: "demo/watches/",
+    img: "https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=800&q=72&fit=crop",
   },
   {
     id: "project-jewelry",
@@ -93,7 +100,8 @@ var SITE_PROJECTS = [
     price: "от 700 BYN",
     tags: ["Интернет-магазин", "Премиум", "Ювелирный"],
     icon: "💍",
-    url: "demo/jewelry/"
+    url: "demo/jewelry/",
+    img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=72&fit=crop",
   },
   {
     id: "project-lounge",
@@ -103,7 +111,8 @@ var SITE_PROJECTS = [
     price: "от 450 BYN",
     tags: ["Ресторан", "Дегустация", "Премиум"],
     icon: "🍽️",
-    url: "demo/lounge/"
+    url: "demo/lounge/",
+    img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=72&fit=crop",
   },
   {
     id: "project-autos",
@@ -113,7 +122,8 @@ var SITE_PROJECTS = [
     price: "от 550 BYN",
     tags: ["Live-фильтры", "Калькулятор", "Премиум"],
     icon: "🏎️",
-    url: "demo/autos/"
+    url: "demo/autos/",
+    img: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=800&q=72&fit=crop",
   },
   {
     id: "project-school",
@@ -123,7 +133,8 @@ var SITE_PROJECTS = [
     price: "от 450 BYN",
     tags: ["Квиз-тест", "Интерактив", "Образование"],
     icon: "🎓",
-    url: "demo/school/"
+    url: "demo/school/",
+    img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=72&fit=crop",
   },
   {
     id: "project-dashboard",
@@ -133,7 +144,8 @@ var SITE_PROJECTS = [
     price: "от 1200 BYN",
     tags: ["Дашборд", "SaaS", "Графики", "Живые данные"],
     icon: "📈",
-    url: "demo/dashboard/"
+    url: "demo/dashboard/",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=72&fit=crop",
   },
   {
     id: "project-stomatology",
@@ -143,7 +155,8 @@ var SITE_PROJECTS = [
     price: "от 450 BYN",
     tags: ["Многостраничный", "Прайс-лист", "Медицина"],
     icon: "🦷",
-    url: "demo/stomatology/"
+    url: "demo/stomatology/",
+    img: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=72&fit=crop",
   },
   {
     id: "project-residence",
@@ -153,7 +166,8 @@ var SITE_PROJECTS = [
     price: "от 300 BYN",
     tags: ["Интерактив", "Карта квартир", "Калькулятор", "Премиум"],
     icon: "🏛️",
-    url: "demo/residence/"
+    url: "demo/residence/",
+    img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=72&fit=crop",
   },
   {
     id: "project-detailing",
@@ -163,6 +177,7 @@ var SITE_PROJECTS = [
     price: "от 300 BYN",
     tags: ["Лендинг", "Детейлинг", "Тёмный дизайн"],
     icon: "🚗",
-    url: "demo/detailing/"
+    url: "demo/detailing/",
+    img: "img/detailing/polishing.jpg",
   }
 ];

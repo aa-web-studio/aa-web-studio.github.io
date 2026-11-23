@@ -29,9 +29,11 @@ document.addEventListener("DOMContentLoaded", function () {
       '<article class="card work-card reveal" data-category="' +
       esc(project.category) +
       '">' +
-      '<div class="work-preview"><span>' +
-      esc(project.icon || "🌐") +
-      "</span></div>" +
+      '<div class="work-preview">' +
+      (project.img
+        ? '<img class="work-photo" src="' + esc(project.img) + '" alt="' + esc(project.title) + '" loading="lazy">'
+        : '<span>' + esc(project.icon || "🌐") + "</span>") +
+      "</div>" +
       '<div class="work-body">' +
       '<h3 class="work-title">' +
       esc(project.title) +
