@@ -656,6 +656,16 @@ ul { list-style: none; }
 
 .work-card:hover .preview-chip { border-color: rgba(255, 255, 255, 0.35); }
 
+.work-card--big { grid-column: span 2; }
+
+.work-card--big .work-preview { height: 280px; font-size: 64px; }
+
+.work-card--big .work-title { font-size: 22px; }
+
+.work-card--big .work-desc { font-size: 15.5px; }
+
+.work-card--big .preview-price { font-size: 12px; padding: 8px 15px; }
+
 .work-preview::after {
   content: "";
   position: absolute;
@@ -1141,6 +1151,7 @@ ul { list-style: none; }
 /* ================= Адаптив ================= */
 @media (max-width: 900px) {
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .work-card--big { grid-column: span 2; }
   .contact-layout { grid-template-columns: 1fr; }
   .hero-grid { grid-template-columns: 1fr; gap: 44px; }
   .hero-copy { max-width: none; }
@@ -1157,6 +1168,8 @@ ul { list-style: none; }
   .section { padding: 64px 0; }
 
   .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .work-card--big { grid-column: auto; }
+  .work-card--big .work-preview { height: 210px; }
 
   .header-cta { display: none; }
 

@@ -18,7 +18,7 @@
   <meta name="twitter:title" content="AA Web Studio — создание сайтов под ключ | Andrey Alexandrovich">
   <meta name="twitter:description" content="Создание сайтов под ключ: лендинги, многостраничные сайты, интернет-магазины. Современный дизайн, чистый код, сроки от 3 дней.">
   <meta name="twitter:image" content="https://aa-web-studio.github.io/img/og-cover.png?v=1">
-  <link rel="stylesheet" href="css/style.css?v=9">
+  <link rel="stylesheet" href="css/style.css?v=10">
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -185,9 +185,9 @@
     <section class="section">
       <div class="container">
         <div class="section-head reveal">
-          <span class="section-tag">Портфолио</span>
-          <h2 class="section-title">Лучшие работы</h2>
-          <p class="section-sub">Три проекта, которые показывают подход к дизайну и коду лучше всего.</p>
+          <span class="section-tag">Популярное</span>
+          <h2 class="section-title">Популярные работы</h2>
+          <p class="section-sub">Пять проектов из каталога — реальные фото, живые демо и честные цены от. Остальные 17 — на странице портфолио.</p>
         </div>
         <div class="grid grid-3" id="featured-grid"></div>
         <div style="text-align:center; margin-top: 40px;" class="reveal">
@@ -338,13 +338,13 @@
       if (!grid || typeof SITE_PROJECTS === "undefined") return;
 
       var catLabels = { landing: "Лендинг", multi: "Многостраничный", shop: "Магазин", service: "Услуга" };
-      var featured = SITE_PROJECTS.slice(0, 3);
-      grid.innerHTML = featured.map(function (p) {
+      var featured = SITE_PROJECTS.slice(0, 5);
+      grid.innerHTML = featured.map(function (p, i) {
         var tags = (p.tags || []).slice(0, 3).map(function (t) {
           return '<span class="tag">' + t + "</span>";
         }).join("");
         return (
-          '<a class="card work-card reveal" href="portfolio.html">' +
+          '<a class="card work-card reveal' + (i === 0 ? " work-card--big" : "") + '" href="portfolio.html">' +
           '<div class="work-preview">' +
           (p.img
             ? '<img class="work-photo" src="' + p.img + '" alt="' + p.title + '" loading="lazy">'
