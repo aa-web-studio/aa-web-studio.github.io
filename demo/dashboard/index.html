@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexus Analytics — платформа бизнес-аналитики</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
+<style>
+:root{--bg:#0b0d10;--panel:#12151a;--panel2:#161a21;--border:rgba(255,255,255,.08);--text:#eef1f4;--dim:#8b95a3;--cyan:#38d1c4;--violet:#8f7bef;--amber:#e8b04b;--red:#e05545;--green:#4cc38a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+.container{width:min(1240px,94%);margin:0 auto}
+header{position:sticky;top:0;background:rgba(11,13,16,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:20}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{font-weight:800;font-size:19px;letter-spacing:.5px}
+.brand b{color:var(--cyan)}
+.nav-links{display:flex;gap:22px}
+.nav-links a{color:var(--dim);text-decoration:none;font-size:14px;transition:.2s}
+.nav-links a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;padding:10px 22px;background:var(--cyan);color:#07211e;text-decoration:none;font-weight:700;border-radius:8px;transition:.25s;border:1px solid var(--cyan);cursor:pointer;font-size:14px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(56,209,196,.3)}
+.btn-ghost{background:transparent;color:var(--cyan)}
+.btn-ghost:hover{background:var(--cyan);color:#07211e}
+.hero{padding:56px 0 34px;text-align:center;background:radial-gradient(700px 320px at 50% 0%,rgba(56,209,196,.09),transparent 70%)}
+.tagline{color:var(--cyan);text-transform:uppercase;letter-spacing:3px;font-size:12px;margin-bottom:14px}
+.hero h1{font-size:clamp(28px,4.5vw,46px);line-height:1.15;margin-bottom:14px}
+.hero h1 em{font-style:normal;color:var(--cyan)}
+.hero p{color:var(--dim);max-width:560px;margin:0 auto 26px}
+.demo-note{display:inline-flex;align-items:center;gap:8px;background:rgba(56,209,196,.08);border:1px solid rgba(56,209,196,.3);color:#9be8e0;border-radius:100px;padding:6px 16px;font-size:13px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.tabs{display:flex;justify-content:center;gap:8px;margin:26px 0 34px}
+.tab{background:var(--panel);border:1px solid var(--border);color:var(--dim);border-radius:8px;padding:9px 18px;font-size:14px;cursor:pointer;transition:.2s;font-weight:600}
+.tab.active,.tab:hover{background:var(--panel2);color:var(--text);border-color:rgba(56,209,196,.4)}
+.tab.active{color:var(--cyan)}
+.board{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:16px;margin-bottom:16px}
+.kpi{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px}
+.kpi.wide{display:flex;flex-direction:column;justify-content:space-between}
+.kpi .klabel{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+.kpi .kval{font-size:28px;font-weight:800;font-variant-numeric:tabular-nums}
+.kpi .kdelta{font-size:13px;font-weight:600;margin-top:6px}
+.kdelta.up{color:var(--green)}
+.kdelta.down{color:var(--red)}
+.kpi svg.spark{width:100%;height:44px;margin-top:10px}
+.spark path{fill:none;stroke-width:2;stroke-linecap:round}
+.spark .fill{fill:url(#sparkgrad);stroke:none}
+.row2{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:16px}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px}
+.panel h3{font-size:16px;margin-bottom:4px}
+.panel .psub{color:var(--dim);font-size:13px;margin-bottom:18px}
+.chart-tip{position:fixed;pointer-events:none;background:#1b2029;border:1px solid rgba(56,209,196,.4);border-radius:8px;padding:8px 12px;font-size:13px;font-weight:600;opacity:0;transition:opacity .15s;z-index:50;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.chart-tip small{display:block;color:var(--dim);font-weight:400}
+.donut-wrap{display:flex;align-items:center;gap:24px}
+.donut{position:relative;width:150px;height:150px;flex:none}
+.donut .cval{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut .cval b{font-size:22px}
+.donut .cval span{color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.legend{display:flex;flex-direction:column;gap:10px;width:100%}
+.lg{display:flex;align-items:center;gap:10px;font-size:13.5px;padding:7px 10px;border-radius:8px;cursor:pointer;transition:.2s;background:transparent;border:1px solid transparent}
+.lg:hover,.lg.hot{background:var(--panel2);border-color:var(--border)}
+.lg i{width:10px;height:10px;border-radius:3px;flex:none}
+.lg b{margin-left:auto;font-variant-numeric:tabular-nums}
+.donut circle{transition:stroke-width .2s,opacity .2s;cursor:pointer}
+.donut circle.faded{opacity:.25}
+.bars{display:flex;align-items:flex-end;gap:8px;height:150px}
+.bar{flex:1;background:linear-gradient(180deg,var(--cyan),rgba(56,209,196,.25));border-radius:6px 6px 2px 2px;height:0;transition:height .6s cubic-bezier(.2,.7,.3,1);position:relative;cursor:pointer}
+.bar:hover{filter:brightness(1.25)}
+.bar span{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--dim);opacity:0;transition:.2s;white-space:nowrap}
+.bar:hover span{opacity:1}
+.bar-x{display:flex;gap:8px;margin-top:8px}
+.bar-x span{flex:1;text-align:center;font-size:11px;color:var(--dim)}
+.feed{display:flex;flex-direction:column;gap:2px;max-height:300px;overflow:hidden}
+.feed-row{display:flex;align-items:center;gap:12px;padding:11px 8px;border-radius:10px;animation:slidein .4s ease;font-size:13.5px}
+.feed-row:nth-child(odd){background:rgba(255,255,255,.02)}
+@keyframes slidein{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+.feed-av{width:32px;height:32px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#0b0d10}
+.feed-row .ftime{margin-left:auto;color:var(--dim);font-size:12px;white-space:nowrap}
+.feed-row .famt{font-weight:700;color:var(--green);white-space:nowrap}
+.table-panel{margin-bottom:16px}
+.tbl-top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.search{background:var(--panel2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:9px 14px;font-size:14px;width:min(280px,100%)}
+.search:focus{outline:none;border-color:rgba(56,209,196,.5)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{color:var(--dim);text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;padding:10px 12px;border-bottom:1px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap}
+th:hover{color:var(--text)}
+th .arrow{font-size:10px;margin-left:4px}
+td{padding:12px;border-bottom:1px solid rgba(255,255,255,.04);font-variant-numeric:tabular-nums}
+tr:hover td{background:rgba(255,255,255,.02)}
+.badge{display:inline-block;border-radius:100px;padding:3px 12px;font-size:12px;font-weight:600}
+.b-ok{background:rgba(76,195,138,.12);color:var(--green)}
+.b-wait{background:rgba(232,176,75,.12);color:var(--amber)}
+.b-fail{background:rgba(224,85,69,.12);color:var(--red)}
+footer{border-top:1px solid var(--border);padding:24px 0;color:var(--dim);font-size:14px}
+footer a{color:var(--dim)}
+footer a:hover{color:var(--text)}
+.selling{padding:64px 0;background:radial-gradient(700px 320px at 50% 100%,rgba(143,123,239,.08),transparent 70%)}
+.selling .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+.feat{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:24px}
+.feat .fi{font-size:26px;margin-bottom:12px}
+.feat b{display:block;margin-bottom:6px;font-size:15px}
+.feat p{color:var(--dim);font-size:14px}
+.selling .cta-line{text-align:center;margin-top:38px}
+.selling .cta-line p{color:var(--dim);max-width:460px;margin:8px auto 22px}
+@media(max-width:980px){.board{grid-template-columns:repeat(2,1fr)}.row2{grid-template-columns:1fr}.selling .grid3{grid-template-columns:1fr}.nav-links{display:none}}
+@media(max-width:560px){.board{grid-template-columns:1fr}.donut-wrap{flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="container"><nav class="nav">
+  <div class="brand">NEXUS <b>ANALYTICS</b></div>
+  <div class="nav-links">
+    <a href="#board">Обзор</a>
+    <a href="#revenue">Выручка</a>
+    <a href="#tr">Транзакции</a>
+  </div>
+  <a class="btn" href="#cta">Подключить бесплатно</a>
+</nav></div></header>
+
+<section class="hero"><div class="container">
+  <div class="tagline">Платформа бизнес-аналитики</div>
+  <h1>Все деньги и клиенты — <em>на одном экране</em></h1>
+  <p>Выручка, воронка, транзакции и поведение клиентов в реальном времени. Подключается к любому сайту и CRM за один день.</p>
+  <span class="demo-note"><span class="dot"></span> Демо-кабинет — данные обновляются вживую</span>
+  <div class="tabs">
+    <button class="tab active" data-period="day">Сегодня</button>
+    <button class="tab" data-period="week">7 дней</button>
+    <button class="tab" data-period="month">30 дней</button>
+  </div>
+</div></section>
+
+<div class="container" id="board">
+  <div class="board">
+    <div class="kpi wide" id="revenue">
+      <div>
+        <div class="klabel">Выручка</div>
+        <div class="kval" id="k-revenue">0 ₽</div>
+        <div class="kdelta up" id="k-revenue-delta"></div>
+      </div>
+      <svg class="spark" viewBox="0 0 200 44" preserveAspectRatio="none" id="spark-rev"></svg>
+    </div>
+    <div class="kpi">
+      <div class="klabel">Заказы</div>
+      <div class="kval" id="k-orders">0</div>
+      <div class="kdelta up" id="k-orders-delta"></div>
+      <svg class="spark" viewBox="0 0 200 44" preserveAspectRatio="none" id="spark-orders"></svg>
+    </div>
+    <div class="kpi">
+      <div class="klabel">Ср. чек</div>
+      <div class="kval" id="k-avg">0 ₽</div>
+      <div class="kdelta up" id="k-avg-delta"></div>
+      <svg class="spark" viewBox="0 0 200 44" preserveAspectRatio="none" id="spark-avg"></svg>
+    </div>
+    <div class="kpi">
+      <div class="klabel">Конверсия</div>
+      <div class="kval" id="k-conv">0%</div>
+      <div class="kdelta down" id="k-conv-delta"></div>
+      <svg class="spark" viewBox="0 0 200 44" preserveAspectRatio="none" id="spark-conv"></svg>
+    </div>
+  </div>
+
+  <div class="row2" id="revenue">
+    <div class="panel">
+      <h3>Динамика выручки</h3>
+      <p class="psub" id="rev-sub">По дням · наведите на точку, чтобы увидеть сумму</p>
+      <svg id="rev-chart" viewBox="0 0 640 240" preserveAspectRatio="none" style="width:100%;height:auto;display:block"></svg>
+    </div>
+    <div class="panel" id="tr-wrap">
+      <h3>Источники трафика</h3>
+      <p class="psub">Доля заказов за период</p>
+      <div class="donut-wrap">
+        <div class="donut">
+          <svg viewBox="0 0 120 120" id="donut"></svg>
+          <div class="cval"><b id="donut-total"></b><span>заказов</span></div>
+        </div>
+        <div class="legend" id="legend"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row2">
+    <div class="panel">
+      <h3>Активность по часам</h3>
+      <p class="psub">Заказы за период · наведите на столб</p>
+      <div class="bars" id="bars"></div>
+      <div class="bar-x" id="bar-x"></div>
+    </div>
+    <div class="panel">
+      <h3>Живая лента</h3>
+      <p class="psub">События каждого подключения</p>
+      <div class="feed" id="feed"></div>
+    </div>
+  </div>
+
+  <div class="panel table-panel" id="tr">
+    <div class="tbl-top">
+      <div>
+        <h3>Транзакции</h3>
+        <p class="psub" style="margin-bottom:0">Кликните по колонке — сортировка</p>
+      </div>
+      <input class="search" id="t-search" type="text" placeholder="Поиск: клиент, источник, статус…">
+    </div>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr>
+          <th data-key="client">Клиент<span class="arrow"></span></th>
+          <th data-key="source">Источник<span class="arrow"></span></th>
+          <th data-key="sum">Сумма<span class="arrow"></span></th>
+          <th data-key="status">Статус<span class="arrow"></span></th>
+          <th data-key="date">Дата<span class="arrow"></span></th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<section class="selling" id="cta"><div class="container">
+  <div class="sec-head" style="text-align:center;max-width:620px;margin:0 auto">
+    <div class="sec-tag">Возможности платформы</div>
+    <h2>Что видит владелец бизнеса</h2>
+  </div>
+  <div class="grid3">
+    <div class="feat"><div class="fi">💠</div><b>Сквозная аналитика</b><p>От первого клика по рекламе до оплаты — путь каждого клиента в одном отчёте.</p></div>
+    <div class="feat"><div class="fi">🔔</div><b>Мгновенные уведомления</b><p>Каждый заказ и оплата прилетают в Telegram за секунду после события.</p></div>
+    <div class="feat"><div class="fi">🧩</div><b>Интеграции без кода</b><p>CRM, телефония, реклама и платёжные системы подключаются за один день.</p></div>
+  </div>
+  <div class="cta-line">
+    <h2 style="margin-bottom:0">Хотите такой кабинет под свой бизнес?</h2>
+    <p>Соберём подключение к вашим данным под ключ. Первый месяц — бесплатно, не понравится — отключитесь в один клик.</p>
+    <a class="btn" href="https://t.me/">Обсудить подключение</a>
+  </div>
+</div></section>
+
+<footer><div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px"><span>© Nexus Analytics, 2025</span><span><a href="/">Сделано в AA Web Studio</a></span></div></footer>
+
+<div class="chart-tip" id="tip"></div>
+
+<script>
+var PERIODS = {
+  day:   {label:"по часам",     points:24,  labels:function(i){return String(i).padStart(2,"0")+":00"},    revBase:42000,  mult:1},
+  week:  {label:"по дням",      points:7,   labels:function(i){return ["Пн","Вт","Ср","Чт","Пт","Сб","Вс"][i]}, revBase:260000, mult:7},
+  month: {label:"по дням",      points:30,  labels:function(i){return String(i+1)},                       revBase:220000, mult:30}
+};
+var period = "week";
+var seed = 424242;
+function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+function fmt(n) { return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,"\u2009") + " ₽"; }
+function fmtInt(n) { return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,"\u2009"); }
+
+function makeSeries(kind, points, base) {
+  var out = [], v = base * (0.8 + rnd() * 0.4);
+  for (var i = 0; i < points; i++) {
+    v += (base * 0.12) * (rnd() - 0.47);
+    if (i > points - 5 && rnd() > 0.6) { out.push(v * (1.1 + rnd() * 0.25)); continue; }
+    out.push(Math.max(v, base * 0.25));
+  }
+  return kind === "orders" ? out.map(function (x) { return x / 900 + 20; })
+       : kind === "avg" ? out.map(function (x) { return 1800 + x / 40; })
+       : kind === "conv" ? out.map(function (x) { return 2.2 + x / base * 1.6; }) : out;
+}
+
+function animateNum(el, target, suffix, decimals) {
+  var start = null, dur = 900, from = 0;
+  function step(t) {
+    if (!start) start = t;
+    var p = Math.min((t - start) / dur, 1);
+    p = 1 - Math.pow(1 - p, 3);
+    var val = from + (target - from) * p;
+    el.textContent = (decimals ? val.toFixed(decimals).replace(".", ",") : fmtInt(val)) + (suffix || "");
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+function sparkPath(series, w, h, pad) {
+  pad = pad === undefined ? 4 : pad;
+  var max = Math.max.apply(null, series), min = Math.min.apply(null, series);
+  var rng = (max - min) || 1;
+  var pts = series.map(function (v, i) {
+    return [(i / (series.length - 1)) * w, h - pad - ((v - min) / rng) * (h - pad * 2)];
+  });
+  var d = pts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+  return { line: d, area: d + " L" + w + " " + h + " L0 " + h + " Z", last: pts[pts.length - 1] };
+}
+
+function spark(svgId, series, color) {
+  var svg = document.getElementById(svgId);
+  var w = 200, h = 44;
+  var p = sparkPath(series, w, h);
+  svg.innerHTML = "<defs><linearGradient id='sg-" + svgId + "' x1='0' y1='0' x2='0' y2='1'>" +
+    "<stop offset='0' stop-color='" + color + "' stop-opacity='.35'/><stop offset='1' stop-color='" + color + "' stop-opacity='0'/></linearGradient></defs>" +
+    "<path class='fill' d='" + p.area + "' fill='url(#sg-" + svgId + ")'/>" +
+    "<path d='" + p.line + "' stroke='" + color + "'/>" +
+    "<circle cx='" + p.last[0] + "' cy='" + p.last[1] + "' r='3' fill='" + color + "'/>";
+}
+
+var revSeries, tip = document.getElementById("tip");
+
+function bigChart() {
+  var svg = document.getElementById("rev-chart");
+  var cfg = PERIODS[period];
+  var w = 640, h = 240, padX = 8, padY = 18;
+  revSeries = makeSeries("rev", cfg.points, cfg.revBase);
+  var max = Math.max.apply(null, revSeries) * 1.08;
+  var pts = revSeries.map(function (v, i) {
+    return [padX + (i / (revSeries.length - 1)) * (w - padX * 2), h - padY - (v / max) * (h - padY * 2)];
+  });
+  var step = Math.max(1, Math.round(cfg.points / 8));
+  var grid = "";
+  for (var g = 1; g <= 3; g++) {
+    var gy = padY + (g / 4) * (h - padY * 2);
+    grid += "<line x1='" + padX + "' y1='" + gy + "' x2='" + (w - padX) + "' y2='" + gy + "' stroke='rgba(255,255,255,.06)' stroke-width='1'/>";
+  }
+  var path = pts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+  var area = path + " L" + pts[pts.length - 1][0].toFixed(1) + " " + h + " L" + padX + " " + h + " Z";
+  var dots = pts.map(function (p, i) {
+    return (i % step === 0 || i === pts.length - 1)
+      ? "<circle cx='" + p[0] + "' cy='" + p[1] + "' r='3.4' fill='#0b0d10' stroke='#38d1c4' stroke-width='2'/>" : "";
+  }).join("");
+  var xlabels = pts.map(function (p, i) {
+    return (i % step === 0 || i === pts.length - 1)
+      ? "<text x='" + p[0] + "' y='" + (h - 4) + "' fill='#6b7482' font-size='10.5' text-anchor='middle'>" + cfg.labels(i) + "</text>" : "";
+  }).join("");
+  svg.innerHTML = grid +
+    "<path d='" + area + "' fill='rgba(56,209,196,.12)'/>" +
+    "<path d='" + path + "' fill='none' stroke='#38d1c4' stroke-width='2.5' stroke-linejoin='round'/>" + dots + xlabels;
+
+  svg.onmousemove = function (e) {
+    var rect = svg.getBoundingClientRect();
+    var rx = (e.clientX - rect.left) / rect.width * w;
+    var idx = Math.round((rx - padX) / (w - padX * 2) * (revSeries.length - 1));
+    idx = Math.min(Math.max(idx, 0), revSeries.length - 1);
+    tip.innerHTML = "<small>" + cfg.labels(idx) + (period === "day" ? "" : " · " + cfg.label + "") + "</small>" + fmt(revSeries[idx]);
+    tip.style.opacity = 1;
+    tip.style.left = (e.clientX + 14) + "px";
+    tip.style.top = (e.clientY - 14) + "px";
+  };
+  svg.onmouseleave = function () { tip.style.opacity = 0; };
+}
+
+var SOURCES = [
+  {name:"Поиск (SEO)", share:.34, color:"#38d1c4"},
+  {name:"Реклама",     share:.27, color:"#8f7bef"},
+  {name:"Instagram",   share:.22, color:"#e8b04b"},
+  {name:"Telegram",    share:.17, color:"#4cc38a"}
+];
+function donut() {
+  var svg = document.getElementById("donut");
+  var R = 44, C = 60, circ = 2 * Math.PI * R, off = circ * 0.25;
+  var acc = 0;
+  svg.innerHTML = SOURCES.map(function (s, i) {
+    var len = circ * s.share;
+    var seg = "<circle cx='" + C + "' cy='" + C + "' r='" + R + "' fill='none' stroke='" + s.color +
+      "' stroke-width='13' stroke-dasharray='" + (len - 2) + " " + (circ - len + 2) +
+      "' stroke-dashoffset='" + (off - acc) + "' data-src='" + i + "' stroke-linecap='butt'/>";
+    acc += len;
+    return seg;
+  }).join("");
+  document.getElementById("donut-total").textContent = fmtInt(PERIODS[period].revBase * PERIODS[period].mult / 2400);
+  document.getElementById("legend").innerHTML = SOURCES.map(function (s, i) {
+    return "<div class='lg' data-src='" + i + "'><i style='background:" + s.color + "'></i>" + s.name + "<b>" +
+      Math.round(s.share * 100) + "%</b></div>";
+  }).join("");
+  function hi(i) {
+    svg.querySelectorAll("circle").forEach(function (c) { c.classList.toggle("faded", i !== null && c.dataset.src !== String(i)); });
+    document.querySelectorAll("#legend .lg").forEach(function (l) { l.classList.toggle("hot", i !== null && l.dataset.src === String(i)); });
+  }
+  SOURCES.forEach(function (_, i) {
+    document.querySelector("[data-src='" + i + "'].lg,#legend .lg[data-src='" + i + "']").addEventListener("mouseenter", function () { hi(i); });
+    svg.querySelectorAll("circle")[i].addEventListener("mouseenter", function () { hi(i); });
+  });
+  svg.addEventListener("mouseleave", function () { hi(null); });
+  document.getElementById("legend").addEventListener("mouseleave", function () { hi(null); });
+}
+
+function bars() {
+  var cfg = PERIODS[period];
+  var wrap = document.getElementById("bars");
+  var xs = document.getElementById("bar-x");
+  var data = [], maxV = 0;
+  for (var i = 0; i < 12; i++) {
+    var v = 0.25 + rnd() * 0.75;
+    if (i === 9 || i === 10) v = 0.85 + rnd() * 0.15;
+    data.push(v); maxV = Math.max(maxV, v);
+  }
+  var every = Math.max(1, Math.round(12 / Math.min(12, cfg.points)));
+  wrap.innerHTML = data.map(function (v, i) {
+    return "<div class='bar' style='height:0' data-v='" + v + "'><span>" + fmt(v * cfg.revBase * 2.4) + "</span></div>";
+  }).join("");
+  xs.innerHTML = data.map(function (_, i) {
+    return "<span>" + (i % every === 0 ? cfg.labels(Math.min(i * Math.round(cfg.points / 12), cfg.points - 1)) : "") + "</span>";
+  }).join("");
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      wrap.querySelectorAll(".bar").forEach(function (b) { b.style.height = (b.dataset.v / maxV * 100) + "%"; });
+    });
+  });
+}
+
+function board() {
+  var cfg = PERIODS[period];
+  var rev = makeSeries("rev", cfg.points, cfg.revBase);
+  var orders = makeSeries("orders", cfg.points, cfg.revBase);
+  var avg = makeSeries("avg", cfg.points, cfg.revBase);
+  var conv = makeSeries("conv", cfg.points, cfg.revBase);
+  var sRev = rev.reduce(function (a, b) { return a + b; }, 0);
+  var sOrd = orders.reduce(function (a, b) { return a + b; }, 0);
+  animateNum(document.getElementById("k-revenue"), sRev, " ₽");
+  animateNum(document.getElementById("k-orders"), sOrd, "");
+  animateNum(document.getElementById("k-avg"), sRev / Math.max(sOrd, 1), " ₽");
+  animateNum(document.getElementById("k-conv"), conv[conv.length - 1], "%", 1);
+  var mk = function (id, d) {
+    var el = document.getElementById(id);
+    el.textContent = (d >= 0 ? "▲ +" : "▼ −") + Math.abs(d).toFixed(1).replace(".", ",") + "% к прошлому периоду";
+    el.className = "kdelta " + (d >= 0 ? "up" : "down");
+  };
+  mk("k-revenue-delta", 12.4 - rnd() * 6);
+  mk("k-orders-delta", 8.1 + rnd() * 6);
+  mk("k-avg-delta", -2.4 + rnd() * 5);
+  mk("k-conv-delta", 6.0 - rnd() * 9);
+  spark("spark-rev", rev, "#8f7bef");
+  spark("spark-orders", orders, "#38d1c4");
+  spark("spark-avg", avg, "#e8b04b");
+  spark("spark-conv", conv, "#4cc38a");
+  document.getElementById("rev-sub").textContent = "По дням · наведите на точку, чтобы увидеть сумму";
+  bigChart();
+  donut();
+  bars();
+}
+
+document.querySelectorAll(".tab").forEach(function (t) {
+  t.addEventListener("click", function () {
+    document.querySelectorAll(".tab").forEach(function (x) { x.classList.remove("active"); });
+    t.classList.add("active");
+    period = t.dataset.period;
+    board();
+  });
+});
+
+var FIRST = ["Анна К.","Дмитрий С.","Ольга М.","Иван П.","Елена В.","Максим Т.","Юлия Р.","Артём Ж.","Марина Л.","Никита Д."];
+var ACTIONS = ["оформил(а) заказ","оплатил(а) счёт","вернул(а) товар","начал(а) оплату","повторил(а) покупку"];
+var COLORS = ["#38d1c4","#8f7bef","#e8b04b","#4cc38a","#e05545"];
+var feed = document.getElementById("feed");
+function feedRow() {
+  var i = Math.floor(rnd() * FIRST.length);
+  var inits = FIRST[i].split(" ")[0].slice(0, 2).toUpperCase();
+  var amt = fmt(1200 + rnd() * 42000);
+  var now = new Date();
+  var row = document.createElement("div");
+  row.className = "feed-row";
+  row.innerHTML = "<span class='feed-av' style='background:" + COLORS[i % COLORS.length] + "'>" + inits + "</span>" +
+    "<span><b>" + FIRST[i] + "</b> " + ACTIONS[Math.floor(rnd() * ACTIONS.length)] + " · <span class='famt'>" + amt + "</span></span>" +
+    "<span class='ftime'>" + now.toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit", second: "2-digit" }) + "</span>";
+  feed.prepend(row);
+  while (feed.children.length > 6) feed.lastChild.remove();
+}
+for (var i = 0; i < 5; i++) feedRow();
+setInterval(feedRow, 2600);
+
+var STATUSES = [
+  {name:"оплачено", cls:"b-ok"},
+  {name:"оплачено", cls:"b-ok"},
+  {name:"оплачено", cls:"b-ok"},
+  {name:"в обработке", cls:"b-wait"},
+  {name:"отменено", cls:"b-fail"}
+];
+var TXS = [];
+(function genTx() {
+  for (var i = 0; i < 14; i++) {
+    var st = STATUSES[Math.floor(rnd() * STATUSES.length)];
+    var daysAgo = Math.floor(rnd() * 28);
+    var d = new Date(Date.now() - daysAgo * 86400000 - Math.floor(rnd() * 86400000));
+    TXS.push({
+      client: FIRST[Math.floor(rnd() * FIRST.length)],
+      source: SOURCES[Math.floor(rnd() * SOURCES.length)].name,
+      sum: Math.round((1500 + rnd() * 38000) / 100) * 100,
+      status: st,
+      date: d
+    });
+  }
+})();
+var sortKey = "date", sortDir = -1;
+function renderTable() {
+  var q = document.getElementById("t-search").value.toLowerCase();
+  var rows = TXS.filter(function (t) {
+    return !q || (t.client + " " + t.source + " " + t.status.name).toLowerCase().indexOf(q) !== -1;
+  });
+  rows.sort(function (a, b) {
+    var va = a[sortKey], vb = b[sortKey];
+    if (sortKey === "date") { va = va.getTime(); vb = vb.getTime(); }
+    if (typeof va === "string") { va = va.toLowerCase(); vb = vb.toLowerCase(); }
+    return va < vb ? -sortDir : va > vb ? sortDir : 0;
+  });
+  document.querySelectorAll("th .arrow").forEach(function (a) { a.textContent = ""; });
+  var active = document.querySelector("th[data-key='" + sortKey + "'] .arrow");
+  if (active) active.textContent = sortDir > 0 ? "▲" : "▼";
+  document.getElementById("tbody").innerHTML = rows.map(function (t) {
+    var dt = t.date.toLocaleDateString("ru-RU") + " " + t.date.toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" });
+    return "<tr><td><b>" + t.client + "</b></td><td style='color:var(--dim)'>" + t.source +
+      "</td><td>" + fmt(t.sum) + "</td><td><span class='badge " + t.status.cls + "'>" + t.status.name +
+      "</span></td><td style='color:var(--dim)'>" + dt + "</td></tr>";
+  }).join("");
+  if (!rows.length) document.getElementById("tbody").innerHTML = "<tr><td colspan='5' style='text-align:center;color:var(--dim);padding:30px'>Ничего не найдено</td></tr>";
+}
+document.querySelectorAll("th[data-key]").forEach(function (th) {
+  th.addEventListener("click", function () {
+    if (sortKey === th.dataset.key) sortDir *= -1;
+    else { sortKey = th.dataset.key; sortDir = 1; }
+    renderTable();
+  });
+});
+document.getElementById("t-search").addEventListener("input", renderTable);
+renderTable();
+board();
+</script>
+
+</body>
+</html>
