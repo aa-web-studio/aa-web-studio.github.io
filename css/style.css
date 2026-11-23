@@ -400,6 +400,24 @@ ul { list-style: none; }
 
 .work-actions { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
 
+.work-price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+.work-price span {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  background: var(--silver);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 /* Фильтры */
 .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
 

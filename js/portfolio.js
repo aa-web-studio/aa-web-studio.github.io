@@ -42,6 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
       '<div class="tags">' +
       tags +
       "</div>" +
+      (project.price
+        ? '<p class="work-price">Стоимость: <span>' + esc(project.price) + "</span></p>"
+        : "") +
       '<div class="work-actions">' +
       '<a class="btn btn-primary btn-sm" href="' +
       esc(project.url || "#") +
