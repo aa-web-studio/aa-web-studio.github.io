@@ -454,6 +454,44 @@ ul { list-style: none; }
   box-shadow: 0 6px 22px rgba(255, 255, 255, 0.14);
 }
 
+/* ================= Сортировка ================= */
+.sort-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.sort-row label {
+  color: var(--text-dim);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.sort-row select {
+  padding: 10px 36px 10px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%239b9b9b' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  transition: all 0.25s ease;
+}
+
+.sort-row select:hover { color: var(--text-bright); border-color: var(--border-strong); }
+
+.sort-row select option { background: #1f1f1f; color: var(--text); }
+
 /* ================= Шаблоны ================= */
 .tpl-card { position: relative; display: flex; flex-direction: column; gap: 14px; }
 .tpl-badge {

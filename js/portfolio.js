@@ -1,10 +1,15 @@
-/* Рендер сетки портфолио из SITE_PROJECTS (projects-data.js) + фильтры */
+/*
+  Рендер сетки портфолио из SITE_PROJECTS (projects-data.js)
+  + фильтры по категориям + сортировка (цена / алфавит / популярность)
+*/
 
 document.addEventListener("DOMContentLoaded", function () {
   var grid = document.getElementById("projects-grid");
   if (!grid || typeof SITE_PROJECTS === "undefined") return;
 
   var filtersBox = document.getElementById("filters");
+  var sortSelect = document.getElementById("sort");
+
   var CATEGORY_LABELS = {
     all: "Все",
     landing: "Лендинги",
@@ -13,10 +18,32 @@ document.addEventListener("DOMContentLoaded", function () {
     service: "Услуги и правки"
   };
 
+  var state = { category: "all", sort: "popular" };
+
   function esc(str) {
     var div = document.createElement("div");
     div.textContent = str;
     return div.innerHTML;
+  }
+
+  function priceValue(project) {
+    if (!project.price) return Infinity;
+    var num = parseFloat(String(project.price).replace(/[^\d.]/g, ""));
+    return isNaN(num) ? Infinity : num;
+  }
+
+  function sortedList(list) {
+    var arr = list.slice();
+    if (state.sort === "price-asc") {
+      arr.sort(function (a, b) { return priceValue(a) - priceValue(b); });
+    } else if (state.sort === "price-desc") {
+      arr.sort(function (a, b) { return priceValue(b) - priceValue(a); });
+    } else if (state.sort === "alpha") {
+      arr.sort(function (a, b) {
+        return String(a.title).localeCompare(String(b.title), "ru");
+      });
+    }
+    return arr;
   }
 
   function cardHTML(project) {
@@ -63,13 +90,15 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 
-  function render(category) {
+  function render() {
     var list =
-      category === "all"
+      state.category === "all"
         ? SITE_PROJECTS
         : SITE_PROJECTS.filter(function (p) {
-            return p.category === category;
+            return p.category === state.category;
           });
+
+    list = sortedList(list);
 
     grid.innerHTML = list.length
       ? list.map(cardHTML).join("")
@@ -88,10 +117,18 @@ document.addEventListener("DOMContentLoaded", function () {
           b.classList.remove("active");
         });
         btn.classList.add("active");
-        render(btn.dataset.category);
+        state.category = btn.dataset.category;
+        render();
       });
     });
   }
 
-  render("all");
+  if (sortSelect) {
+    sortSelect.addEventListener("change", function () {
+      state.sort = sortSelect.value;
+      render();
+    });
+  }
+
+  render();
 });

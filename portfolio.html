@@ -6,7 +6,7 @@
   <title>Портфолио — AA Web Studio</title>
   <meta name="description" content="Мои работы: лендинги, многостраничные сайты и интернет-магазины. Каждая работа — по живой ссылке, можно кликнуть и посмотреть.">
   <link rel="icon" type="image/jpeg" href="img/logo.jpg?v=2">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
 
@@ -49,6 +49,16 @@
           <button class="filter-btn" data-category="multi">Многостраничные</button>
           <button class="filter-btn" data-category="shop">Магазины</button>
           <button class="filter-btn" data-category="service">Услуги и правки</button>
+        </div>
+
+        <div class="sort-row">
+          <label for="sort">Сортировка:</label>
+          <select id="sort">
+            <option value="popular" selected>По популярности</option>
+            <option value="price-asc">Сначала дешевле</option>
+            <option value="price-desc">Сначала дороже</option>
+            <option value="alpha">По алфавиту</option>
+          </select>
         </div>
 
         <div class="grid grid-3" id="projects-grid"></div>
@@ -100,6 +110,6 @@
   <script src="js/projects-data.js?v=7"></script>
   <script src="js/main.js"></script>
   <script src="js/protect.js"></script>
-  <script src="js/portfolio.js?v=4"></script>
+  <script src="js/portfolio.js?v=5"></script>
 </body>
 </html>
