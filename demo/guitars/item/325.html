@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>КАПОДАСТР PLANET WAVES PW-CP-01 — RiffHall | Минск</title>
+<link rel="stylesheet" href="../item.css">
+</head>
+<body>
+<header><div class="container"><div class="nav">
+  <a class="brand" href="/">Riff<b>Hall</b></a>
+  <div><a class="menu-link" href="/#cat">Каталог</a><a class="menu-link" href="/#delivery" style="margin-left:18px">Доставка</a></div>
+</div></div></header>
+
+<div class="container"><div class="crumb">
+  <a href="/">Каталог</a> › <a href="/#kapodastry">Каподастры</a> › <b>КАПОДАСТР PLANET WAVES PW-CP-01</b>
+</div>
+
+<div class="item">
+  <div class="igal">
+    <img class="ibig" id="bigimg" src="https://pop-music.ru/upload/iblock/d84/d84b3022fe0b40b394844ac590640f47.jpg" alt="КАПОДАСТР PLANET WAVES PW-CP-01">
+    <div class="thumbs" id="thumbs"><img src="https://pop-music.ru/upload/iblock/d84/d84b3022fe0b40b394844ac590640f47.jpg" data-src="https://pop-music.ru/upload/iblock/d84/d84b3022fe0b40b394844ac590640f47.jpg" alt="" loading="lazy" class="act" onerror="this.style.display=&quot;none&quot;"><img src="https://pop-music.ru/upload/iblock/d84/d84b3022fe0b40b394844ac590640f47.jpg" data-src="https://pop-music.ru/upload/iblock/d84/d84b3022fe0b40b394844ac590640f47.jpg" alt="" loading="lazy" class="" onerror="this.style.display=&quot;none&quot;"></div>
+  </div>
+  <div class="iinfo">
+    <div class="pcat">Каподастры</div>
+    <h1 class="serif">КАПОДАСТР PLANET WAVES PW-CP-01</h1>
+    <div class="iprice">3 BYN</div>
+    <div class="idesc">Имеет простую защелкивающуюся конструкцию. Легко, надежно и мягко фиксируется на требуемом ладу при помощи одного сжатия пальцами и также лекго открывается при нажатии на рычаг. Имеет небольшой вес, практически не утяжеляя гриф. 
+
+ Цвет: черный
+ 
+ &lt;div class=&quot;</div>
+    <div class="ibtns">
+      <button class="btn" id="addbtn" type="button" data-i="325">В корзину</button>
+      <a class="btn btn-ghost" id="orderbtn" href="#" data-i="325">Заказать в Telegram</a>
+    </div>
+  </div>
+</div>
+
+<div class="irel">
+  <h2 class="serif">Похожие в разделе «Каподастры»</h2>
+  <div class="rgrid"><a class="ritem" href="326.html"><img src="https://pop-music.ru/upload/iblock/d2d/d2d655db2f7cad17f3b768eeeef647dc.jpg" alt="Каподастр ALICE A007E-A" loading="lazy" onerror="this.style.display=&quot;none&quot;"><div class="rname">Каподастр ALICE A007E-A</div><div class="rprice">4 BYN</div></a><a class="ritem" href="327.html"><img src="https://pop-music.ru/upload/iblock/f2d/f2d4309e133cc9c95d9c15b4744ece99.jpg" alt="Каподастр ALICE A007E-C" loading="lazy" onerror="this.style.display=&quot;none&quot;"><div class="rname">Каподастр ALICE A007E-C</div><div class="rprice">4 BYN</div></a><a class="ritem" href="328.html"><img src="https://pop-music.ru/upload/iblock/b22/t5anirefjiwsf0x62xy4sgac4ldyyhbo.jpg" alt="Каподастр ALICE A007D/SL-A" loading="lazy" onerror="this.style.display=&quot;none&quot;"><div class="rname">Каподастр ALICE A007D/SL-A</div><div class="rprice">6 BYN</div></a><a class="ritem" href="329.html"><img src="https://pop-music.ru/upload/iblock/8af/2turl92rvh17q1q2b2nbgyp25q0or17x.jpg" alt="Каподастр ALICE AWR01-A/BK" loading="lazy" onerror="this.style.display=&quot;none&quot;"><div class="rname">Каподастр ALICE AWR01-A/BK</div><div class="rprice">7 BYN</div></a></div>
+</div>
+</div>
+
+<footer><div class="container fwrap"><span>© RiffHall, 2025</span><span><a href="/">Сделано в AA Web Studio</a></span></div></footer>
+
+<a href="/portfolio.html" style="position:fixed;bottom:18px;left:18px;z-index:9999;display:inline-flex;align-items:center;gap:8px;padding:11px 18px;background:rgba(15,15,17,.92);color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:999px;font:600 13px/1 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.35);backdrop-filter:blur(6px);" onmouseover="this.style.background='#2a2a2e'" onmouseout="this.style.background='rgba(15,15,17,.92)'">&#8592; Портфолио</a>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var KEY = "riffhall_cart";
+var pid = "325";
+var PRICE = "3";
+var NAME = "КАПОДАСТР PLANET WAVES PW-CP-01";
+function readCart(){ try{ return JSON.parse(localStorage.getItem(KEY)||"{}"); }catch(e){ return {}; } }
+function drawBtn(){
+  var c = readCart(), q = c[pid]||0, b = document.getElementById("addbtn");
+  b.textContent = q>0 ? "В корзину · уже "+q : "В корзину";
+}
+document.getElementById("thumbs").addEventListener("click", function(e){
+  var t = e.target; if(t.tagName!=="IMG") return;
+  document.getElementById("bigimg").src = t.getAttribute("data-src");
+  var all = this.querySelectorAll("img");
+  for(var k=0;k<all.length;k++) all[k].classList.remove("act");
+  t.classList.add("act");
+});
+document.getElementById("addbtn").addEventListener("click", function(){
+  var c = readCart(); c[pid] = (c[pid]||0)+1;
+  try{ localStorage.setItem(KEY, JSON.stringify(c)); }catch(e){}
+  drawBtn();
+  var t = document.getElementById("toast");
+  t.textContent = "Добавлено в корзину · "+q_str(c);
+  t.classList.add("on"); setTimeout(function(){ t.classList.remove("on"); }, 1600);
+});
+function q_str(c){ return "в корзине: "+(c[pid]||0); }
+document.getElementById("orderbtn").addEventListener("click", function(ev){
+  ev.preventDefault();
+  var msg = "Здравствуйте! Интересует: "+NAME+" — "+PRICE+" BYN (RiffHall).";
+  try{ localStorage.setItem("riffhall_order", msg); }catch(e){}
+  window.open("https://t.me/Andrey_AlexandrovichAA?text="+encodeURIComponent(msg), "_blank");
+});
+drawBtn();
+</script>
+</body>
+</html>
