@@ -28,8 +28,11 @@ header{position:sticky;top:0;background:rgba(15,14,12,.94);backdrop-filter:blur(
 h1{font-family:Georgia,serif;font-size:clamp(33px,5.4vw,54px);line-height:1.12;margin-bottom:16px;font-weight:400}
 h1 em{font-style:italic;color:var(--amber)}
 .sub{color:var(--dim);max-width:600px;margin:0 auto 30px;font-size:17px}
-.searchwrap{max-width:520px;margin:0 auto}
-#q{width:100%;padding:14px 20px;background:var(--card);border:1px solid var(--border);border-radius:999px;color:var(--text);font-size:15px;outline:none}
+.toolbar{display:flex;gap:10px;max-width:640px;margin:0 auto}
+#q{flex:1;min-width:0;padding:14px 20px;background:var(--card);border:1px solid var(--border);border-radius:999px;color:var(--text);font-size:15px;outline:none}
+#sort{padding:13px 12px;background:var(--card);border:1px solid var(--border);border-radius:999px;color:var(--text);font-size:14px;outline:none;cursor:pointer}
+#sort:focus{border-color:var(--amber)}
+@media(max-width:560px){.toolbar{flex-direction:column}}
 #q:focus{border-color:var(--amber)}
 .catalog{padding:30px 0 70px}
 .tabs{display:flex;gap:8px;overflow-x:auto;padding:6px;background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -103,7 +106,7 @@ a.pcard *{text-decoration:none}
   <div class="tagline">Магазин инструментов · Минск</div>
   <h1>Инструмент для тех, кто <em>живёт звуком</em></h1>
   <p class="sub">411 товаров в 19 разделах: электрогитары, акустика, комбики, педали, струны, кабели, каподастры, медиаторы, ремни и чехлы. Каждая позиция — <b style="color:var(--text)">своя страница</b> с фотографиями со всех ракурсов, описанием и ценой. Собирай корзину, отправляй список в Telegram — резервируем и доставляем по Минску.</p>
-  <div class="searchwrap"><input id="q" type="text" placeholder="Поиск: Fender, струны 010, комбик 30 ватт…" autocomplete="off"></div>
+  <div class="toolbar"><input id="q" type="text" placeholder="Поиск: Fender, струны 010, комбик 30 ватт…" autocomplete="off"><select id="sort" aria-label="Сортировка"><option value="def">Сортировка: по умолчанию</option><option value="price_asc">Цена: сначала дешевле</option><option value="price_desc">Цена: сначала дороже</option><option value="brand">По бренду (А–Я)</option><option value="name">По названию (А–Я)</option></select></div>
 </div></section>
 
 <section class="catalog" id="cat"><div class="container">
@@ -151,6 +154,7 @@ tabsEl.innerHTML = html;
 var curCat = "all";
 function plural(n){ var m10=n%10, m100=n%100; if(m10===1&&m100!==11)return "товар"; if(m10>=2&&m10<=4&&(m100<10||m100>=20))return "товара"; return "товаров"; }
 function money(x){ return String(Math.round(x)).replace(/\B(?=(\d{3})+(?!\d))/g," "); }
+function brand(p){ var m=p.n.match(/[A-Za-z][A-Za-z0-9-]+/); return m ? m[0].toUpperCase() : "ЯЯЯ"; }
 
 function render(cat, q){
   var list=[], i;
@@ -160,6 +164,11 @@ function render(cat, q){
     if(q){ if(pr.n.toLowerCase().indexOf(q)>=0) list.push(i); }
     else if(cat==="all"||pr.cat===cat) list.push(i);
   }
+  var srt = document.getElementById("sort").value;
+  if(srt==="price_asc") list.sort(function(a,b){ return PRODUCTS[a].p - PRODUCTS[b].p; });
+  else if(srt==="price_desc") list.sort(function(a,b){ return PRODUCTS[b].p - PRODUCTS[a].p; });
+  else if(srt==="brand") list.sort(function(a,b){ var x=brand(PRODUCTS[a]), y=brand(PRODUCTS[b]); return x.localeCompare(y,"ru") || (PRODUCTS[a].p - PRODUCTS[b].p); });
+  else if(srt==="name") list.sort(function(a,b){ return PRODUCTS[a].n.localeCompare(PRODUCTS[b].n,"ru"); });
   var g="";
   for(var j=0;j<list.length;j++){
     var p=PRODUCTS[list[j]];
@@ -262,6 +271,8 @@ document.getElementById("order").addEventListener("click",function(){
   try{ localStorage.setItem("riffhall_order", msg); }catch(e){}
   window.open("https://t.me/Andrey_AlexandrovichAA?text="+encodeURIComponent(msg), "_blank");
 });
+
+document.getElementById("sort").addEventListener("change", function(){ var q=document.getElementById("q").value; if(q.trim()){ document.getElementById("cat-title").innerHTML="Поиск"; render(curCat, q); } else applyCat(curCat);});
 
 drawCart();
 var h0=location.hash.replace("#","");
