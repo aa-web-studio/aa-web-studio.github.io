@@ -1212,7 +1212,7 @@ ul { list-style: none; }
   .hero-stats .stat { flex: 1 1 40%; }
   .form-card { padding: 28px 22px; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
-  .work-actions .btn { flex: 1; }
+  .work-actions .btn { flex: 1 1 100%; white-space: normal; text-align: center; }
   .cta-box { padding: 60px 20px 56px; }
   .cta-pillrow { gap: 14px; }
 }
