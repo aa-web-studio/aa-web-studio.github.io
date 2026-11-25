@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="-IIdjjW2BgZmApwqwK2n7YF1laParsjW1EhHD2ly1PY">
+  <meta name="yandex-verification" content="7c02e90dae0bbf60">
+  <title>Калькулятор сайта — собери свой сайт и узнай цену — AA Web Studio</title>
+  <meta name="description" content="Собери сайт под себя: количество страниц, допы — форма заявки, калькулятор, онлайн-цены, запись на дату — и сразу узнай примерную цену в BYN.">
+  <link rel="icon" type="image/jpeg" href="img/logo.jpg?v=2">
+  <meta property="og:site_name" content="AA Web Studio">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aa-web-studio.github.io/calculator.html">
+  <meta property="og:title" content="Калькулятор сайта — AA Web Studio">
+  <meta property="og:description" content="Собери сайт под себя и узнай примерную цену за минуту.">
+  <link rel="stylesheet" href="css/style.css?v=12">
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=114630010', 'ym');
+
+    ym(114630010, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/114630010" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="img/logo.jpg?v=2" alt="Логотип Andrey_Alexandrovich">
+        <span class="logo-text">
+          <span class="logo-name">Andrey_Alexandrovich</span>
+          <span class="logo-role">Web Studio</span>
+        </span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html">Главная</a>
+        <a href="portfolio.html">Портфолио</a>
+        <a href="templates.html">Шаблоны</a>
+        <a href="calculator.html">Калькулятор</a>
+        <a href="contact.html">Контакты</a>
+      </nav>
+      <div class="header-cta">
+        <a href="contact.html" class="btn btn-primary btn-sm">Заказать сайт</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" style="padding-top: calc(var(--header-h) + 56px);">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">Калькулятор</span>
+          <h2 class="section-title">Собери свой сайт и <span class="silver-text">узнай цену</span></h2>
+          <p class="section-sub">Выбери тип, страницы и что должно уметь работать на сайте — цена посчитается сразу. Это предварительная оценка: точную цифру назову после короткого обсуждения, и она может быть ниже.</p>
+        </div>
+
+        <div class="calc-layout">
+          <div class="calc-steps">
+
+            <div class="calc-step reveal">
+              <h3 class="calc-step-title"><span class="calc-step-num">1</span> Какой сайт нужен</h3>
+              <p class="calc-step-sub">Сколько страниц будет на сайте</p>
+              <div class="calc-pages-row">
+                <input type="range" min="1" max="10" value="1" step="1" id="calc-pages" class="calc-range" aria-label="Количество страниц">
+                <span class="calc-pages-val" id="calc-pages-label">1 страница</span>
+              </div>
+              <div class="form-chips" style="margin-top: 18px;" id="calc-speed">
+                <input type="radio" name="speed" id="speed-std" value="std" checked>
+                <label for="speed-std">Обычный срок · 3–10 дней</label>
+                <input type="radio" name="speed" id="speed-rush" value="rush">
+                <label for="speed-rush">Срочно · за 3 дня</label>
+              </div>
+            </div>
+
+            <div class="calc-step reveal">
+              <h3 class="calc-step-title"><span class="calc-step-num">2</span> Что должно работать на сайте</h3>
+              <p class="calc-step-sub">Можно выбрать несколько. Клиенты всё это любят — но каждый пункт добавляет работу.</p>
+              <div class="form-chips" id="calc-extras">
+                <input type="checkbox" id="ex-shop" value="shop">
+                <label for="ex-shop">Интернет-магазин · каталог с корзиной</label>
+                <input type="checkbox" id="ex-gallery" value="gallery">
+                <label for="ex-gallery">Галерея / каталог работ</label>
+                <input type="checkbox" id="ex-price" value="pricepage">
+                <label for="ex-price">Страница прайса с таблицей цен</label>
+                <input type="checkbox" id="ex-calcbuy" value="calcbuy">
+                <label for="ex-calcbuy">Калькулятор цены на сайте (как этот)</label>
+                <input type="checkbox" id="ex-kurs" value="kurs">
+                <label for="ex-kurs">Цены и курс валют обновляются сами · онлайн-данные</label>
+                <input type="checkbox" id="ex-booking" value="booking">
+                <label for="ex-booking">Онлайн-запись · выбор даты и времени</label>
+                <input type="checkbox" id="ex-lang" value="lang">
+                <label for="ex-lang">Вторая версия сайта на английском</label>
+                <input type="checkbox" id="ex-text" value="text">
+                <label for="ex-text">Тексты и фото под ключ · пишу сам</label>
+              </div>
+            </div>
+
+            <div class="calc-step reveal">
+              <h3 class="calc-step-title"><span class="calc-step-num">3</span>Что входит в цену всегда</h3>
+              <p class="calc-step-sub">Это в каждой работе по умолчанию — доплаты не требует.</p>
+              <div class="form-chips is-static" style="opacity: 0.85;">
+                <label tabindex="-1" onclick="return false;">Адаптив под телефоны</label>
+                <label tabindex="-1" onclick="return false;">Подключение домена</label>
+                <label tabindex="-1" onclick="return false;">Форма заявки в Telegram</label>
+                <label tabindex="-1" onclick="return false;">Яндекс.Метрика</label>
+                <label tabindex="-1" onclick="return false;">SEO-база</label>
+                <label tabindex="-1" onclick="return false;">2 недели поддержки</label>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="calc-total reveal">
+            <div class="calc-total-label">Примерная цена</div>
+            <div class="calc-total-price" id="calc-total">от <span id="calc-total-num">99</span> <small>BYN</small></div>
+            <p class="calc-total-meta" id="calc-total-days">Срок: 3–10 дней</p>
+            <ul class="calc-list" id="calc-list"></ul>
+            <a href="contact.html?type=landing" id="calc-cta" class="btn btn-primary" style="width: 100%;">Отправить заявку с расчётом</a>
+            <p class="calc-note">Заявка откроет Telegram с готовым текстом — что ты выбрал и какая цена вышла. Всё можно поменять в переписке.</p>
+          </div>
+        </div>
+
+        <div class="section-head reveal" style="margin-top: 72px;">
+          <h2 class="section-title" style="font-size: 26px;">Хочешь сначала увидеть,<br>как это выглядит?</h2>
+          <p class="section-sub"><a href="portfolio.html" class="work-link" style="color: var(--silver); text-decoration: underline;">Открой портфолио</a> — 22 готовых работы, от лендинга до магазина. К любому есть кнопка «Хочу такой же сайт».</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="img/logo.jpg?v=2" alt="Логотип Andrey_Alexandrovich">
+            <span class="logo-text">
+              <span class="logo-name">Andrey_Alexandrovich</span>
+              <span class="logo-role">Web Studio</span>
+            </span>
+          </a>
+          <p>Создание сайтов под ключ: лендинги, многостраничные сайты и интернет-магазины.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Навигация</h4>
+          <a href="index.html">Главная</a>
+          <a href="portfolio.html">Портфолио</a>
+          <a href="templates.html">Шаблоны</a>
+          <a href="calculator.html">Калькулятор</a>
+          <a href="contact.html">Контакты</a>
+        </div>
+        <div class="footer-col">
+          <h4>Где заказать</h4>
+          <a href="https://kwork.com/web-development/55556027/one-page-business-card-website-responsive-design?ref=25591701" target="_blank" rel="noopener">Kwork</a>
+          <a href="https://www.kufar.by/item/1096636232" target="_blank" rel="noopener">Kufar</a>
+          <a href="https://laborx.com/freelancers/users/id481226" target="_blank" rel="noopener">Laborx</a>
+          <a href="https://t.me/Andrey_AlexandrovichAA" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> AA Web Studio · Andrey Alexandrovich</span>
+        <span>AA Web Studio — сайты под ключ</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var PAGES_BASE = 99, PAGE_EXTRA = 40;
+      var EXTRAS = {
+        shop: { label: "Интернет-магазин · каталог с корзиной", price: 90 },
+        gallery: { label: "Галерея / каталог работ", price: 30 },
+        pricepage: { label: "Страница прайса с таблицей цен", price: 40 },
+        calcbuy: { label: "Калькулятор цены на сайте", price: 60 },
+        kurs: { label: "Цены и курс валют обновляются сами", price: 50 },
+        booking: { label: "Онлайн-запись · выбор даты и времени", price: 70 },
+        lang: { label: "Вторая версия сайта на английском", price: 80 },
+        text: { label: "Тексты и фото под ключ", price: 60 }
+      };
+      var RUSH = 50;
+      var pages = 1;
+
+      var elPages = document.getElementById("calc-pages");
+      var elPagesLabel = document.getElementById("calc-pages-label");
+      var elList = document.getElementById("calc-list");
+      var elNum = document.getElementById("calc-total-num");
+      var elDays = document.getElementById("calc-total-days");
+      var elCta = document.getElementById("calc-cta");
+
+      function pagesWord(n) {
+        if (n === 1) return "1 страница";
+        if (n < 5) return n + " страницы";
+        return n + " страниц";
+      }
+
+      function siteTypeName() {
+        var shop = document.getElementById("ex-shop").checked;
+        if (shop) return "Интернет-магазин";
+        return pages <= 1 ? "Лендинг" : "Многостраничный сайт";
+      }
+
+      function contactType() {
+        if (document.getElementById("ex-shop").checked) return "shop";
+        return pages > 1 ? "multi" : "landing";
+      }
+
+      function update() {
+        pages = parseInt(elPages.value, 10);
+        elPagesLabel.textContent = pagesWord(pages);
+
+        var items = [];
+        var base = PAGES_BASE + (pages - 1) * PAGE_EXTRA;
+        items.push([siteTypeName() + ", " + pagesWord(pages).toLowerCase(), base + " BYN"]);
+
+        var total = base;
+        var chosen = [];
+        var extrasWrap = document.getElementById("calc-extras").querySelectorAll('input[type="checkbox"]');
+        for (var i = 0; i < extrasWrap.length; i++) {
+          if (extrasWrap[i].checked) {
+            var ex = EXTRAS[extrasWrap[i].value];
+            if (ex) {
+              chosen.push(ex.label);
+              items.push([ex.label, "+" + ex.price + " BYN"]);
+              total += ex.price;
+            }
+          }
+        }
+
+        var rush = document.getElementById("speed-rush").checked;
+        if (rush) {
+          items.push(["Срочно · за 3 дня", "+" + RUSH + " BYN"]);
+          total += RUSH;
+        }
+
+        var daysText = rush
+          ? "Срок: примерно 3 дня"
+          : (pages <= 2 ? "Срок: 3–5 дней" : "Срок: 5–10 дней");
+
+        var rows = "";
+        for (var j = 0; j < items.length; j++) {
+          rows += "<li><span>" + items[j][0] + "</span><span>" + items[j][1] + "</span></li>";
+        }
+        elList.innerHTML = rows;
+        elNum.textContent = total;
+        elDays.textContent = daysText;
+
+        var summary =
+          "Собрал сайт в калькуляторе на сайте: " + siteTypeName() + ", " + pagesWord(pages).toLowerCase() +
+          (chosen.length ? " + " + chosen.join(", ") : "") +
+          (rush ? ". Срочно (3 дня)." : ".") +
+          " Примерная цена по калькулятору: " + total + " BYN.";
+        elCta.href = "contact.html?type=" + contactType() + "&calc=" + encodeURIComponent(summary);
+      }
+
+      function fillTrack() {
+        var pct = ((parseInt(elPages.value, 10) - 1) / 9) * 100;
+        elPages.style.setProperty("--fill", pct + "%");
+      }
+
+      elPages.addEventListener("input", function () { update(); fillTrack(); });
+      var chips = document.getElementById("calc-extras").querySelectorAll('input[type="checkbox"]');
+      for (var k = 0; k < chips.length; k++) chips[k].addEventListener("change", update);
+      var speeds = document.getElementsByName("speed");
+      for (var m = 0; m < speeds.length; m++) speeds[m].addEventListener("change", update);
+
+      fillTrack();
+      update();
+    })();
+  </script>
+
+  <script src="js/main.js?v=2"></script>
+  <script src="js/protect.js"></script>
+</body>
+</html>

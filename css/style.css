@@ -1281,3 +1281,32 @@ a.card:hover { box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55); }
 .work-link { color: inherit; text-decoration: none; }
 .work-link:hover { color: var(--text-bright, #fff); }
 .work-card .work-actions { margin-top: 18px; }
+
+/* ===== Калькулятор «Собери свой сайт» (calculator.html) ===== */
+.calc-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 28px; align-items: start; }
+.calc-steps { display: grid; gap: 24px; }
+.calc-step { padding: 26px 28px; border: 1px solid var(--border); border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)); }
+.calc-step-title { display: flex; align-items: center; gap: 12px; margin: 0 0 6px; font-size: 17px; font-weight: 700; }
+.calc-step-num { width: 30px; height: 30px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--silver); border: 1px solid var(--border); background: rgba(255,255,255,0.05); flex-shrink: 0; }
+.calc-step-sub { margin: 0 0 18px; color: var(--text-dim); font-size: 13.5px; }
+.form-chips input[type="checkbox"] { position: absolute; opacity: 0; pointer-events: none; }
+.form-chips input[type="checkbox"]:checked + label { border-color: rgba(255,255,255,0.5); color: var(--text-bright); background: rgba(255,255,255,0.08); box-shadow: 0 4px 18px rgba(255,255,255,0.06); }
+.form-chips input[type="checkbox"]:checked + label::before { background: var(--silver); box-shadow: 0 0 8px rgba(255,255,255,0.6); }
+.calc-pages-row { display: flex; align-items: center; gap: 18px; }
+.calc-pages-val { font-size: 15px; font-weight: 700; color: var(--text-bright); min-width: 130px; white-space: nowrap; }
+input[type="range"].calc-range { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 999px; background: linear-gradient(90deg, var(--silver, #cfd4dc) var(--fill, 11%), rgba(255,255,255,0.12) var(--fill, 11%)); outline: none; padding: 0; }
+input[type="range"].calc-range::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #fff; border: 3px solid #111; box-shadow: 0 2px 12px rgba(0,0,0,0.5); cursor: pointer; }
+input[type="range"].calc-range::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #fff; border: 3px solid #111; cursor: pointer; }
+.calc-total { position: sticky; top: calc(var(--header-h, 72px) + 24px); padding: 30px 30px 28px; border: 1px solid var(--border); border-radius: 22px; background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02)); box-shadow: 0 18px 48px rgba(0,0,0,0.35); }
+.calc-total-label { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim); font-weight: 600; }
+.calc-total-price { font-size: clamp(40px, 6vw, 56px); font-weight: 800; letter-spacing: -2px; margin: 8px 0 2px; background: linear-gradient(90deg, #fff, #9aa2ad, #fff); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; animation: silver-shimmer 5s linear infinite; }
+.calc-total-price small { font-size: 0.45em; letter-spacing: 0; -webkit-text-fill-color: #9aa2ad; }
+.calc-total-meta { color: var(--text-dim); font-size: 13.5px; margin: 10px 0 20px; line-height: 1.55; }
+.calc-list { list-style: none; margin: 0 0 22px; padding: 0; font-size: 13.5px; color: var(--text); }
+.calc-list li { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px dashed rgba(255,255,255,0.08); }
+.calc-list li span:last-of-type { color: var(--text-dim); white-space: nowrap; }
+.calc-note { margin-top: 14px; color: var(--text-dim); font-size: 12.5px; text-align: center; line-height: 1.5; }
+@media (max-width: 900px) {
+  .calc-layout { grid-template-columns: 1fr; }
+  .calc-total { position: static; }
+}

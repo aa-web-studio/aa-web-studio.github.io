@@ -17,6 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   var commentField = document.getElementById("field-comment");
+  var calcSummary = params.get("calc");
+  if (calcSummary && commentField && !commentField.value) {
+    commentField.value = calcSummary;
+  }
   if (projectId && commentField && !commentField.value) {
     var project = (typeof SITE_PROJECTS !== "undefined" ? SITE_PROJECTS : []).find(function (p) {
       return p.id === projectId;
