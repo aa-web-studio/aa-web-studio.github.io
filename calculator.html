@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://aa-web-studio.github.io/calculator.html">
   <meta property="og:title" content="Калькулятор сайта — AA Web Studio">
   <meta property="og:description" content="Собери сайт под себя и узнай примерную цену за минуту.">
-  <link rel="stylesheet" href="css/style.css?v=14">
+  <link rel="stylesheet" href="css/style.css?v=15">
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -61,71 +61,131 @@
         <div class="section-head reveal">
           <span class="section-tag">Калькулятор</span>
           <h2 class="section-title">Собери свой сайт и <span class="silver-text">узнай цену</span></h2>
-          <p class="section-sub">Жми на готовый набор — или собери сам по шагам. Цена посчитается сразу. Точная цифра обсуждается в чате, и она может быть ниже.</p>
+          <p class="section-sub">Знак «?» рядом с каждым пунктом объясняет, что это и на что влияет. Точная цена — в чате, и она может быть ниже.</p>
         </div>
 
         <div class="calc-presets reveal">
-          <button type="button" class="calc-preset" data-preset="start">
-            <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Быстрый старт</b>
-            <span>Лендинг на 1 страницу. Заявки на ТГ, подключение домена — всё внутри.</span>
-            <i>от 99 BYN →</i>
-          </button>
-          <button type="button" class="calc-preset" data-preset="business">
-            <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg> Бизнес</b>
-            <span>3 страницы: главная, галерея работ, прайс с таблицей.</span>
-            <i>от 249 BYN →</i>
-          </button>
-          <button type="button" class="calc-preset" data-preset="shop">
-            <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Продажи</b>
-            <span>Интернет-магазин + онлайн-запись на дату и время.</span>
-            <i>от 339 BYN →</i>
-          </button>
+          <button type="button" class="calc-preset" data-preset="start">Быстрый старт <small>от 99 BYN</small></button>
+          <button type="button" class="calc-preset" data-preset="business">Бизнес <small>от 249 BYN</small></button>
+          <button type="button" class="calc-preset" data-preset="shop">Продажи <small>от 339 BYN</small></button>
         </div>
 
         <div class="calc-layout">
           <div class="calc-steps">
 
             <div class="calc-step reveal">
-              <h3 class="calc-step-title"><span class="calc-step-num">1</span> Какой сайт нужен</h3>
-              <p class="calc-step-sub">Сколько страниц будет на сайте</p>
+              <h3 class="calc-step-title">
+                <span class="calc-step-num">1</span> Страницы
+                <span class="qwrap">
+                  <button type="button" class="qmark" aria-label="Что это?">?</button>
+                  <span class="tip"><b>Количество страниц</b>1 страница — лендинг, всё на одном экране. Каждая следующая — отдельный раздел: прайс, галерея, о компании.<br><br>Влияет на цену: 99 BYN за первую, +40 за каждую следующую. И на срок.</span>
+                </span>
+              </h3>
               <div class="calc-pages-row">
                 <input type="range" min="1" max="10" value="1" step="1" id="calc-pages" class="calc-range" aria-label="Количество страниц">
                 <span class="calc-pages-val" id="calc-pages-label">1 страница</span>
               </div>
-              <div class="form-chips" style="margin-top: 18px;" id="calc-speed">
-                <input type="radio" name="speed" id="speed-std" value="std" checked>
-                <label for="speed-std">Обычный срок · 3–10 дней</label>
-                <input type="radio" name="speed" id="speed-rush" value="rush">
-                <label for="speed-rush">Срочно · за 3 дня</label>
+              <div class="calc-speed-row">
+                <span class="calc-speed-label">Срок</span>
+                <div class="form-chips" id="calc-speed">
+                  <input type="radio" name="speed" id="speed-std" value="std" checked>
+                  <label for="speed-std">Обычный · 3–10 дней</label>
+                  <input type="radio" name="speed" id="speed-rush" value="rush">
+                  <label for="speed-rush">Срочно · 3 дня</label>
+                  <span class="qwrap">
+                    <button type="button" class="qmark" aria-label="Что это?">?</button>
+                    <span class="tip"><b>Срочно</b>Делаю в приоритете: готово за 3 дня вместо обычных 3–10.<br><br>Влияет на цену: +50 BYN.</span>
+                  </span>
+                </div>
               </div>
             </div>
 
             <div class="calc-step reveal">
-              <h3 class="calc-step-title"><span class="calc-step-num">2</span> Что должно работать на сайте</h3>
-              <p class="calc-step-sub">Можно выбрать несколько — сумма справа пересчитается сама.</p>
-              <div class="form-chips" id="calc-extras">
-                <input type="checkbox" id="ex-shop" value="shop">
-                <label for="ex-shop">Интернет-магазин · каталог с корзиной</label>
-                <input type="checkbox" id="ex-gallery" value="gallery">
-                <label for="ex-gallery">Галерея / каталог работ</label>
-                <input type="checkbox" id="ex-price" value="pricepage">
-                <label for="ex-price">Страница прайса с таблицей цен</label>
-                <input type="checkbox" id="ex-calcbuy" value="calcbuy">
-                <label for="ex-calcbuy">Калькулятор цены на сайте (как этот)</label>
-                <input type="checkbox" id="ex-kurs" value="kurs">
-                <label for="ex-kurs">Цены и курс валют обновляются сами · онлайн-данные</label>
-                <input type="checkbox" id="ex-booking" value="booking">
-                <label for="ex-booking">Онлайн-запись · выбор даты и времени</label>
-                <input type="checkbox" id="ex-lang" value="lang">
-                <label for="ex-lang">Вторая версия сайта на английском</label>
-                <input type="checkbox" id="ex-text" value="text">
-                <label for="ex-text">Тексты и фото под ключ · пишу сам</label>
+              <h3 class="calc-step-title">
+                <span class="calc-step-num">2</span> Что должно работать
+                <span class="qwrap">
+                  <button type="button" class="qmark" aria-label="Что это?">?</button>
+                  <span class="tip"><b>Допы</b>То, что ставится не на каждом сайте. Выбирай только нужное — каждый пункт добавляет к цене и к сроку. «?» рядом с пунктом расскажет подробнее.</span>
+                </span>
+              </h3>
+              <div class="calc-rows" id="calc-extras">
+                <div class="calc-row">
+                  <input type="checkbox" id="ex-shop" value="shop">
+                  <label for="ex-shop">Интернет-магазин · корзина</label>
+                  <span class="calc-price">+90</span>
+                  <span class="qwrap">
+                    <button type="button" class="qmark" aria-label="Что это?">?</button>
+                    <span class="tip"><b>Интернет-магазин</b>Каталог товаров, корзина, заказ уходит тебе в Telegram.<br><br>Влияет: +90 BYN, срок +1–2 дня.</span>
+                  </span>
+                </div>
+                <div class="calc-row">
+                  <input type="checkbox" id="ex-gallery" value="gallery">
+                  <label for="ex-gallery">Галерея / каталог работ</label>
+                  <span class="calc-price">+30</span>
+                  <span class="qwrap">
+                    <button type="button" class="qmark" aria-label="Что это?">?</button>
+                    <span class="tip"><b>Галерея</b>Сетка с фото твоих работ, открываются по клику. Можно с фильтром по категориям.<br><br>Влияет: +30 BYN.</span>
+                  </span>
+                </div>
+                <div class="calc-row">
+                  <input type="checkbox" id="ex-price" value="pricepage">
+                  <label for="ex-price">Прайс с таблицей цен</label>
+                  <span class="calc-price">+40</span>
+                  <span class="qwrap">
+                    <button type="button" class="qmark" aria-label="Что это?">?</button>
+                    <span class="tip"><b>Прайс</b>Отдельная страница: таблица услуг и цен, легко обновлять.<br><br>Влияет: +40 BYN.</span>
+                  </span>
+                </div>
+                <div class="calc-row">
+                  <input type="checkbox" id="ex-calcbuy" value="calcbuy">
+                  <label for="ex-calcbuy">Калькулятор цены на сайте</label>
+                  <span class="calc-price">+60</span>
+                  <span class="qwrap">
+                    <button type="button" class="qmark" aria-label="Что это?">?</button>
+                    <span class="tip"><b>Калькулятор на твоём сайте</b>Такой же, как этот: клиент сам выбирает опции и сразу видит цену твоей услуги.<br><br>Влияет: +60 BYN.</span>
+                  </span>
+                </div>
+                <div class="calc-row">
+                  <input type="checkbox" id="ex-kurs" value="kurs">
+                  <label for="ex-kurs">Онлайн-данные · курс, цены сами</label>
+                  <span class="calc-price">+50</span>
+                  <span class="qwrap">
+                    <button type="button" class="qmark" aria-label="Что это?">?</button>
+                    <span class="tip"><b>Онлайн-данные</b>Цены или курс валют на сайте обновляются сами, из интернета. Тебе не надо ничего править руками.<br><br>Влияет: +50 BYN. Нужен открытый источник данных — обсудим в чате.</span>
+                  </span>
+                </div>
+                <div class="calc-row">
+                  <input type="checkbox" id="ex-booking" value="booking">
+                  <label for="ex-booking">Онлайн-запись · дата и время</label>
+                  <span class="calc-price">+70</span>
+                  <span class="qwrap">
+                    <button type="button" class="qmark" aria-label="Что это?">?</button>
+                    <span class="tip"><b>Онлайн-запись</b>Клиент выбирает дату и время (например, стрижки или мойки), заявка падает тебе в Telegram.<br><br>Влияет: +70 BYN.</span>
+                  </span>
+                </div>
+                <div class="calc-row">
+                  <input type="checkbox" id="ex-lang" value="lang">
+                  <label for="ex-lang">Версия на английском · RU + EN</label>
+                  <span class="calc-price">+80</span>
+                  <span class="qwrap">
+                    <button type="button" class="qmark" aria-label="Что это?">?</button>
+                    <span class="tip"><b>Два языка</b>Вторая копия сайта на английском, переключение одной кнопкой.<br><br>Влияет: +80 BYN. Нужно, только если ждёшь иностранцев.</span>
+                  </span>
+                </div>
+                <div class="calc-row">
+                  <input type="checkbox" id="ex-text" value="text">
+                  <label for="ex-text">Тексты и фото под ключ</label>
+                  <span class="calc-price">+60</span>
+                  <span class="qwrap">
+                    <button type="button" class="qmark" aria-label="Что это?">?</button>
+                    <span class="tip"><b>Тексты и фото</b>Пишу продающие тексты и подбираю фотографии вместо тебя. От тебя — только информация о бизнесе.<br><br>Влияет: +60 BYN.</span>
+                  </span>
+                </div>
               </div>
             </div>
 
             <div class="calc-step reveal">
-              <h3 class="calc-step-title"><span class="calc-step-num">3</span> Что входит в цену всегда</h3>
-              <p class="calc-step-sub">Это в каждой работе по умолчанию — без доплат.</p>
+              <h3 class="calc-step-title"><span class="calc-step-num">3</span> Входит всегда, без доплат</h3>
               <div class="calc-included-row">
                 <span class="calc-included">Адаптив под телефоны</span>
                 <span class="calc-included">Подключение домена</span>
@@ -144,13 +204,8 @@
             <p class="calc-total-meta" id="calc-total-days">Срок: 3–10 дней</p>
             <ul class="calc-list" id="calc-list"></ul>
             <a href="contact.html?type=landing" id="calc-cta" class="btn btn-primary" style="width: 100%;">Отправить заявку с расчётом</a>
-            <p class="calc-note">Заявка откроет Telegram с готовым текстом — что выбрал и какая цена вышла. Всё можно поменять в переписке.</p>
+            <p class="calc-note">Откроет Telegram с готовым текстом: что выбрал и сколько вышло. Детали меняются в чате.</p>
           </div>
-        </div>
-
-        <div class="section-head reveal" style="margin-top: 72px;">
-          <h2 class="section-title" style="font-size: 26px;">Хочешь сначала увидеть,<br>как это выглядит?</h2>
-          <p class="section-sub"><a href="portfolio.html" class="work-link" style="color: var(--silver); text-decoration: underline;">Открой портфолио</a> — 22 готовых работы, от лендинга до магазина. К любому есть кнопка «Хочу такой же сайт».</p>
         </div>
       </div>
     </section>
@@ -196,13 +251,13 @@
     (function () {
       var PAGES_BASE = 99, PAGE_EXTRA = 40, RUSH = 50;
       var EXTRAS = {
-        shop: { label: "Интернет-магазин · каталог с корзиной", price: 90 },
+        shop: { label: "Интернет-магазин · корзина", price: 90 },
         gallery: { label: "Галерея / каталог работ", price: 30 },
-        pricepage: { label: "Страница прайса с таблицей цен", price: 40 },
+        pricepage: { label: "Прайс с таблицей цен", price: 40 },
         calcbuy: { label: "Калькулятор цены на сайте", price: 60 },
-        kurs: { label: "Цены и курс валют обновляются сами", price: 50 },
-        booking: { label: "Онлайн-запись · выбор даты и времени", price: 70 },
-        lang: { label: "Вторая версия сайта на английском", price: 80 },
+        kurs: { label: "Онлайн-данные (курс, цены сами)", price: 50 },
+        booking: { label: "Онлайн-запись (дата и время)", price: 70 },
+        lang: { label: "Версия на английском", price: 80 },
         text: { label: "Тексты и фото под ключ", price: 60 }
       };
 
@@ -274,7 +329,7 @@
 
         var rush = document.getElementById("speed-rush").checked;
         if (rush) {
-          items.push(["Срочно · за 3 дня", "+" + RUSH + " BYN"]);
+          items.push(["Срочно · 3 дня", "+" + RUSH + " BYN"]);
           total += RUSH;
         }
 
@@ -328,6 +383,25 @@
       for (var m = 0; m < boxesAll.length; m++) boxesAll[m].addEventListener("change", render);
       var speeds = document.getElementsByName("speed");
       for (var s = 0; s < speeds.length; s++) speeds[s].addEventListener("change", render);
+
+      /* вопросики: на телефоне — тап, на компе — наведение */
+      var qmarks = document.querySelectorAll(".qmark");
+      for (var q = 0; q < qmarks.length; q++) {
+        qmarks[q].addEventListener("click", function (e) {
+          e.preventDefault();
+          var wrap = this.closest(".qwrap");
+          var wasOpen = wrap.classList.contains("tip-open");
+          var all = document.querySelectorAll(".qwrap.tip-open");
+          for (var a = 0; a < all.length; a++) all[a].classList.remove("tip-open");
+          if (!wasOpen) wrap.classList.add("tip-open");
+        });
+      }
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest(".qwrap")) {
+          var open = document.querySelectorAll(".qwrap.tip-open");
+          for (var i = 0; i < open.length; i++) open[i].classList.remove("tip-open");
+        }
+      });
 
       render();
     })();
