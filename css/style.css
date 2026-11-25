@@ -1314,7 +1314,7 @@ input[type="range"].calc-range::-moz-range-progress { height: 6px; border-radius
 .calc-speed-label { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim); }
 
 .calc-rows { margin-top: 10px; }
-.calc-row { display: flex; align-items: center; gap: 10px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.calc-row { display: flex; align-items: center; gap: 10px; padding: 13px 12px 13px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
 .calc-row:last-child { border-bottom: 0; }
 .calc-row input[type="checkbox"] { position: absolute; opacity: 0; pointer-events: none; }
 .calc-row label { cursor: pointer; position: relative; display: inline-flex; align-items: center; min-height: 20px; padding-left: 30px; color: var(--text-dim); font-size: 14px; font-weight: 500; transition: color 0.2s ease; }
