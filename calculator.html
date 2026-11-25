@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://aa-web-studio.github.io/calculator.html">
   <meta property="og:title" content="Калькулятор сайта — AA Web Studio">
   <meta property="og:description" content="Собери сайт под себя и узнай примерную цену за минуту.">
-  <link rel="stylesheet" href="css/style.css?v=13">
+  <link rel="stylesheet" href="css/style.css?v=14">
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -61,7 +61,25 @@
         <div class="section-head reveal">
           <span class="section-tag">Калькулятор</span>
           <h2 class="section-title">Собери свой сайт и <span class="silver-text">узнай цену</span></h2>
-          <p class="section-sub">Выбери тип, страницы и что должно уметь работать на сайте — цена посчитается сразу. Это предварительная оценка: точную цифру назову после короткого обсуждения, и она может быть ниже.</p>
+          <p class="section-sub">Жми на готовый набор — или собери сам по шагам. Цена посчитается сразу. Точная цифра обсуждается в чате, и она может быть ниже.</p>
+        </div>
+
+        <div class="calc-presets reveal">
+          <button type="button" class="calc-preset" data-preset="start">
+            <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Быстрый старт</b>
+            <span>Лендинг на 1 страницу. Заявки на ТГ, подключение домена — всё внутри.</span>
+            <i>от 99 BYN →</i>
+          </button>
+          <button type="button" class="calc-preset" data-preset="business">
+            <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg> Бизнес</b>
+            <span>3 страницы: главная, галерея работ, прайс с таблицей.</span>
+            <i>от 249 BYN →</i>
+          </button>
+          <button type="button" class="calc-preset" data-preset="shop">
+            <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Продажи</b>
+            <span>Интернет-магазин + онлайн-запись на дату и время.</span>
+            <i>от 339 BYN →</i>
+          </button>
         </div>
 
         <div class="calc-layout">
@@ -84,7 +102,7 @@
 
             <div class="calc-step reveal">
               <h3 class="calc-step-title"><span class="calc-step-num">2</span> Что должно работать на сайте</h3>
-              <p class="calc-step-sub">Можно выбрать несколько. Клиенты всё это любят — но каждый пункт добавляет работу.</p>
+              <p class="calc-step-sub">Можно выбрать несколько — сумма справа пересчитается сама.</p>
               <div class="form-chips" id="calc-extras">
                 <input type="checkbox" id="ex-shop" value="shop">
                 <label for="ex-shop">Интернет-магазин · каталог с корзиной</label>
@@ -106,15 +124,15 @@
             </div>
 
             <div class="calc-step reveal">
-              <h3 class="calc-step-title"><span class="calc-step-num">3</span>Что входит в цену всегда</h3>
-              <p class="calc-step-sub">Это в каждой работе по умолчанию — доплаты не требует.</p>
-              <div class="form-chips is-static" style="opacity: 0.85;">
-                <label tabindex="-1" onclick="return false;">Адаптив под телефоны</label>
-                <label tabindex="-1" onclick="return false;">Подключение домена</label>
-                <label tabindex="-1" onclick="return false;">Форма заявки в Telegram</label>
-                <label tabindex="-1" onclick="return false;">Яндекс.Метрика</label>
-                <label tabindex="-1" onclick="return false;">SEO-база</label>
-                <label tabindex="-1" onclick="return false;">2 недели поддержки</label>
+              <h3 class="calc-step-title"><span class="calc-step-num">3</span> Что входит в цену всегда</h3>
+              <p class="calc-step-sub">Это в каждой работе по умолчанию — без доплат.</p>
+              <div class="calc-included-row">
+                <span class="calc-included">Адаптив под телефоны</span>
+                <span class="calc-included">Подключение домена</span>
+                <span class="calc-included">Форма заявки в Telegram</span>
+                <span class="calc-included">Яндекс.Метрика</span>
+                <span class="calc-included">SEO-база</span>
+                <span class="calc-included">2 недели поддержки</span>
               </div>
             </div>
 
@@ -126,7 +144,7 @@
             <p class="calc-total-meta" id="calc-total-days">Срок: 3–10 дней</p>
             <ul class="calc-list" id="calc-list"></ul>
             <a href="contact.html?type=landing" id="calc-cta" class="btn btn-primary" style="width: 100%;">Отправить заявку с расчётом</a>
-            <p class="calc-note">Заявка откроет Telegram с готовым текстом — что ты выбрал и какая цена вышла. Всё можно поменять в переписке.</p>
+            <p class="calc-note">Заявка откроет Telegram с готовым текстом — что выбрал и какая цена вышла. Всё можно поменять в переписке.</p>
           </div>
         </div>
 
@@ -176,7 +194,7 @@
 
   <script>
     (function () {
-      var PAGES_BASE = 99, PAGE_EXTRA = 40;
+      var PAGES_BASE = 99, PAGE_EXTRA = 40, RUSH = 50;
       var EXTRAS = {
         shop: { label: "Интернет-магазин · каталог с корзиной", price: 90 },
         gallery: { label: "Галерея / каталог работ", price: 30 },
@@ -187,8 +205,6 @@
         lang: { label: "Вторая версия сайта на английском", price: 80 },
         text: { label: "Тексты и фото под ключ", price: 60 }
       };
-      var RUSH = 50;
-      var pages = 1;
 
       var elPages = document.getElementById("calc-pages");
       var elPagesLabel = document.getElementById("calc-pages-label");
@@ -196,6 +212,8 @@
       var elNum = document.getElementById("calc-total-num");
       var elDays = document.getElementById("calc-total-days");
       var elCta = document.getElementById("calc-cta");
+      var shownTotal = 99;
+      var animFrame = null;
 
       function pagesWord(n) {
         if (n === 1) return "1 страница";
@@ -204,19 +222,37 @@
       }
 
       function siteTypeName() {
-        var shop = document.getElementById("ex-shop").checked;
-        if (shop) return "Интернет-магазин";
-        return pages <= 1 ? "Лендинг" : "Многостраничный сайт";
+        if (document.getElementById("ex-shop").checked) return "Интернет-магазин";
+        return parseInt(elPages.value, 10) <= 1 ? "Лендинг" : "Многостраничный сайт";
       }
 
       function contactType() {
         if (document.getElementById("ex-shop").checked) return "shop";
-        return pages > 1 ? "multi" : "landing";
+        return parseInt(elPages.value, 10) > 1 ? "multi" : "landing";
       }
 
-      function update() {
-        pages = parseInt(elPages.value, 10);
+      function countUp(to) {
+        if (animFrame) cancelAnimationFrame(animFrame);
+        var from = shownTotal, start = null;
+        function tick(ts) {
+          if (!start) start = ts;
+          var t = Math.min((ts - start) / 350, 1);
+          t = 1 - Math.pow(1 - t, 3);
+          elNum.textContent = Math.round(from + (to - from) * t);
+          if (t < 1) {
+            animFrame = requestAnimationFrame(tick);
+          } else {
+            shownTotal = to;
+            animFrame = null;
+          }
+        }
+        animFrame = requestAnimationFrame(tick);
+      }
+
+      function render() {
+        var pages = parseInt(elPages.value, 10);
         elPagesLabel.textContent = pagesWord(pages);
+        elPages.style.setProperty("--fill", ((pages - 1) / 9) * 100 + "%");
 
         var items = [];
         var base = PAGES_BASE + (pages - 1) * PAGE_EXTRA;
@@ -224,10 +260,10 @@
 
         var total = base;
         var chosen = [];
-        var extrasWrap = document.getElementById("calc-extras").querySelectorAll('input[type="checkbox"]');
-        for (var i = 0; i < extrasWrap.length; i++) {
-          if (extrasWrap[i].checked) {
-            var ex = EXTRAS[extrasWrap[i].value];
+        var boxes = document.getElementById("calc-extras").querySelectorAll('input[type="checkbox"]');
+        for (var i = 0; i < boxes.length; i++) {
+          if (boxes[i].checked) {
+            var ex = EXTRAS[boxes[i].value];
             if (ex) {
               chosen.push(ex.label);
               items.push([ex.label, "+" + ex.price + " BYN"]);
@@ -242,17 +278,14 @@
           total += RUSH;
         }
 
-        var daysText = rush
-          ? "Срок: примерно 3 дня"
-          : (pages <= 2 ? "Срок: 3–5 дней" : "Срок: 5–10 дней");
-
         var rows = "";
         for (var j = 0; j < items.length; j++) {
           rows += "<li><span>" + items[j][0] + "</span><span>" + items[j][1] + "</span></li>";
         }
         elList.innerHTML = rows;
-        elNum.textContent = total;
-        elDays.textContent = daysText;
+        elDays.textContent = rush
+          ? "Срок: примерно 3 дня"
+          : (pages <= 2 ? "Срок: 3–5 дней" : "Срок: 5–10 дней");
 
         var summary =
           "Собрал сайт в калькуляторе на сайте: " + siteTypeName() + ", " + pagesWord(pages).toLowerCase() +
@@ -260,21 +293,43 @@
           (rush ? ". Срочно (3 дня)." : ".") +
           " Примерная цена по калькулятору: " + total + " BYN.";
         elCta.href = "contact.html?type=" + contactType() + "&calc=" + encodeURIComponent(summary);
+
+        countUp(total);
       }
 
-      function fillTrack() {
-        var pct = ((parseInt(elPages.value, 10) - 1) / 9) * 100;
-        elPages.style.setProperty("--fill", pct + "%");
+      function setExtras(list) {
+        var boxes = document.getElementById("calc-extras").querySelectorAll('input[type="checkbox"]');
+        for (var i = 0; i < boxes.length; i++) {
+          boxes[i].checked = list.indexOf(boxes[i].value) !== -1;
+        }
       }
 
-      elPages.addEventListener("input", function () { update(); fillTrack(); });
-      var chips = document.getElementById("calc-extras").querySelectorAll('input[type="checkbox"]');
-      for (var k = 0; k < chips.length; k++) chips[k].addEventListener("change", update);
+      var PRESETS = {
+        start: { pages: 1, extras: [] },
+        business: { pages: 3, extras: ["gallery", "pricepage"] },
+        shop: { pages: 3, extras: ["shop", "booking"] }
+      };
+
+      var presets = document.querySelectorAll(".calc-preset");
+      for (var k = 0; k < presets.length; k++) {
+        presets[k].addEventListener("click", function () {
+          var p = PRESETS[this.getAttribute("data-preset")];
+          if (!p) return;
+          elPages.value = p.pages;
+          setExtras(p.extras);
+          document.getElementById("speed-std").checked = true;
+          render();
+          if (elPages.scrollIntoView) elPages.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
+
+      elPages.addEventListener("input", render);
+      var boxesAll = document.getElementById("calc-extras").querySelectorAll('input[type="checkbox"]');
+      for (var m = 0; m < boxesAll.length; m++) boxesAll[m].addEventListener("change", render);
       var speeds = document.getElementsByName("speed");
-      for (var m = 0; m < speeds.length; m++) speeds[m].addEventListener("change", update);
+      for (var s = 0; s < speeds.length; s++) speeds[s].addEventListener("change", render);
 
-      fillTrack();
-      update();
+      render();
     })();
   </script>
 

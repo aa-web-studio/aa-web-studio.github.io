@@ -1310,3 +1310,17 @@ input[type="range"].calc-range::-moz-range-thumb { width: 22px; height: 22px; bo
   .calc-layout { grid-template-columns: 1fr; }
   .calc-total { position: static; }
 }
+
+/* ===== Калькулятор v2: пресеты и «входит всегда» ===== */
+.calc-presets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 28px; }
+.calc-preset { padding: 20px 22px; border: 1px solid var(--border); border-radius: 16px; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)); cursor: pointer; text-align: left; color: inherit; font: inherit; transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease; }
+.calc-preset:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.45); box-shadow: 0 14px 40px rgba(0,0,0,0.4); }
+.calc-preset b { display: flex; align-items: center; gap: 8px; font-size: 15px; margin-bottom: 4px; color: var(--text-bright, #fff); }
+.calc-preset span { display: block; font-size: 13px; color: var(--text-dim); line-height: 1.45; }
+.calc-preset i { font-style: normal; display: inline-block; margin-top: 10px; font-size: 12.5px; font-weight: 700; color: var(--silver); letter-spacing: 0.6px; text-transform: uppercase; }
+.calc-step { transition: border-color 0.25s ease; }
+.calc-step:hover { border-color: rgba(255,255,255,0.28); }
+.calc-included-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.calc-included { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px dashed rgba(255,255,255,0.18); color: var(--text); font-size: 13px; font-weight: 600; }
+.calc-included::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--silver); -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M8 12.5l2.5 2.5L16 9.5"/><circle cx="12" cy="12" r="10"/></svg>') center/contain no-repeat; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M8 12.5l2.5 2.5L16 9.5"/><circle cx="12" cy="12" r="10"/></svg>') center/contain no-repeat; background-color: var(--silver); }
+@media (max-width: 900px) { .calc-presets { grid-template-columns: 1fr; } }
