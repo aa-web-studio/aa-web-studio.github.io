@@ -32,11 +32,16 @@ h1 em{font-style:italic;color:var(--amber)}
 #q{width:100%;padding:14px 20px;background:var(--card);border:1px solid var(--border);border-radius:999px;color:var(--text);font-size:15px;outline:none}
 #q:focus{border-color:var(--amber)}
 .catalog{padding:30px 0 70px}
-.chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:34px}
-.chip{padding:9px 16px;background:var(--card);border:1px solid var(--border);border-radius:999px;color:var(--dim);font-size:14px;cursor:pointer;transition:.2s}
-.chip:hover{color:var(--text);border-color:var(--amber)}
-.chip.on{background:linear-gradient(135deg,var(--amber),var(--amber2));color:#161310;border-color:transparent;font-weight:700}
-.count-line{text-align:center;color:var(--dim);font-size:14px;margin-bottom:22px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:6px;background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;padding:10px 18px;background:transparent;border:none;border-radius:9px;color:var(--dim);font-size:14px;font-family:inherit;cursor:pointer;transition:.2s}
+.tab:hover{color:var(--text)}
+.tab.on{background:linear-gradient(135deg,var(--amber),var(--amber2));color:#161310;font-weight:700}
+.cat-head{text-align:center;margin:26px 0 30px}
+.cat-head h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(26px,4vw,38px)}
+.cat-head h2 em{font-style:italic;color:var(--amber)}
+.cat-sub{color:var(--dim);font-size:15px;margin-top:6px}
+.count-line{display:none}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .pcard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
 .pcard:hover{transform:translateY(-4px);border-color:rgba(232,163,61,.55)}
@@ -97,8 +102,8 @@ footer{border-top:1px solid var(--border);padding:26px 0;color:var(--dim);font-s
 </div></section>
 
 <section class="catalog" id="cat"><div class="container">
-  <div class="chips" id="chips"></div>
-  <div class="count-line" id="count-line"></div>
+  <div class="tabs" id="tabs"></div>
+  <div class="cat-head"><h2 id="cat-title">Весь каталог</h2><div class="cat-sub" id="cat-sub"></div></div>
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty">Ничего не нашлось. Попробуй другое слово — например «стратокастер» или «педаль»</div>
 </div></section>
@@ -128,25 +133,45 @@ var PRODUCTS = [{"cat": "Электрогитары", "n": "Электрогит
 var cart = {};
 try { cart = JSON.parse(localStorage.getItem("riffhall_cart") || "{}"); } catch(e) { cart = {}; }
 var activeCat = "all", query = "";
-var grid = document.getElementById("grid"), chipsBox = document.getElementById("chips");
+var grid = document.getElementById("grid"), tabsBox = document.getElementById("tabs");
 var cats = ["all"];
 for (var i=0;i<PRODUCTS.length;i++) if (cats.indexOf(PRODUCTS[i].cat)<0) cats.push(PRODUCTS[i].cat);
 
-var CHIP_LABEL = {"all":"Всё","Электрогитары":"Электрогитары","Акустические гитары":"Акустика","Электроакустические":"Электроакустика","Классические гитары":"Классика","Бас-гитары":"Бас-гитары","Комбики гитарные":"Комбики","Комбики басовые":"Комбо для баса","Педали · овердрайв и дисторшн":"Овердрайв/дисторшн","Педали · дилей и реверб":"Дилей/реверб","Педали · мультэффекты":"Мультэффекты","Струны для электрогитары":"Струны · электро","Струны для акустики":"Струны · акустика","Струны для классики":"Струны · классика","Струны для баса":"Струны · бас","Кабели инструментальные":"Кабели"};
+var LABEL = {"all":"Всё","Электрогитары":"Электрогитары","Акустические гитары":"Акустические гитары","Электроакустические":"Электроакустика","Классические гитары":"Классические гитары","Бас-гитары":"Бас-гитары","Комбики гитарные":"Комбики","Комбики басовые":"Комбики для баса","Педали · овердрайв и дисторшн":"Педали: овердрайв и дисторшн","Педали · дилей и реверб":"Педали: дилей и реверб","Педали · мультэффекты":"Педали: мультэффекты","Струны для электрогитары":"Струны для электрогитары","Струны для акустики":"Струны для акустики","Струны для классики":"Струны для классики","Струны для баса":"Струны для баса","Кабели инструментальные":"Кабели"};
+var SLUG = {"all":"all","Электрогитары":"electro","Акустические гитары":"akustika","Электроакустические":"elektroakustika","Классические гитары":"klassika","Бас-гитары":"bas","Комбики гитарные":"kombiki","Комбики басовые":"kombiki-bas","Педали · овердрайв и дисторшн":"overdrive","Педали · дилей и реверб":"delay","Педали · мультэффекты":"multiefekt","Струны для электрогитары":"struny-electro","Струны для акустики":"struny-akustika","Струны для классики":"struny-klassika","Струны для баса":"struny-bas","Кабели инструментальные":"kabeli"};
+var bySlug = {};
+for (var key in SLUG) bySlug[SLUG[key]] = key;
+
+function label(cat){ return chipSafe(LABEL[cat]||cat); }
+function chipSafe(t){ return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
 
 for (var c=0;c<cats.length;c++){
   var b=document.createElement("button");
-  b.type="button"; b.className="chip"+(cats[c]==="all"?" on":""); b.textContent=CHIP_LABEL[cats[c]]||cats[c];
+  b.type="button"; b.className="tab"+(cats[c]==="all"?" on":""); b.textContent=LABEL[cats[c]]||cats[c];
   b.setAttribute("data-cat",cats[c]);
   b.addEventListener("click",function(){
-    activeCat=this.getAttribute("data-cat");
-    var all=document.querySelectorAll(".chip");
-    for(var k=0;k<all.length;k++) all[k].classList.remove("on");
-    this.classList.add("on");
-    render();
+    var cat=this.getAttribute("data-cat");
+    if(location.hash!=="#"+SLUG[cat]) location.hash=SLUG[cat];
+    else applyCat(cat);
   });
-  chipsBox.appendChild(b);
+  tabsBox.appendChild(b);
 }
+
+function applyCat(cat){
+  activeCat=cat;
+  var all=document.querySelectorAll(".tab");
+  for(var k=0;k<all.length;k++) all[k].classList.toggle("on",all[k].getAttribute("data-cat")===cat);
+  var t=document.getElementById("cat-title"), sub=document.getElementById("cat-sub");
+  if(cat==="all"){ t.innerHTML="Весь <em>каталог</em>"; }
+  else { var words=LABEL[cat].split(" "); var last=words.pop(); t.innerHTML=chipSafe(words.join(" ")+(words.length?" ":"")+"<em>"+last+"</em>"); }
+  render();
+  var elCt=document.getElementById("cat"); if(elCt.scrollIntoView) elCt.scrollIntoView({behavior:"smooth"});
+}
+
+window.addEventListener("hashchange",function(){
+  var h=location.hash.replace("#","");
+  if(h && bySlug[h]) applyCat(bySlug[h]);
+});
 
 document.getElementById("q").addEventListener("input",function(){ query=this.value.trim().toLowerCase(); render(); });
 
@@ -161,7 +186,7 @@ function render(){
     if(query&&it.n.toLowerCase().indexOf(query)<0) continue;
     shown++;
     rows+='<div class="pcard"><div class="pimg"><img loading="lazy" src="'+it.img+'" alt="'+it.n+'"></div>'
-      +'<div class="pbody"><div class="pcat">'+it.cat+'</div><div class="pname">'+it.n+'</div>'
+      +'<div class="pbody"><div class="pcat">'+(LABEL[it.cat]||it.cat)+'</div><div class="pname">'+it.n+'</div>'
       +'<div class="prow"><span class="pprice">'+money(it.p)+' BYN</span>'
       +'<button class="btn add" type="button" data-i="'+i+'">В корзину</button></div></div></div>';
   }
@@ -216,7 +241,8 @@ document.getElementById("order").addEventListener("click",function(){
 });
 
 drawCart();
-render();
+var h0=location.hash.replace("#","");
+if(h0&&bySlug[h0]) applyCat(bySlug[h0]); else applyCat("all");
 </script>
 </body>
 </html>
