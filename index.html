@@ -18,7 +18,7 @@
   <meta name="twitter:title" content="AA Web Studio — создание сайтов под ключ | Andrey Alexandrovich">
   <meta name="twitter:description" content="Создание сайтов под ключ: лендинги, многостраничные сайты, интернет-магазины. Современный дизайн, чистый код, сроки от 3 дней.">
   <meta name="twitter:image" content="https://aa-web-studio.github.io/img/og-cover.png?v=1">
-  <link rel="stylesheet" href="css/style.css?v=10">
+  <link rel="stylesheet" href="css/style.css?v=11">
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -344,19 +344,22 @@
           return '<span class="tag">' + t + "</span>";
         }).join("");
         return (
-          '<a class="card work-card reveal' + (i === 0 ? " work-card--big" : "") + '" href="portfolio.html">' +
-          '<div class="work-preview">' +
+          '<article class="card work-card reveal' + (i === 0 ? " work-card--big" : "") + '">' +
+          '<a class="work-preview" href="portfolio.html" aria-label="Все работы">' +
           (p.img
             ? '<img class="work-photo" src="' + p.img + '" alt="' + p.title + '" loading="lazy">'
             : "<span>" + p.icon + "</span>") +
           '<span class="preview-chip preview-cat">' + (catLabels[p.category] || "Проект") + "</span>" +
           (p.price ? '<span class="preview-chip preview-price">' + p.price + "</span>" : "") +
-          "</div>" +
+          "</a>" +
           '<div class="work-body">' +
-          '<h3 class="work-title">' + p.title + "</h3>" +
+          '<h3 class="work-title"><a class="work-link" href="portfolio.html">' + p.title + "</a></h3>" +
           '<p class="work-desc">' + p.desc + "</p>" +
           '<div class="tags">' + tags + "</div>" +
-          "</div></a>"
+          '<div class="work-actions"><a class="btn btn-primary btn-sm" href="contact.html?type=' +
+          encodeURIComponent(p.category) + '&project=' + encodeURIComponent(p.id) +
+          '">Хочу такой же сайт</a></div>' +
+          "</div></article>"
         );
       }).join("");
 

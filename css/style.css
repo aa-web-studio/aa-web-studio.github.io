@@ -1276,3 +1276,8 @@ html { scrollbar-width: thin; scrollbar-color: #4a4a4a #141414; }
 
 .card { transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
 a.card:hover { box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55); }
+
+/* CTA в карточках «Популярные работы» (главная) */
+.work-link { color: inherit; text-decoration: none; }
+.work-link:hover { color: var(--text-bright, #fff); }
+.work-card .work-actions { margin-top: 18px; }
