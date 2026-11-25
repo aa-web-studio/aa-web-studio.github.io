@@ -251,5 +251,27 @@ var SITE_PROJECTS = [
     icon: "🚗",
     url: "demo/detailing/",
     img: "img/detailing/polishing.jpg",
+  },
+  {
+    id: "project-guitars",
+    title: "Магазин гитар RiffHall",
+    desc: "Магазин музыкальных инструментов: электро и акустика, комбики, струны, провода и медиаторы. Trade-in старых гитар, настройка и подбор под уровень игрока. тёмная тема с янтарным акцентом.",
+    category: "shop",
+    price: "от 450 BYN",
+    tags: ["Магазин", "Каталог", "Trade-in", "Тёмный дизайн"],
+    icon: "🎸",
+    url: "demo/guitars/",
+    img: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&q=72&fit=crop",
+  },
+  {
+    id: "project-peaky",
+    title: "Barber & Sons — барбершоп 1920-х",
+    desc: "Джентльменский барбершоп в духе «Острых козырьков»: темное золото, серифы, пилон-полосатая лента, услуги с ценами и правила дома. Для сетей барбершопов и Lounge-заведений.",
+    category: "landing",
+    price: "от 300 BYN",
+    tags: ["Лендинг", "Барбершоп", "Ретро 1920-х", "Тёмный дизайн"],
+    icon: "💈",
+    url: "demo/peaky/",
+    img: "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?w=800&q=72&fit=crop",
   }
 ];
