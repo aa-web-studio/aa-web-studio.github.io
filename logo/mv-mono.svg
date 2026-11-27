@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#17191c"/>
+  <rect x="24" y="24" width="464" height="464" fill="none" stroke="#3a4046" stroke-width="2"/>
+  <text x="256" y="300" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="200" letter-spacing="10" fill="#d9dde1">MV</text>
+  <line x1="150" y1="345" x2="362" y2="345" stroke="#8a9098" stroke-width="2"/>
+  <text x="256" y="398" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" letter-spacing="16" fill="#9aa1a9">STUDIO</text>
+</svg>
