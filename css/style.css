@@ -428,7 +428,7 @@ ul { list-style: none; }
   will-change: transform;
 }
 
-.marquee:hover .marquee-track { animation-play-state: paused; }
+/* полоса не останавливается при наведении */
 
 .marquee-group {
   display: flex;
